@@ -19,6 +19,11 @@ public class Variables_Partitions implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
+	
+	public Variables_Partitions() {
+		super();
+		
+	}
 	@ManyToOne
 	@JoinColumn(name="id_variable",referencedColumnName="id_variable",insertable=false,updatable=false)
 	

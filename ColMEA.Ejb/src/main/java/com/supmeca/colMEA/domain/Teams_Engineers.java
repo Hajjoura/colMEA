@@ -16,7 +16,7 @@ public class Teams_Engineers implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	public Teams_Engineers() {
-		
+		super();
 	}
 	@ManyToOne
 	@JoinColumn(name="id_team",referencedColumnName="id_team",insertable=false,updatable=false)

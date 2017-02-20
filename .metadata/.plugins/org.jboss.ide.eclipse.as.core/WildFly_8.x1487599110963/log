@@ -1,0 +1,7 @@
+!SESSION 
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2017-02-20 14:59:32.774
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2017-02-20 15:00:02.752
+!MESSAGE Server Startup Succeeded
