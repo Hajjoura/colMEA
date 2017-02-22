@@ -8,10 +8,13 @@ import com.supmeca.colMEA.domain.User;
 
 @Remote
 public interface UserServiceRemote {
-	public void CreateClient( User User) ;
-	public void EditClient (User User);
-	public void removeClient(User User);
+	
+	public void CreateUser( User User) ;
+	public void EditUser (User User);
+	public void removeUser(User User);
 	public User findUserById(int id);
 	public List<User> findAllUsers() ;
+	public User findUserByLogin(String login);
+	public User authentication(String login, String password);
 
 }

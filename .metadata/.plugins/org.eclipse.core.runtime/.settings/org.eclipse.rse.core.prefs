@@ -1,3 +1,4 @@
 activeuserprofiles=PLACIS78;Team
 eclipse.preferences.version=1
 org.eclipse.rse.systemtype.local.systemType.defaultUserId=PlacisAdmin
+useridperkey=PLACIS78.Local\=PlacisAdmin;

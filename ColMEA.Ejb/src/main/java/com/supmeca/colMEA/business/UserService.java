@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import com.supmeca.colMEA.domain.User;
 
@@ -14,41 +17,69 @@ import com.supmeca.colMEA.domain.User;
 @LocalBean
 public class UserService implements UserServiceRemote, UserServiceLocal {
 
-    /**
-     * Default constructor. 
-     */
-    public UserService() {
-        // TODO Auto-generated constructor stub
-    }
+	@PersistenceContext
+	private EntityManager em;
+	User user;
+	
+	@Override
+	public void CreateUser(User User) {
+		
+		em.persist(user);
+	}
 
 	@Override
-	public void CreateClient(User User) {
-		// TODO Auto-generated method stub
+	public void EditUser(User User) {
+		
+		em.merge(user);
 		
 	}
 
 	@Override
-	public void EditClient(User User) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void removeUser(User User) {
 
-	@Override
-	public void removeClient(User User) {
-		// TODO Auto-generated method stub
-		
+		em.remove(em.merge(user));
 	}
 
 	@Override
 	public User findUserById(int id) {
-		// TODO Auto-generated method stub
+		User user=em.find(User.class,id);
+		if(user!=null){
+			return user;
+		}
 		return null;
+    
 	}
 
 	@Override
 	public List<User> findAllUsers() {
-		// TODO Auto-generated method stub
-		return null;
+		String text = "SELECT u FROM User u";
+		Query query = em.createQuery(text);
+		List<User> ListUsers = query.getResultList();
+		
+		return ListUsers;
 	}
+
+	@Override
+	public User findUserByLogin(String login) {
+		String Text = "SELECT u FROM User u WHERE u.login = :login";
+    	Query query = em.createQuery(Text).setParameter("login", login);
+		User user = (User)query.getSingleResult();
+    return user;
+	}
+
+	@Override
+	public User authentication(String login, String password) {
+		User user = null;
+		 
+		Query query = (Query) em
+				.createQuery("select u from User u where u.login=:l and u.password=:p");
+
+		((javax.persistence.Query) query).setParameter("l", login)
+				.setParameter("p", password);
+		user = (User) ((javax.persistence.Query) query).getSingleResult();
+ 
+	return user;
+	}
+
 
 }

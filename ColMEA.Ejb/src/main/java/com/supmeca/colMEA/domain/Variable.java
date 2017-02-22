@@ -39,6 +39,8 @@ public class Variable implements Serializable {
 		super();
 	}   
 	@Id    
+	@GeneratedValue (strategy=GenerationType.IDENTITY)
+
 	public Integer getId_variable() {
 		return this.id_variable;
 	}

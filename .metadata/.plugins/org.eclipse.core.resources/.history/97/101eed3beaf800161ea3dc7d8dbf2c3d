@@ -1,0 +1,48 @@
+package com.supmeca.colMEA.business;
+
+import java.util.List;
+
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+
+import com.supmeca.colMEA.domain.User;
+
+/**
+ * Session Bean implementation class UserService
+ */
+@Stateless
+@LocalBean
+public class UserService implements UserServiceRemote, UserServiceLocal {
+
+	@Override
+	public void CreateUser(User User) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void EditUser(User User) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeUser(User User) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public User findUserById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<User> findAllUsers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+}

@@ -13,6 +13,7 @@ public class User implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	private Integer id_user;
+	private String login;
 	private String first_name;
 	private String last_name;
 	private Integer age;
@@ -71,6 +72,12 @@ public class User implements Serializable{
 	}
 	public void setNote(String note) {
 		this.note = note;
+	}
+	public String getLogin() {
+		return login;
+	}
+	public void setLogin(String login) {
+		this.login = login;
 	}
 	
 }
