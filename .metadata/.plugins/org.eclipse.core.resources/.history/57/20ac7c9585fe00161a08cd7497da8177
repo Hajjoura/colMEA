@@ -1,0 +1,20 @@
+package com.supmeca.colMEA.business;
+
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+
+/**
+ * Session Bean implementation class SetService
+ */
+@Stateless
+@LocalBean
+public class SetService implements SetServiceRemote, SetServiceLocal {
+
+    /**
+     * Default constructor. 
+     */
+    public SetService() {
+        // TODO Auto-generated constructor stub
+    }
+
+}

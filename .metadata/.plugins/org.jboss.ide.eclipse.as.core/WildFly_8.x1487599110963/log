@@ -36,3 +36,140 @@
 
 !ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2017-02-22 12:49:27.330
 !MESSAGE Server Startup Succeeded
+!SESSION 
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2017-02-23 10:19:25.710
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2017-02-23 10:19:54.748
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298251 2017-02-23 10:21:39.543
+!MESSAGE Deployment of module ColMEA.Ejb has failed
+!SUBENTRY 1 unknown 0 0 2017-02-23 10:21:39.543
+!MESSAGE OK
+!SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-02-23 10:21:39.543
+!MESSAGE The operation DEPLOY for unit ColMEA.Ejb.jar was rolled back
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298251 2017-02-23 10:22:26.455
+!MESSAGE Deployment of module ColMEA.Ejb has failed
+!SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-02-23 10:22:26.455
+!MESSAGE The operation DEPLOY for unit ColMEA.Ejb.jar was rolled back
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298251 2017-02-23 10:23:11.444
+!MESSAGE Deployment of module ColMEA.Ejb has failed
+!SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-02-23 10:23:11.444
+!MESSAGE The operation DEPLOY for unit ColMEA.Ejb.jar was rolled back
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298251 2017-02-23 10:23:33.572
+!MESSAGE Deployment of module ColMEA.Ejb has failed
+!SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-02-23 10:23:33.572
+!MESSAGE The operation DEPLOY for unit ColMEA.Ejb.jar was rolled back
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298251 2017-02-23 10:24:25.639
+!MESSAGE Deployment of module ColMEA.Ejb has failed
+!SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-02-23 10:24:25.640
+!MESSAGE The operation DEPLOY for unit ColMEA.Ejb.jar was rolled back
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298251 2017-02-23 10:25:46.510
+!MESSAGE Deployment of module ColMEA.Ejb has failed
+!SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-02-23 10:25:46.510
+!MESSAGE The operation DEPLOY for unit ColMEA.Ejb.jar was rolled back
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298251 2017-02-23 10:25:52.128
+!MESSAGE Deployment of module ColMEA.Ejb has failed
+!SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-02-23 10:25:52.128
+!MESSAGE The operation DEPLOY for unit ColMEA.Ejb.jar was rolled back
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298251 2017-02-23 10:26:55.996
+!MESSAGE Deployment of module ColMEA.Ejb has failed
+!SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-02-23 10:26:55.996
+!MESSAGE The operation DEPLOY for unit ColMEA.Ejb.jar was rolled back
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298251 2017-02-23 10:31:50.773
+!MESSAGE Deployment of module ColMEA.Ejb has failed
+!SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-02-23 10:31:50.773
+!MESSAGE The operation DEPLOY for unit ColMEA.Ejb.jar was rolled back
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298251 2017-02-23 10:32:08.720
+!MESSAGE Deployment of module ColMEA.Ejb has failed
+!SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-02-23 10:32:08.720
+!MESSAGE The operation DEPLOY for unit ColMEA.Ejb.jar was rolled back
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298251 2017-02-23 10:33:10.938
+!MESSAGE Deployment of module ColMEA.Ejb has failed
+!SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-02-23 10:33:10.938
+!MESSAGE The operation DEPLOY for unit ColMEA.Ejb.jar was rolled back
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298251 2017-02-23 10:33:27.731
+!MESSAGE Deployment of module ColMEA.Ejb has failed
+!SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-02-23 10:33:27.731
+!MESSAGE The operation DEPLOY for unit ColMEA.Ejb.jar was rolled back
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298251 2017-02-23 10:33:57.159
+!MESSAGE Deployment of module ColMEA.Ejb has failed
+!SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-02-23 10:33:57.159
+!MESSAGE The operation DEPLOY for unit ColMEA.Ejb.jar was rolled back
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298251 2017-02-23 10:34:06.285
+!MESSAGE Deployment of module ColMEA.Ejb has failed
+!SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-02-23 10:34:06.285
+!MESSAGE The operation DEPLOY for unit ColMEA.Ejb.jar was rolled back
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298251 2017-02-23 10:46:22.507
+!MESSAGE Deployment of module ColMEA.Ejb has failed
+!SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-02-23 10:46:22.507
+!MESSAGE The operation DEPLOY for unit ColMEA.Ejb.jar was rolled back
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298251 2017-02-23 10:46:34.681
+!MESSAGE Deployment of module ColMEA.Ejb has failed
+!SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-02-23 10:46:34.681
+!MESSAGE The operation DEPLOY for unit ColMEA.Ejb.jar was rolled back
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298251 2017-02-23 10:46:55.813
+!MESSAGE Deployment of module ColMEA.Ejb has failed
+!SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-02-23 10:46:55.813
+!MESSAGE The operation DEPLOY for unit ColMEA.Ejb.jar was rolled back
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2017-02-23 10:55:15.106
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.wtp.core 1 16973825 2017-02-23 10:55:15.490
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2017-02-23 10:55:16.943
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2017-02-23 10:55:21.609
+!MESSAGE Server Startup Succeeded
+!SESSION 
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2017-02-28 13:29:13.777
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2017-02-28 13:29:54.453
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298251 2017-03-01 12:16:27.012
+!MESSAGE Deployment of module ColMEA.Ejb has failed
+!SUBENTRY 1 unknown 0 0 2017-03-01 12:16:27.013
+!MESSAGE OK
+!SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-03-01 12:16:27.013
+!MESSAGE The operation DEPLOY for unit ColMEA.Ejb.jar was rolled back
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298251 2017-03-01 12:17:55.051
+!MESSAGE Deployment of module ColMEA.Ejb has failed
+!SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-03-01 12:17:55.051
+!MESSAGE The operation DEPLOY for unit ColMEA.Ejb.jar was rolled back
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298251 2017-03-01 14:32:29.822
+!MESSAGE Deployment of module ColMEA.Ejb has failed
+!SUBENTRY 1 unknown 0 0 2017-03-01 14:32:29.822
+!MESSAGE OK
+!SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-03-01 14:32:29.822
+!MESSAGE The operation DEPLOY for unit ColMEA.Ejb.jar was rolled back
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298251 2017-03-01 14:32:33.149
+!MESSAGE Deployment of module ColMEA.Ejb has failed
+!SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-03-01 14:32:33.149
+!MESSAGE The operation DEPLOY for unit ColMEA.Ejb.jar was rolled back

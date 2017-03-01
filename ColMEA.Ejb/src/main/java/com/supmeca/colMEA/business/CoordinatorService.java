@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import com.supmeca.colMEA.domain.Coordinator;
 
@@ -11,7 +14,10 @@ import com.supmeca.colMEA.domain.Coordinator;
 @Stateless
 @LocalBean
 public class CoordinatorService implements CoordinatorServiceRemote, CoordinatorServiceLocal {
-
+	@PersistenceContext
+	private EntityManager em;
+	
+	Coordinator Coordinator;
     /**
      * Default constructor. 
      */
@@ -21,32 +27,41 @@ public class CoordinatorService implements CoordinatorServiceRemote, Coordinator
 
 	@Override
 	public void CreateCoordinator(Coordinator Coordinator) {
-		// TODO Auto-generated method stub
 		
+		em.persist(Coordinator);
 	}
 
 	@Override
 	public void EditCoordinator(Coordinator Coordinator) {
-		// TODO Auto-generated method stub
-		
+
+		em.merge(Coordinator);
 	}
 
 	@Override
 	public void removeCoordinator(Coordinator Coordinator) {
-		// TODO Auto-generated method stub
+		
+		em.remove(em.merge(Coordinator));
 		
 	}
 
 	@Override
 	public Coordinator findCoordinatorById(int id) {
-		// TODO Auto-generated method stub
+		Coordinator coordinator=em.find(Coordinator.class,id);
+		if(coordinator!=null){
+			return coordinator;
+		}
 		return null;
 	}
 
 	@Override
 	public List<Coordinator> findAllCoordinators() {
-		// TODO Auto-generated method stub
-		return null;
+		String text = "SELECT c FROM Coordinator c";
+		Query query = em.createQuery(text);
+		List<Coordinator> ListCoordinators = query.getResultList();
+		
+		return ListCoordinators;
 	}
 
+
+	
 }

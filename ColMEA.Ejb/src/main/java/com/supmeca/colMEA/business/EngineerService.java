@@ -4,7 +4,11 @@ import java.util.List;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
+import com.supmeca.colMEA.domain.Coordinator;
 import com.supmeca.colMEA.domain.Engineer;
 
 /**
@@ -14,6 +18,10 @@ import com.supmeca.colMEA.domain.Engineer;
 @LocalBean
 public class EngineerService implements EngineerServiceRemote, EngineerServiceLocal {
 
+	@PersistenceContext
+	private EntityManager em;
+	
+	Engineer Engineer;
     /**
      * Default constructor. 
      */
@@ -23,32 +31,38 @@ public class EngineerService implements EngineerServiceRemote, EngineerServiceLo
 
 	@Override
 	public void CreateEngineer(Engineer Engineer) {
-		// TODO Auto-generated method stub
+		em.persist(Engineer);
 		
 	}
 
 	@Override
 	public void EditEngineer(Engineer Engineer) {
-		// TODO Auto-generated method stub
+		em.merge(Engineer);
 		
 	}
 
 	@Override
 	public void removeEngineer(Engineer Engineer) {
-		// TODO Auto-generated method stub
-		
+		em.remove(em.merge(Engineer));
 	}
 
 	@Override
 	public Engineer findEngineerById(int id) {
-		// TODO Auto-generated method stub
+		Engineer Engineer=em.find(Engineer.class,id);
+		if(Engineer!=null){
+			return Engineer;
+		}
 		return null;
 	}
+	
 
 	@Override
 	public List<Engineer> findAllEngineers() {
-		// TODO Auto-generated method stub
-		return null;
+		String text = "SELECT e FROM Engineer e";
+		Query query = em.createQuery(text);
+		List<Engineer> ListEngineers = query.getResultList();
+		
+		return ListEngineers;
 	}
 
 }

@@ -1,0 +1,20 @@
+package com.supmeca.colMEA.business;
+
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+
+/**
+ * Session Bean implementation class DomainService
+ */
+@Stateless
+@LocalBean
+public class DomainService implements DomainServiceRemote, DomainServiceLocal {
+
+    /**
+     * Default constructor. 
+     */
+    public DomainService() {
+        // TODO Auto-generated constructor stub
+    }
+
+}

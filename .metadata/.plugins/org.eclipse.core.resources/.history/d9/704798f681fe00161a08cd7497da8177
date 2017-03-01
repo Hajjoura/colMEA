@@ -1,0 +1,20 @@
+package com.supmeca.colMEA.business;
+
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+
+/**
+ * Session Bean implementation class ObjectiveService
+ */
+@Stateless
+@LocalBean
+public class ObjectiveService implements ObjectiveServiceRemote {
+
+    /**
+     * Default constructor. 
+     */
+    public ObjectiveService() {
+        // TODO Auto-generated constructor stub
+    }
+
+}

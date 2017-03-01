@@ -1,0 +1,20 @@
+package com.supmeca.colMEA.business;
+
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+
+/**
+ * Session Bean implementation class StudyService
+ */
+@Stateless
+@LocalBean
+public class StudyService implements StudyServiceRemote, StudyServiceLocal {
+
+    /**
+     * Default constructor. 
+     */
+    public StudyService() {
+        // TODO Auto-generated constructor stub
+    }
+
+}
