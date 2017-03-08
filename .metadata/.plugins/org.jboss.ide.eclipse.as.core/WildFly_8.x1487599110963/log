@@ -173,3 +173,34 @@
 !MESSAGE Deployment of module ColMEA.Ejb has failed
 !SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-03-01 14:32:33.149
 !MESSAGE The operation DEPLOY for unit ColMEA.Ejb.jar was rolled back
+!SESSION 
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2017-03-07 13:12:50.792
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2017-03-07 13:13:46.305
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2017-03-07 13:33:41.347
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.wtp.core 1 16973825 2017-03-07 13:33:41.901
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2017-03-07 13:33:43.004
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2017-03-07 13:33:55.959
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2017-03-08 10:15:16.233
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842785 2017-03-08 10:15:16.634
+!MESSAGE Server Shutdown Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2017-03-08 10:15:21.943
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2017-03-08 10:16:18.469
+!MESSAGE Server Startup Succeeded

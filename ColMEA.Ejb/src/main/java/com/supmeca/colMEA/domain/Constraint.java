@@ -15,6 +15,8 @@ public class Constraint extends Variable implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
+	//constructor with SuperClass
+
 	public Constraint() {
 		super();
 	}

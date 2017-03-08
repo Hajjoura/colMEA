@@ -1,0 +1,9 @@
+package Services;
+
+import com.supmeca.colMEA.business.UserServiceLocal;
+
+public class UserServices {
+
+	private UserServiceLocal UserService;
+	
+}

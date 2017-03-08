@@ -22,6 +22,7 @@ public class Tool implements Serializable {
 	private List<Variable> Variables = new ArrayList<Variable>();
 	private static final long serialVersionUID = 1L;
 
+	//constructor with superclass
 	public Tool() {
 		super();
 	}   
@@ -49,5 +50,13 @@ public class Tool implements Serializable {
 	public void setVariables(List<Variable> variables) {
 		Variables = variables;
 	}
+	
+	//constructor with Fields
+	public Tool(String name, List<Variable> variables) {
+		super();
+		this.name = name;
+		Variables = variables;
+	}
+	
    
 }

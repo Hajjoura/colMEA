@@ -1,0 +1,83 @@
+package com.supmeca.colMEA.domain;
+
+import java.io.Serializable;
+import java.lang.Integer;
+import java.lang.String;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.*;
+
+/**
+ * Entity implementation class for Entity: Study
+ *
+ */
+@Entity
+
+public class Study implements Serializable {
+
+	
+	private Integer id_study;
+	private Integer number;
+	private String type;
+	private Project project;
+	private Team team;
+	private List<Partition> Partitions = new ArrayList<Partition>();
+	private static final long serialVersionUID = 1L;
+
+	public Study() {
+		super();
+	}   
+	@Id   
+	@GeneratedValue (strategy=GenerationType.IDENTITY)
+
+	public Integer getId_study() {
+		return this.id_study;
+	}
+
+	public void setId_study(Integer id_study) {
+		this.id_study = id_study;
+	}   
+	public Integer getNumber() {
+		return this.number;
+	}
+
+	public void setNumber(Integer number) {
+		this.number = number;
+	}   
+	public String getType() {
+		return this.type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+	@ManyToOne
+	@JoinColumn(name="id_project",referencedColumnName="id_project",insertable=false,updatable=false)
+
+	public Project getProject() {
+		return project;
+	}
+	public void setProject(Project project) {
+		this.project = project;
+	}
+	
+	@ManyToOne
+	@JoinColumn(name="id_team",referencedColumnName="id_team",insertable=false,updatable=false)
+
+	public Team getTeam() {
+		return team;
+	}
+	public void setTeam(Team team) {
+		this.team = team;
+	}
+	
+	@OneToMany(mappedBy="study", cascade=CascadeType.ALL)
+	public List<Partition> getPartitions() {
+		return Partitions;
+	}
+	public void setPartitions(List<Partition> partitions) {
+		Partitions = partitions;
+	}
+   
+}

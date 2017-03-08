@@ -19,6 +19,7 @@ public class Set implements Serializable {
 	private Variable variable;
 	private static final long serialVersionUID = 1L;
 
+	//constructor with SuperClass
 	public Set() {
 		super();
 	}   
@@ -49,5 +50,15 @@ public class Set implements Serializable {
 	public void setVariable(Variable variable) {
 		this.variable = variable;
 	}
+	
+	//constructor with Fields
+	public Set(String value, Variable variable) {
+		super();
+		this.value = value;
+		this.variable = variable;
+	}
+	
+	
+	
    
 }

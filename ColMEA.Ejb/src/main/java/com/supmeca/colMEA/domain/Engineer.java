@@ -20,6 +20,7 @@ public class Engineer extends User implements Serializable {
 	private List<Teams_Engineers> Teams = new ArrayList<Teams_Engineers>();
 	private static final long serialVersionUID = 1L;
 
+	//constructor with SuperClass
 	public Engineer() {
 		super();
 	}
@@ -29,12 +30,13 @@ public class Engineer extends User implements Serializable {
 	public Domain getDomain() {
 		return domain;
 	}
-
+	
 	
 	public void setDomain(Domain domain) {
 		this.domain = domain;
 	}
 
+	
 	@OneToMany(mappedBy="engineer")
 	public List<Teams_Engineers> getTeams() {
 		return Teams;
@@ -44,6 +46,14 @@ public class Engineer extends User implements Serializable {
 		Teams = teams;
 	}
 	
-	
+	//constructor with Fields
+		public Engineer(String login, String first_name, String last_name,
+				Integer age, String email, String image, String service,
+				String note, Domain domain, List<Teams_Engineers> teams) {
+			super(login, first_name, last_name, age, email, image, service, note);
+			this.domain = domain;
+			Teams = teams;
+		}
+
    
 }

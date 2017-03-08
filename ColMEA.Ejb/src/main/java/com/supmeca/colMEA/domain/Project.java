@@ -28,6 +28,7 @@ public class Project implements Serializable {
 	private List<Study> Studies = new ArrayList<Study>();
 	private static final long serialVersionUID = 1L;
 
+	//constructor with SuperClass
 	public Project() {
 		super();
 	}   
@@ -92,5 +93,19 @@ public class Project implements Serializable {
 	public void setManager(Manager manager) {
 		this.manager = manager;
 	}
+	
+	//constructor with Fields
+	public Project(String name, float version, Date start_date, Date end_date,
+			String state, Manager manager, List<Study> studies) {
+		super();
+		this.name = name;
+		this.version = version;
+		this.start_date = start_date;
+		this.end_date = end_date;
+		this.state = state;
+		this.manager = manager;
+		Studies = studies;
+	}
    
+	
 }

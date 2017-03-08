@@ -1,0 +1,34 @@
+package Services;
+
+import java.util.List;
+
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import javax.ws.rs.Path;
+
+import com.supmeca.colMEA.business.UserServiceRemote;
+import com.supmeca.colMEA.domain.*;
+@Stateless
+@Path("/user")
+public class UserServices {
+
+	@EJB
+	private UserServiceRemote UserService;
+	
+	public List<User> getAllUsers(){
+		return UserService.findAllUsers();
+	
+	}
+	public User getUserById(Integer id)
+	{
+		return UserService.findUserById(id);
+	}
+
+	
+	
+	public void addUser(String login,String first_name, String last_name,Integer age,String email,String image,String service,String note ){
+		User = new User(login,first_name, last_name,age,email,image,service,note);
+
+		UserService.CreateUser(User);
+	}
+}

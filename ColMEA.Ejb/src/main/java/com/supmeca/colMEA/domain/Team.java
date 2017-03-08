@@ -25,6 +25,7 @@ public class Team implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	//constructor with superclass
 	public Team() {
 		super();
 	}   
@@ -72,5 +73,16 @@ public class Team implements Serializable {
 	public void setEngineers(List<Teams_Engineers> engineers) {
 		Engineers = engineers;
 	}
+	//constructor with Fields
+	public Team(String name, Coordinator coordinator,
+			List<Teams_Engineers> engineers, List<Study> studies) {
+		super();
+		this.name = name;
+		this.coordinator = coordinator;
+		Engineers = engineers;
+		Studies = studies;
+	}
+	
+	
    
 }

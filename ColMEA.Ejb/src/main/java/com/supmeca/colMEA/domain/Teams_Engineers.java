@@ -15,6 +15,7 @@ public class Teams_Engineers implements Serializable{
 	private Teams_EngineersFK teams_engineersfk;
 	private static final long serialVersionUID = 1L;
 
+	//constructor with superclass
 	public Teams_Engineers() {
 		super();
 	}
@@ -44,5 +45,14 @@ public class Teams_Engineers implements Serializable{
 	public void setTeams_engineersfk(Teams_EngineersFK teams_engineersfk) {
 		this.teams_engineersfk = teams_engineersfk;
 	}
+	//constructor with Fields
+	public Teams_Engineers(Team team, Engineer engineer,
+			Teams_EngineersFK teams_engineersfk) {
+		super();
+		this.team = team;
+		this.engineer = engineer;
+		this.teams_engineersfk = teams_engineersfk;
+	}
 
+	
 }

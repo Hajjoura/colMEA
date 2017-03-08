@@ -35,9 +35,11 @@ public class Variable implements Serializable {
 	private List<Variables_Partitions> partitions = new ArrayList<Variables_Partitions>();
 	private static final long serialVersionUID = 1L;
 
+	//constructor with superclass
 	public Variable() {
 		super();
 	}   
+	
 	@Id    
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
 
@@ -149,5 +151,32 @@ public class Variable implements Serializable {
 	public void setSetRes(List<Set> setRes) {
 		SetRes = setRes;
 	}
+	
+	
+	
+	
+	//constructor using fields
+	
+	public Variable(String name, float min, float max, float min_res,
+			float max_res, String unit, Date date, String description,
+			boolean visibility, String image, Tool tool, List<Set> sets,
+			List<Set> setRes, List<Variables_Partitions> partitions) {
+		super();
+		this.name = name;
+		this.min = min;
+		this.max = max;
+		this.min_res = min_res;
+		this.max_res = max_res;
+		this.unit = unit;
+		this.date = date;
+		this.description = description;
+		this.visibility = visibility;
+		this.image = image;
+		this.tool = tool;
+		Sets = sets;
+		SetRes = setRes;
+		this.partitions = partitions;
+	}
    
+	
 }

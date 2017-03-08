@@ -80,4 +80,25 @@ public class User implements Serializable{
 		this.login = login;
 	}
 	
+	//constructor with fields
+	public User(String login, String first_name, String last_name, Integer age,
+			String email, String image, String service, String note) {
+		super();
+		this.login = login;
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.age = age;
+		this.email = email;
+		this.image = image;
+		this.service = service;
+		this.note = note;
+	}
+	//constructor with superclass
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	
 }

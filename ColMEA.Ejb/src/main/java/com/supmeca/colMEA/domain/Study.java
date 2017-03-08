@@ -25,6 +25,7 @@ public class Study implements Serializable {
 	private List<Partition> Partitions = new ArrayList<Partition>();
 	private static final long serialVersionUID = 1L;
 
+	//constructor with superclass
 	public Study() {
 		super();
 	}   
@@ -79,5 +80,18 @@ public class Study implements Serializable {
 	public void setPartitions(List<Partition> partitions) {
 		Partitions = partitions;
 	}
+	
+	//constructor with Fields
+	public Study(Integer number, String type, Project project, Team team,
+			List<Partition> partitions) {
+		super();
+		this.number = number;
+		this.type = type;
+		this.project = project;
+		this.team = team;
+		Partitions = partitions;
+	}
    
+	
+	
 }
