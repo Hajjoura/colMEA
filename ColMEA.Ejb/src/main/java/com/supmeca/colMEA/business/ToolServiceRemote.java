@@ -14,4 +14,5 @@ public interface ToolServiceRemote {
 	public void removeTool(Tool Tool);
 	public Tool findToolById(int id);
 	public List<Tool> findAllTools() ;
+	public void DeleteTool(int id);
 }

@@ -13,5 +13,6 @@ public interface PartitionServiceRemote {
 	public void EditPartition (Partition Partition);
 	public void removePartition(Partition Partition);
 	public Partition findPartitionById(int id);
-	public List<Partition> findAllPartitions() ;
+	public List<Partition> findAllPartitions();
+	public void DeletePartition(int id);
 }

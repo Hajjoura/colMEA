@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import com.supmeca.colMEA.domain.Coordinator;
 import com.supmeca.colMEA.domain.Tool;
 
 /**
@@ -59,5 +60,11 @@ public class ToolService implements ToolServiceRemote, ToolServiceLocal {
 		List<Tool> ListTools = query.getResultList();
 		
 		return ListTools;
+	}
+
+	@Override
+	public void DeleteTool(int id) {
+		em.remove(em.find(Tool.class, id));	
+		
 	}
 }

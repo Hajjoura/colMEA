@@ -15,7 +15,7 @@ import javax.ws.rs.core.Response.Status;
 import com.supmeca.colMEA.business.UserServiceLocal;
 import com.supmeca.colMEA.domain.*;
 @Stateless
-@Path("/users")
+@Path("/Users")
 public class UserRessource {
 
 	@Inject
@@ -32,22 +32,21 @@ public class UserRessource {
 			return Response.ok(users).build();
 		
 	}
-	
-	@GET
-	@Path("auth/{login}/{password}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response authenticateUser(@PathParam ("login") String login, @PathParam ("password") String password) {
-		User user = null;
-		if (password == null)
-			user = UserEjb.findUserByLogin(login);
-		else 
-			user = UserEjb.authentication(login, password);
+	//@GET
+	//@Path("auth/{login}/{password}")
+	//@Produces(MediaType.APPLICATION_JSON)
+	//public Response authenticateUser(@PathParam ("login") String login, @PathParam ("password") String password) {
+		//User user = null;
+	//	if (password == null)
+	//		user = UserEjb.findUserByLogin(login);
+	//	else 
+		//	user = UserEjb.authentication(login, password);
 		
-		if (user==null)
-			return Response.status(Status.NOT_FOUND).build();
-		else
-			return Response.ok(user).build();
+		//if (user==null)
+		//	return Response.status(Status.NOT_FOUND).build();
+		//else
+		//	return Response.ok(user).build();
 		
-	}
+	//}
 
 }

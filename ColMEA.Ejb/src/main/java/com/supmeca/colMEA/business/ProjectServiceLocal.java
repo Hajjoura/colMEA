@@ -13,4 +13,5 @@ public interface ProjectServiceLocal {
 	public void removeProject(Project Project);
 	public Project findProjectById(int id);
 	public List<Project> findAllProjects() ;
+	public void DeleteProject(int id);
 }

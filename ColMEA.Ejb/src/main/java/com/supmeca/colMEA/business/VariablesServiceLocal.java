@@ -13,4 +13,5 @@ public interface VariablesServiceLocal {
 	public void removeVariable(Variable Variable);
 	public Variable findVariableById(int id);
 	public List<Variable> findAllVariables() ;
+	public void DeleteVariable(int id);
 }

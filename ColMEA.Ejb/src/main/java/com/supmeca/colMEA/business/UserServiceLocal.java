@@ -15,4 +15,5 @@ public interface UserServiceLocal {
 	public List<User> findAllUsers() ;
 	public User findUserByLogin(String login);
 	public User authentication(String login, String password);
+	public void DeleteUser(int id);
 }

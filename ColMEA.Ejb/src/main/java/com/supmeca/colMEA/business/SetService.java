@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import com.supmeca.colMEA.domain.Coordinator;
 import com.supmeca.colMEA.domain.Set;
 
 /**
@@ -59,6 +60,12 @@ public class SetService implements SetServiceRemote, SetServiceLocal {
 		List<Set> ListSets = query.getResultList();
 		
 		return ListSets;
+	}
+
+	@Override
+	public void DeleteSet(int id) {
+		em.remove(em.find(Set.class, id));	
+		
 	}
 
 }

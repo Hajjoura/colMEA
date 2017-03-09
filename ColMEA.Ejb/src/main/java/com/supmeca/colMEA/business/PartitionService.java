@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import com.supmeca.colMEA.domain.Coordinator;
 import com.supmeca.colMEA.domain.Partition;
 
 /**
@@ -59,6 +60,12 @@ public class PartitionService implements PartitionServiceRemote, PartitionServic
 		List<Partition> ListPartitions = query.getResultList();
 		
 		return ListPartitions;
+	}
+
+	@Override
+	public void DeletePartition(int id) {
+		em.remove(em.find(Partition.class, id));	
+		
 	}
 
 }

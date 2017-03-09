@@ -10,6 +10,7 @@ import javax.persistence.Query;
 
 import com.supmeca.colMEA.domain.Coordinator;
 import com.supmeca.colMEA.domain.Manager;
+import com.supmeca.colMEA.domain.User;
 import com.supmeca.colMEA.domain.Variable;
 
 /**
@@ -62,6 +63,12 @@ public class VariablesService implements VariablesServiceRemote, VariablesServic
 		List<Variable> ListVariables = query.getResultList();
 		
 		return ListVariables;
+	}
+
+	@Override
+	public void DeleteVariable(int id) {
+		em.remove(em.find(Variable.class, id));	
+		
 	}
 
 }

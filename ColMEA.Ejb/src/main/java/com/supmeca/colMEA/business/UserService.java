@@ -81,5 +81,13 @@ public class UserService implements UserServiceRemote, UserServiceLocal {
 	return user;
 	}
 
+	@Override
+	public void DeleteUser(int id) {
+		em.remove(em.find(User.class, id));
+		
+	}
+	
+	
+
 
 }

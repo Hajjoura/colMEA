@@ -14,5 +14,6 @@ public interface ObjectiveServiceRemote {
 	public void removeObjective(Objective Objective);
 	public Objective findObjectiveById(int id);
 	public List<Objective> findAllObjectives() ;
+	public void DeleteObjective(int id);
 
 }

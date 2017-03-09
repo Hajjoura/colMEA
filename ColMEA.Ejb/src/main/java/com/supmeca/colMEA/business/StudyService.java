@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import com.supmeca.colMEA.domain.Coordinator;
 import com.supmeca.colMEA.domain.Study;
 
 /**
@@ -59,5 +60,11 @@ public class StudyService implements StudyServiceRemote, StudyServiceLocal {
 		List<Study> ListStudys = query.getResultList();
 		
 		return ListStudys;
+	}
+
+	@Override
+	public void DeleteStudy(int id) {
+		em.remove(em.find(Study.class, id));	
+		
 	}
 }

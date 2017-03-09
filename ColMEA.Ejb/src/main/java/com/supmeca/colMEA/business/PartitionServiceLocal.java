@@ -13,4 +13,5 @@ public interface PartitionServiceLocal {
 	public void removePartition(Partition Partition);
 	public Partition findPartitionById(int id);
 	public List<Partition> findAllPartitions() ;
+	public void DeletePartition(int id);
 }

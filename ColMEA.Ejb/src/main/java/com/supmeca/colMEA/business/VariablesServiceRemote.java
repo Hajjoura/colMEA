@@ -13,5 +13,6 @@ public interface VariablesServiceRemote {
 	public void EditVariable (Variable Variable);
 	public void removeVariable(Variable Variable);
 	public Variable findVariableById(int id);
-	public List<Variable> findAllVariables() ;
+	public List<Variable> findAllVariables();
+	public void DeleteVariable(int id);
 }

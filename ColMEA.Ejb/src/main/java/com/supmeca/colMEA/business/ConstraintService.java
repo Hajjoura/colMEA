@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import com.supmeca.colMEA.domain.Constraint;
+import com.supmeca.colMEA.domain.Coordinator;
 
 /**
  * Session Bean implementation class ConstraintService
@@ -59,6 +60,12 @@ public class ConstraintService implements ConstraintServiceRemote, ConstraintSer
 		List<Constraint> ListConstraints = query.getResultList();
 		
 		return ListConstraints;
+	}
+
+	@Override
+	public void DeleteConstraint(int id) {
+		em.remove(em.find(Constraint.class, id));	
+		
 	}
 
 

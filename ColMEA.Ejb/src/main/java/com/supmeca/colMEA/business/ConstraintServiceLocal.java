@@ -14,4 +14,5 @@ public interface ConstraintServiceLocal {
 	public void removeConstraint(Constraint Constraint);
 	public Constraint findConstraintById(int id);
 	public List<Constraint> findAllConstraints() ;
+	public void DeleteConstraint(int id);
 }

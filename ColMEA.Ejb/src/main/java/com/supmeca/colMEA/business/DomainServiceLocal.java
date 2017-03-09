@@ -14,4 +14,5 @@ public interface DomainServiceLocal {
 	public void removeDomain(Domain Domain);
 	public Domain findDomainById(int id);
 	public List<Domain> findAllDomains() ;
+	public void DeleteDomain(int id);
 }

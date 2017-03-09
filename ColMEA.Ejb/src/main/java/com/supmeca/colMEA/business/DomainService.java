@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import com.supmeca.colMEA.domain.Coordinator;
 import com.supmeca.colMEA.domain.Domain;
 
 /**
@@ -59,6 +60,12 @@ public class DomainService implements DomainServiceRemote, DomainServiceLocal {
 		List<Domain> ListDomains = query.getResultList();
 		
 		return ListDomains;
+	}
+
+	@Override
+	public void DeleteDomain(int id) {
+		em.remove(em.find(Domain.class, id));	
+		
 	}
 
 }

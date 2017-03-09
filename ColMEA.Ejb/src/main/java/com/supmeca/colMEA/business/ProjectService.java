@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import com.supmeca.colMEA.domain.Coordinator;
 import com.supmeca.colMEA.domain.Project;
 import com.supmeca.colMEA.domain.Variable;
 
@@ -60,6 +61,12 @@ public class ProjectService implements ProjectServiceRemote, ProjectServiceLocal
 		List<Project> ListProjects = query.getResultList();
 		
 		return ListProjects;
+	}
+
+	@Override
+	public void DeleteProject(int id) {
+		em.remove(em.find(Project.class, id));	
+		
 	}
 
 }

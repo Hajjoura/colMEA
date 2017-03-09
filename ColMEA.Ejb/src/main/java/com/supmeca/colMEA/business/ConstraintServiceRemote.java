@@ -13,5 +13,6 @@ public interface ConstraintServiceRemote {
 	public void removeConstraint(Constraint Constraint);
 	public Constraint findConstraintById(int id);
 	public List<Constraint> findAllConstraints() ;
+	public void DeleteConstraint(int id);
 
 }

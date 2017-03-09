@@ -21,6 +21,7 @@ import javax.ws.rs.core.Response.Status;
 import com.supmeca.colMEA.business.ManagerServiceLocal;
 import com.supmeca.colMEA.domain.Manager;
 
+@Path("/Managers")
 public class ManagerRessource {
 
 	@Inject

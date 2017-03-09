@@ -15,5 +15,6 @@ public interface ObjectiveServiceLocal {
 	public void removeObjective(Objective Objective);
 	public Objective findObjectiveById(int id);
 	public List<Objective> findAllObjectives() ;
+	public void DeleteObjective(int id);
 
 }

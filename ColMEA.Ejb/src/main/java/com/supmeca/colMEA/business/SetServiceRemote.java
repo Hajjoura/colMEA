@@ -14,4 +14,5 @@ public interface SetServiceRemote {
 	public void removeSet(Set Set);
 	public Set findSetById(int id);
 	public List<Set> findAllSets() ;
+	public void DeleteSet(int id);
 }

@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import com.supmeca.colMEA.domain.Coordinator;
 import com.supmeca.colMEA.domain.Objective;
 
 /**
@@ -59,5 +60,11 @@ public class ObjectiveService implements ObjectiveServiceRemote {
 		List<Objective> ListObjectives = query.getResultList();
 		
 		return ListObjectives;
+	}
+
+	@Override
+	public void DeleteObjective(int id) {
+		em.remove(em.find(Objective.class, id));	
+		
 	}
 }
