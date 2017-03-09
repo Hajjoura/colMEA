@@ -62,6 +62,12 @@ public class CoordinatorService implements CoordinatorServiceRemote, Coordinator
 		return ListCoordinators;
 	}
 
+	@Override
+	public void DeleteCoordinator(int id) {
+		em.remove(em.find(Coordinator.class, id));		
+	}
+	
+
 
 	
 }

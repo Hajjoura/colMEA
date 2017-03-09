@@ -14,5 +14,7 @@ public interface CoordinatorServiceRemote {
 	public void removeCoordinator(Coordinator Coordinator);
 	public Coordinator findCoordinatorById(int id);
 	public List<Coordinator> findAllCoordinators() ;
+	public void DeleteCoordinator(int id);
+
 
 }

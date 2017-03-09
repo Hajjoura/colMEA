@@ -13,5 +13,6 @@ public interface EngineerServiceLocal {
 	public void removeEngineer(Engineer Engineer);
 	public Engineer findEngineerById(int id);
 	public List<Engineer> findAllEngineers() ;
+	public void DeleteEngineer(int id);
 
 }

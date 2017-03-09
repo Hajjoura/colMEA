@@ -14,4 +14,6 @@ public interface ManagerServiceLocal {
 	public void removeManager(Manager Manager);
 	public Manager findManagerById(int id);
 	public List<Manager> findAllManagers() ;
+	public void DeleteManager(int id);
+
 }

@@ -66,4 +66,10 @@ public class ManagerService implements ManagerServiceRemote, ManagerServiceLocal
 		return ListManagers;
 	}
 
+	@Override
+	public void DeleteManager(int id) {
+		em.remove(em.find(Manager.class, id));
+
+	}
+
 }

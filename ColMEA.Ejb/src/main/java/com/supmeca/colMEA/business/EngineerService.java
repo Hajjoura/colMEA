@@ -65,4 +65,9 @@ public class EngineerService implements EngineerServiceRemote, EngineerServiceLo
 		return ListEngineers;
 	}
 
+	@Override
+	public void DeleteEngineer(int id) {
+		em.remove(em.find(Engineer.class, id));		
+	}
+
 }
