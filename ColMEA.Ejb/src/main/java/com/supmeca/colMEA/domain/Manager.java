@@ -32,14 +32,17 @@ public class Manager extends User implements Serializable {
 	public void setProjects(List<Project> projects) {
 		Projects = projects;
 	}
-
 	//constructor with Fields
-	public Manager(String login, String first_name, String last_name,
-			Integer age, String email, String image, String service,
-			String note, List<Project> projects) {
-		super(login, first_name, last_name, age, email, image, service, note);
+	public Manager(String login, String password, String first_name,
+			String last_name, Integer age, String email, String image,
+			String service, String note, List<Project> projects) {
+		super(login, password, first_name, last_name, age, email, image,
+				service, note);
 		Projects = projects;
 	}
+
+	
+	
    
 	
 }

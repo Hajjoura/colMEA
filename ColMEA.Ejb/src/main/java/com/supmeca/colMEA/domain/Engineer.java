@@ -45,15 +45,21 @@ public class Engineer extends User implements Serializable {
 	public void setTeams(List<Teams_Engineers> teams) {
 		Teams = teams;
 	}
-	
 	//constructor with Fields
-		public Engineer(String login, String first_name, String last_name,
-				Integer age, String email, String image, String service,
-				String note, Domain domain, List<Teams_Engineers> teams) {
-			super(login, first_name, last_name, age, email, image, service, note);
-			this.domain = domain;
-			Teams = teams;
-		}
 
+	public Engineer(String login, String password, String first_name,
+			String last_name, Integer age, String email, String image,
+			String service, String note, Domain domain,
+			List<Teams_Engineers> teams) {
+		super(login, password, first_name, last_name, age, email, image,
+				service, note);
+		this.domain = domain;
+		Teams = teams;
+	}
+	
+
+		
+	
+	
    
 }

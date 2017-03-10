@@ -71,12 +71,11 @@ public class UserService implements UserServiceRemote, UserServiceLocal {
 	public User authentication(String login, String password) {
 		User user = null;
 		 
-		Query query = (Query) em
-				.createQuery("select u from User u where u.login=:l and u.password=:p");
+		Query query =  em.createQuery("select u from User u where u.login=:l and u.password=:p");
 
-		((javax.persistence.Query) query).setParameter("l", login)
-				.setParameter("p", password);
-		user = (User) ((javax.persistence.Query) query).getSingleResult();
+		query.setParameter("l", login);
+		query.setParameter("p", password);
+		user = (User)  query.getSingleResult();
  
 	return user;
 	}

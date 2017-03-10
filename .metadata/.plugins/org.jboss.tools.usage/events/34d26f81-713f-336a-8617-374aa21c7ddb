@@ -1,11 +1,11 @@
-#Thu Mar 09 12:51:07 CET 2017
+#Fri Mar 10 11:31:06 CET 2017
 vl=How many times the 'Finish' button pressed during the day
 l=Wizard class name
 ct=jbt
-d=1489060267094
+d=1489141866051
 c=0
 cmp=usage
 a=finishWizard
 cl=org.eclipse.wst.server.ui.internal.wizard.ModifyModulesWizard
 v=2.0.2
-s=4
+s=0

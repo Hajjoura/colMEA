@@ -14,6 +14,7 @@ public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private Integer id_user;
 	private String login;
+	private String password;
 	private String first_name;
 	private String last_name;
 	private Integer age;
@@ -79,12 +80,19 @@ public class User implements Serializable{
 	public void setLogin(String login) {
 		this.login = login;
 	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	
 	//constructor with fields
-	public User(String login, String first_name, String last_name, Integer age,
+	public User(String login,String password ,String first_name, String last_name, Integer age,
 			String email, String image, String service, String note) {
 		super();
 		this.login = login;
+		this.password = password;
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.age = age;
@@ -98,7 +106,7 @@ public class User implements Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+		
 	
 	
 }
