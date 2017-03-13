@@ -1,5 +1,6 @@
 package com.supmeca.colMEA.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.supmeca.colMEA.domain.User;
 
 import java.io.Serializable;
@@ -26,6 +27,7 @@ public class Engineer extends User implements Serializable {
 	}
 	
 	@ManyToOne	
+	@JsonIgnore
 	@JoinColumn(name="id_domaine",referencedColumnName="id_domaine",insertable=false,updatable=false)
 	public Domain getDomain() {
 		return domain;
@@ -36,7 +38,7 @@ public class Engineer extends User implements Serializable {
 		this.domain = domain;
 	}
 
-	
+	@JsonIgnore 
 	@OneToMany(mappedBy="engineer")
 	public List<Teams_Engineers> getTeams() {
 		return Teams;

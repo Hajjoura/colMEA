@@ -1,12 +1,18 @@
 package com.supmeca.colMEA.domain;
 
 import java.io.Serializable;
-import java.lang.Integer;
-import java.lang.String;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * Entity implementation class for Entity: Team
@@ -48,6 +54,7 @@ public class Team implements Serializable {
 	}
 	
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name="id_user",referencedColumnName="id_user",insertable=false,updatable=false)
 
 	public Coordinator getCoordinator() {
@@ -66,6 +73,7 @@ public class Team implements Serializable {
 		Studies = studies;
 	}
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="team")
 	public List<Teams_Engineers> getEngineers() {
 		return Engineers;

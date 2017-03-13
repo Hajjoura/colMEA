@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 
 public class Variables_Partitions implements Serializable {
@@ -25,6 +27,7 @@ public class Variables_Partitions implements Serializable {
 		
 	}
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name="id_variable",referencedColumnName="id_variable",insertable=false,updatable=false)
 	
 	public Variable getVariable() {
@@ -34,6 +37,7 @@ public class Variables_Partitions implements Serializable {
 		this.variable = variable;
 	}
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name="id_partition",referencedColumnName="id_partition",insertable=false,updatable=false)
 	public Partition getPartition() {
 		return partition;

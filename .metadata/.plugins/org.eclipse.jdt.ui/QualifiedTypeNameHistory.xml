@@ -12,7 +12,6 @@
 <fullyQualifiedTypeName name="javax.ejb.Stateless"/>
 <fullyQualifiedTypeName name="com.sun.xml.internal.bind.v2.schemagen.xmlschema.List"/>
 <fullyQualifiedTypeName name="com.supmeca.colMEA.business.UserServiceRemote"/>
-<fullyQualifiedTypeName name="com.supmeca.colMEA.domain.User"/>
 <fullyQualifiedTypeName name="javax.ejb.Local"/>
 <fullyQualifiedTypeName name="com.supmeca.colMEA.business.UserServiceLocal"/>
 <fullyQualifiedTypeName name="com.supmeca.colMEA.business.EngineerServiceLocal"/>
@@ -35,4 +34,14 @@
 <fullyQualifiedTypeName name="javax.ws.rs.Path"/>
 <fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Engineer"/>
 <fullyQualifiedTypeName name="com.supmeca.colMEA.business.CoordinatorServiceLocal"/>
+<fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Constraint"/>
+<fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Domain"/>
+<fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Objective"/>
+<fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Partition"/>
+<fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Project"/>
+<fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Set"/>
+<fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Study"/>
+<fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Tool"/>
+<fullyQualifiedTypeName name="com.supmeca.colMEA.domain.User"/>
+<fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Variable"/>
 </qualifiedTypeNameHistroy>

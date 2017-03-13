@@ -38,5 +38,8 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/PlacisAdmin/Desktop/SUPMECA/Stage SUPMECA 2017/J2EE/colMEA/jackson-annotations.jar"/>
+	<classpathentry kind="lib" path="C:/Users/PlacisAdmin/Desktop/SUPMECA/Stage SUPMECA 2017/J2EE/colMEA/jackson-core-asl.jar"/>
+	<classpathentry kind="lib" path="C:/Users/PlacisAdmin/Desktop/SUPMECA/Stage SUPMECA 2017/J2EE/colMEA/jackson-mapper-asl.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

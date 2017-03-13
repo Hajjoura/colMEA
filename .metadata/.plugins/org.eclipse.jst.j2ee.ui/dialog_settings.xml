@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<list key="J2EE_IMPORT_EAR">
+		<item value="C:\Users\PlacisAdmin\Desktop\SUPMECA\Stage SUPMECA 2017\J2EE\pi_twin-Final-JEE-V5-13-01-2016\pi_twin-Final-JEE\pi_twin\pi_twin-ear\target\pi_twin-ear.ear"/>
+	</list>
+	<list key="J2EE_IMPORT_APP_CLIENT">
+		<item value="C:\Users\PlacisAdmin\Desktop\SUPMECA\Stage SUPMECA 2017\J2EE\Projet Haifa\Monitoring_Tool\south-street-1.0.10.jar"/>
+	</list>
 	<list key="MRU_RUNTIME_STORE">
 		<item value="WildFly 8.x Runtime"/>
 	</list>

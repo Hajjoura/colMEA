@@ -1,0 +1,14 @@
+package Services;
+
+import javax.inject.Inject;
+import javax.ws.rs.Path;
+
+import com.supmeca.colMEA.business.VariablesServiceLocal;
+
+@Path("/Variables")
+public class VariableRessource {
+	
+	@Inject
+	VariablesServiceLocal VariableEjb;
+
+}
