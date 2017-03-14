@@ -9,7 +9,7 @@ import javax.persistence.*;
  *
  */
 @Entity
-@Inheritance(strategy=InheritanceType.JOINED)
+@Inheritance
 public class Constraint extends Variable implements Serializable {
 
 	

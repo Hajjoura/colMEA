@@ -55,7 +55,7 @@ public class SetService implements SetServiceRemote, SetServiceLocal {
 
 	@Override
 	public List<Set> findAllSets() {
-		String text = "SELECT v FROM Variable v";
+		String text = "SELECT s FROM t_set s";
 		Query query = em.createQuery(text);
 		List<Set> ListSets = query.getResultList();
 		

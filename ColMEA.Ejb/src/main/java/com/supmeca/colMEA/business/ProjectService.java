@@ -56,7 +56,7 @@ public class ProjectService implements ProjectServiceRemote, ProjectServiceLocal
 
 	@Override
 	public List<Project> findAllProjects() {
-		String text = "SELECT v FROM Variable v";
+		String text = "SELECT v FROM Project v";
 		Query query = em.createQuery(text);
 		List<Project> ListProjects = query.getResultList();
 		

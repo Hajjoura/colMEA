@@ -55,7 +55,7 @@ public class ToolService implements ToolServiceRemote, ToolServiceLocal {
 
 	@Override
 	public List<Tool> findAllTools() {
-		String text = "SELECT v FROM Variable v";
+		String text = "SELECT t FROM Tool t";
 		Query query = em.createQuery(text);
 		List<Tool> ListTools = query.getResultList();
 		

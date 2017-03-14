@@ -64,7 +64,7 @@ public class Team implements Serializable {
 		this.coordinator = coordinator;
 	}
 	
-	
+	@JsonIgnore
 	@OneToMany(mappedBy="team")
 	public List<Study> getStudies() {
 		return Studies;

@@ -7,6 +7,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * Entity implementation class for Entity: Domain
  *
@@ -44,7 +46,7 @@ public class Domain implements Serializable {
 	public void setLabel(String label) {
 		this.label = label;
 	}
-	
+	@JsonIgnore
 	@OneToMany(mappedBy="domain", cascade=CascadeType.ALL)
 	public List<Engineer> getEngineers() {
 		return Engineers;

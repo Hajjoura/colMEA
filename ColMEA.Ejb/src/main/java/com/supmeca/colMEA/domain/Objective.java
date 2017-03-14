@@ -9,7 +9,7 @@ import javax.persistence.*;
  *
  */
 @Entity
-
+@Inheritance
 public class Objective extends Variable implements Serializable {
 
 	
@@ -19,5 +19,6 @@ public class Objective extends Variable implements Serializable {
 	public Objective() {
 		super();
 	}
+	
    
 }

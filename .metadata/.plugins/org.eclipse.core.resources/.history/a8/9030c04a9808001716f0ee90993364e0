@@ -1,0 +1,20 @@
+package com.supmeca.colMEA.business;
+
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+
+/**
+ * Session Bean implementation class TeamService
+ */
+@Stateless
+@LocalBean
+public class TeamService implements TeamServiceRemote, TeamServiceLocal {
+
+    /**
+     * Default constructor. 
+     */
+    public TeamService() {
+        // TODO Auto-generated constructor stub
+    }
+
+}

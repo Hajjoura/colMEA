@@ -55,7 +55,7 @@ public class ConstraintService implements ConstraintServiceRemote, ConstraintSer
 
 	@Override
 	public List<Constraint> findAllConstraints() {
-		String text = "SELECT v FROM Variable v";
+		String text = "SELECT c FROM Constraint c";
 		Query query = em.createQuery(text);
 		List<Constraint> ListConstraints = query.getResultList();
 		

@@ -9,6 +9,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * Entity implementation class for Entity: Variable
  *
@@ -120,6 +122,7 @@ public class Variable implements Serializable {
 	public void setImage(String image) {
 		this.image = image;
 	}
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="id_tool",referencedColumnName="id_tool",insertable=false,updatable=false)
 
@@ -129,6 +132,7 @@ public class Variable implements Serializable {
 	public void setTool(Tool tool) {
 		this.tool = tool;
 	}
+	@JsonIgnore
 	@OneToMany(mappedBy="variable")
 	public List<Set> getSets() {
 		return Sets;
@@ -136,14 +140,15 @@ public class Variable implements Serializable {
 	public void setSets(List<Set> sets) {
 		Sets = sets;
 	}
+	@JsonIgnore
 	@OneToMany(mappedBy="variable")
-
 	public List<Variables_Partitions> getPartitions() {
 		return partitions;
 	}
 	public void setPartitions(List<Variables_Partitions> partitions) {
 		this.partitions = partitions;
 	}
+	@JsonIgnore
 	@OneToMany(mappedBy="variable")
 	public List<Set> getSetRes() {
 		return SetRes;

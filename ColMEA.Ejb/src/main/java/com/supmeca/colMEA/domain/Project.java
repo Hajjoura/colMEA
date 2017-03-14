@@ -9,6 +9,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * Entity implementation class for Entity: Project
  *
@@ -77,6 +79,7 @@ public class Project implements Serializable {
 	public void setState(String state) {
 		this.state = state;
 	}
+	@JsonIgnore
 	@OneToMany(mappedBy="project")
 	public List<Study> getStudies() {
 		return Studies;
@@ -84,6 +87,7 @@ public class Project implements Serializable {
 	public void setStudies(List<Study> studies) {
 		Studies = studies;
 	}
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="id_user",referencedColumnName="id_user",insertable=false,updatable=false)
 

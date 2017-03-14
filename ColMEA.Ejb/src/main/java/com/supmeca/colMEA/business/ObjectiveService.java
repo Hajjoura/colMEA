@@ -16,7 +16,7 @@ import com.supmeca.colMEA.domain.Objective;
  */
 @Stateless
 @LocalBean
-public class ObjectiveService implements ObjectiveServiceRemote {
+public class ObjectiveService implements ObjectiveServiceRemote, ObjectiveServiceLocal {
 
 	@PersistenceContext
 	private EntityManager em;
@@ -55,7 +55,7 @@ public class ObjectiveService implements ObjectiveServiceRemote {
 
 	@Override
 	public List<Objective> findAllObjectives() {
-		String text = "SELECT v FROM Variable v";
+		String text = "SELECT o FROM Objective o";
 		Query query = em.createQuery(text);
 		List<Objective> ListObjectives = query.getResultList();
 		

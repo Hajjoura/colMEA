@@ -55,7 +55,7 @@ public class StudyService implements StudyServiceRemote, StudyServiceLocal {
 
 	@Override
 	public List<Study> findAllStudys() {
-		String text = "SELECT v FROM Variable v";
+		String text = "SELECT s FROM Study s";
 		Query query = em.createQuery(text);
 		List<Study> ListStudys = query.getResultList();
 		

@@ -55,7 +55,7 @@ public class DomainService implements DomainServiceRemote, DomainServiceLocal {
 
 	@Override
 	public List<Domain> findAllDomains() {
-		String text = "SELECT v FROM Variable v";
+		String text = "SELECT v FROM Domain v";
 		Query query = em.createQuery(text);
 		List<Domain> ListDomains = query.getResultList();
 		
