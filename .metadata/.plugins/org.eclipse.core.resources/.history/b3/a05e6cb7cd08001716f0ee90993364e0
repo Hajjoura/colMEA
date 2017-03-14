@@ -55,6 +55,7 @@ public class Study implements Serializable {
 	public void setType(String type) {
 		this.type = type;
 	}
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="id_project",referencedColumnName="id_project",insertable=false,updatable=false)
 
@@ -64,7 +65,7 @@ public class Study implements Serializable {
 	public void setProject(Project project) {
 		this.project = project;
 	}
-	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="id_team",referencedColumnName="id_team",insertable=false,updatable=false)
 

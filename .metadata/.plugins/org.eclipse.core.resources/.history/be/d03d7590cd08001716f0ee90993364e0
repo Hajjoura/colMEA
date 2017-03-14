@@ -8,8 +8,6 @@ import java.util.List;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 /**
  * Entity implementation class for Entity: Study
  *
@@ -75,7 +73,6 @@ public class Study implements Serializable {
 		this.team = team;
 	}
 	
-	@JsonIgnore
 	@OneToMany(mappedBy="study", cascade=CascadeType.ALL)
 	public List<Partition> getPartitions() {
 		return Partitions;
