@@ -95,9 +95,7 @@ public class VariableRessource {
 		return Response.status(Status.NOT_FOUND).entity("User Not found").build();
 	}
 	
-	//*************************************************************************//
-	//************************* Sets *****************************************//
-	//***********************************************************************//
+	///Sets ///
 	
 	
 	@GET
@@ -157,11 +155,11 @@ public class VariableRessource {
 	 
 	}
 	@DELETE
-	@Path("DeleteSet/{id}")
+	@Path("DeleteVariable/{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response deleteSet(@PathParam("id") Integer id){
-		SetEjb.DeleteSet(id);
-		if (id == null)
+	public Response deleteVariable(@PathParam("id") Integer id){
+		VariableEjb.DeleteVariable(id);
+	if (id == null)
 		return Response.status(Status.ACCEPTED).entity("User successfully Deleted").build();
 	else
 		return Response.status(Status.NOT_FOUND).entity("User Not found").build();
