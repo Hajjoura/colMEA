@@ -1,5 +1,6 @@
 package com.supmeca.colMEA.business;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.LocalBean;
@@ -10,6 +11,11 @@ import javax.persistence.Query;
 
 import com.supmeca.colMEA.domain.Coordinator;
 import com.supmeca.colMEA.domain.Engineer;
+import com.supmeca.colMEA.domain.Partition;
+import com.supmeca.colMEA.domain.Team;
+import com.supmeca.colMEA.domain.Teams_Engineers;
+import com.supmeca.colMEA.domain.Variable;
+import com.supmeca.colMEA.domain.Variables_Partitions;
 
 /**
  * Session Bean implementation class EngineerService
@@ -70,4 +76,19 @@ public class EngineerService implements EngineerServiceRemote, EngineerServiceLo
 		em.remove(em.find(Engineer.class, id));		
 	}
 
+	
+
+	//Add enginner to Team
+		@Override
+		public Boolean addEngineerToTeam(Team team, Engineer engineer) {
+			
+			try{
+				Teams_Engineers teamEng = new Teams_Engineers(team,engineer);
+							
+				em.persist(teamEng);
+				return true;	
+			}catch(Exception e){
+				return false;
+			}
+		}
 }

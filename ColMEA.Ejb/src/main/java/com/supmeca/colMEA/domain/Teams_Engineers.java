@@ -50,12 +50,11 @@ public class Teams_Engineers implements Serializable{
 		this.teams_engineersfk = teams_engineersfk;
 	}
 	//constructor with Fields
-	public Teams_Engineers(Team team, Engineer engineer,
-			Teams_EngineersFK teams_engineersfk) {
+	public Teams_Engineers(Team team, Engineer engineer) {
 		super();
 		this.team = team;
 		this.engineer = engineer;
-		this.teams_engineersfk = teams_engineersfk;
+		this.teams_engineersfk = new Teams_EngineersFK(team.getId_team(), engineer.getId_user());
 	}
 
 	

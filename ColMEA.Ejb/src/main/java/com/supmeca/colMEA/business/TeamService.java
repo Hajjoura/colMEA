@@ -8,7 +8,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import com.supmeca.colMEA.domain.Engineer;
 import com.supmeca.colMEA.domain.Team;
+import com.supmeca.colMEA.domain.Teams_Engineers;
 
 /**
  * Session Bean implementation class TeamService
@@ -69,6 +71,20 @@ public class TeamService implements TeamServiceRemote, TeamServiceLocal {
 	public void DeleteTeam(int id) {
 		em.remove(em.find(Team.class, id));		
 	}
+	
+	//Add Team to enginner 
+			@Override
+			public Boolean addEngineerToTeam(Team team, Engineer engineer) {
+				
+				try{
+					Teams_Engineers teamEng = new Teams_Engineers(team,engineer);
+								
+					em.persist(teamEng);
+					return true;	
+				}catch(Exception e){
+					return false;
+				}
+			}
 	
 
 

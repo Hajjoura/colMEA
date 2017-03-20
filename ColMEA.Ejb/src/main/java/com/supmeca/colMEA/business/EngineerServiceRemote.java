@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Remote;
 
 import com.supmeca.colMEA.domain.Engineer;
+import com.supmeca.colMEA.domain.Team;
 
 @Remote
 public interface EngineerServiceRemote {
@@ -15,6 +16,7 @@ public interface EngineerServiceRemote {
 	public Engineer findEngineerById(int id);
 	public List<Engineer> findAllEngineers() ;
 	public void DeleteEngineer(int id);
+	public Boolean addEngineerToTeam(Team team, Engineer engineer);
 
 
 }

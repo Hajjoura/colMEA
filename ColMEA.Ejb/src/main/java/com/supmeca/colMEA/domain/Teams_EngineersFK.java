@@ -11,6 +11,19 @@ public class Teams_EngineersFK implements Serializable{
 	private Integer id_user;
 	
 	private static final long serialVersionUID = 1L;
+	
+	
+
+	public Teams_EngineersFK() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Teams_EngineersFK(Integer id_team, Integer id_user) {
+		super();
+		this.id_team = id_team;
+		this.id_user = id_user;
+	}
 
 	public Integer getId_team() {
 		return id_team;
