@@ -98,11 +98,11 @@ public class TeamRessource {
 	}
 	
 	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
-	//  Add Enginner to Team service
+	//  Add Team to engineer service
 	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
 
 	@POST
-	@Path("addEngineer/{id_team}/{id_user}")
+	@Path("addTeam/{id_team}/{id_user}")
 	@Produces("application/json")
 	@Consumes("application/json")
  	
