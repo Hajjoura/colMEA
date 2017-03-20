@@ -58,5 +58,15 @@ public class Variables_Partitions implements Serializable {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+	
+	
+	public Variables_Partitions(Variable variable, Partition partition, Date date) {
+		super();
+		this.variable = variable;
+		this.partition = partition;
+		this.date = date;
+		this.variables_partitionsFK= new Variables_PartitionsFK(variable.getId_variable(),partition.getId_partition());
+
+	}
 
 }

@@ -1,9 +1,11 @@
 package com.supmeca.colMEA.business;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Local;
 
+import com.supmeca.colMEA.domain.Partition;
 import com.supmeca.colMEA.domain.Variable;
 
 @Local
@@ -14,4 +16,5 @@ public interface VariablesServiceLocal {
 	public Variable findVariableById(int id);
 	public List<Variable> findAllVariables() ;
 	public void DeleteVariable(int id);
+	public Boolean addVariableToPartition(Partition partition, Variable variable, Date date);
 }

@@ -517,3 +517,22 @@
 !MESSAGE Deployment of module ColMEA.EAR has failed
 !SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-03-14 15:54:34.192
 !MESSAGE The operation DEPLOY for unit ColMEA.EAR.ear was rolled back
+!SESSION 
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2017-03-20 09:22:39.590
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2017-03-20 09:23:34.316
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2017-03-20 09:29:02.738
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.wtp.core 1 16973825 2017-03-20 09:29:03.271
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2017-03-20 09:29:04.526
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2017-03-20 09:29:19.834
+!MESSAGE Server Startup Succeeded

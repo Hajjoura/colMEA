@@ -1,5 +1,6 @@
 package Services;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -18,10 +19,14 @@ import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.core.Response.Status;
 
+import com.supmeca.colMEA.business.PartitionServiceLocal;
 import com.supmeca.colMEA.business.SetServiceLocal;
 import com.supmeca.colMEA.business.VariablesServiceLocal;
+import com.supmeca.colMEA.domain.Partition;
 import com.supmeca.colMEA.domain.Set;
 import com.supmeca.colMEA.domain.Variable;
+import com.supmeca.colMEA.domain.Variables_Partitions;
+import com.supmeca.colMEA.domain.Variables_PartitionsFK;
 
 @Path("/Variables")
 public class VariableRessource {
@@ -31,6 +36,9 @@ public class VariableRessource {
 
 	@Inject
 	SetServiceLocal SetEjb;
+	
+	@Inject
+	PartitionServiceLocal PartitionEjb;
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -166,4 +174,63 @@ public class VariableRessource {
 	else
 		return Response.status(Status.NOT_FOUND).entity("User Not found").build();
 	}
+	
+	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	//  Add Patition to Variable service
+	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+
+			@POST
+			@Path("addPartition/{id_partition}/{id_variable}")
+			@Produces("application/json")
+			@Consumes("application/json")
+		 	
+			public Response reserveSeat(@PathParam("id_partition")Integer id_partition,@PathParam("id_variable")Integer id_variable)
+			{
+			 
+			
+			
+				/*Date dateReservation=null;
+				SimpleDateFormat simple_date= new 
+						SimpleDateFormat("dd/MM/yyyy");
+				try {
+					 dateReservation =  (Date) simple_date.parse(date_s);
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}*/
+				
+				Date date = new Date();
+				System.out.println(date);
+				Variables_Partitions varpart = new Variables_Partitions();
+				
+				Variables_PartitionsFK varpartFk = new Variables_PartitionsFK();
+				varpartFk.setId_variable(id_variable);
+				System.out.println(id_variable);
+				varpartFk.setId_partition(id_partition);
+				System.out.println(id_partition);
+				varpart.setDate(date);
+				Partition partition = PartitionEjb.findPartitionById(id_partition);
+				Variable variable = VariableEjb.findVariableById(id_variable);
+				
+				
+						
+				if ((partition!=null)&&(variable!=null))
+				{
+					if (PartitionEjb.addVariableToPartition(partition, variable, varpart.getDate()))
+								  {
+								return Response.status(Status.ACCEPTED).entity("Success variable was added").build();
+			 			}else
+				 		{
+							return Response.status(Status.NOT_FOUND).build();
+
+				 		}
+					 
+					 
+				}
+				 else
+				 {
+						return Response.status(Status.NOT_FOUND).entity(" Partition/varaible Not Found").build();
+
+				 }
+			}
 }

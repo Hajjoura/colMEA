@@ -1,0 +1,104 @@
+package com.supmeca.colMEA.business;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
+import com.supmeca.colMEA.domain.Coordinator;
+import com.supmeca.colMEA.domain.Partition;
+import com.supmeca.colMEA.domain.Variable;
+import com.supmeca.colMEA.domain.Variables_Partitions;
+import com.supmeca.colMEA.domain.Variables_PartitionsFK;
+
+/**
+ * Session Bean implementation class PartitionService
+ */
+@Stateless
+@LocalBean
+public class PartitionService implements PartitionServiceRemote, PartitionServiceLocal {
+
+	@PersistenceContext
+	private EntityManager em;
+	
+	Partition Partition;
+    /**
+     * Default constructor. 
+     */
+    public PartitionService() {
+        // TODO Auto-generated constructor stub
+    }
+
+	@Override
+	public void CreatePartition(Partition Partition) {
+		em.persist(Partition);
+	}
+
+	@Override
+	public void EditPartition(Partition Partition) {
+		em.merge(Partition);
+	}
+
+	@Override
+	public void removePartition(Partition Partition) {
+		em.remove(em.merge(Partition));
+	}
+
+	@Override
+	public Partition findPartitionById(int id) {
+		Partition Partition=em.find(Partition.class,id);
+		if(Partition!=null){
+			return Partition;
+		}
+		return null;
+	}
+
+	@Override
+	public List<Partition> findAllPartitions() {
+		String text = "SELECT p FROM t_partition p";
+		Query query = em.createQuery(text);
+		List<Partition> ListPartitions = query.getResultList();
+		
+		return ListPartitions;
+	}
+
+	@Override
+	public void DeletePartition(int id) {
+		em.remove(em.find(Partition.class, id));	
+		
+	}
+
+	@Override
+	public void addPartitionToVariable(int id_partition, Variable variable) {
+		
+		Variables_Partitions variable_partition = new Variables_Partitions();
+		Variables_PartitionsFK variable_partitionfk = new Variables_PartitionsFK();
+		
+		variable_partition.setPartition(partition);
+		variable_partition.setVariable(variable);
+		variable_partitionfk.setId_partition(partition.getId_partition());
+		variable_partitionfk.setId_variable(variable.getId_variable());
+				
+		variable_partition.setVariables_partitionsFK(variable_partitionfk);
+		
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		Date date = new Date();
+		try {
+			date = dateFormat.parse(dateFormat.format(date));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		variable_partition.setDate(date);
+		
+		em.persist(variable_partition);
+	}
+
+}

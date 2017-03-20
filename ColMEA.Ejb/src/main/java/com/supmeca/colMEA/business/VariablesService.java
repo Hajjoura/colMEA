@@ -1,5 +1,9 @@
 package com.supmeca.colMEA.business;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.LocalBean;
@@ -10,8 +14,11 @@ import javax.persistence.Query;
 
 import com.supmeca.colMEA.domain.Coordinator;
 import com.supmeca.colMEA.domain.Manager;
+import com.supmeca.colMEA.domain.Partition;
 import com.supmeca.colMEA.domain.User;
 import com.supmeca.colMEA.domain.Variable;
+import com.supmeca.colMEA.domain.Variables_Partitions;
+import com.supmeca.colMEA.domain.Variables_PartitionsFK;
 
 /**
  * Session Bean implementation class VariablesService
@@ -70,5 +77,19 @@ public class VariablesService implements VariablesServiceRemote, VariablesServic
 		em.remove(em.find(Variable.class, id));	
 		
 	}
+	
+	//Add variable to partition
+		@Override
+		public Boolean addVariableToPartition(Partition partition, Variable variable, Date date) {
+			
+			try{
+				Variables_Partitions varpart = new Variables_Partitions(variable,partition, date);
+							
+				em.persist(varpart);
+				return true;	
+			}catch(Exception e){
+				return false;
+			}
+		}
 
 }

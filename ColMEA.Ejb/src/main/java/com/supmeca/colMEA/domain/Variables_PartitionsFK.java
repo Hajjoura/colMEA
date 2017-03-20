@@ -7,10 +7,22 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Variables_PartitionsFK implements Serializable{
 
+	private static final long serialVersionUID = 1L;
 	private Integer id_variable;
 	private Integer id_partition;
 	
-	private static final long serialVersionUID = 1L;
+	
+
+	public Variables_PartitionsFK() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Variables_PartitionsFK(Integer id_variable, Integer id_partition) {
+		super();
+		this.id_variable = id_variable;
+		this.id_partition = id_partition;
+	}
 
 	public Integer getId_variable() {
 		return id_variable;
