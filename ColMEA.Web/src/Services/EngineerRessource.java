@@ -111,7 +111,7 @@ public class EngineerRessource {
 			@Produces("application/json")
 			@Consumes("application/json")
 		 	
-			public Response reserveSeat(@PathParam("id_team")Integer id_team,@PathParam("id_user")Integer id_user)
+			public Response addTeam (@PathParam("id_team")Integer id_team,@PathParam("id_user")Integer id_user)
 			{
 			 
 			

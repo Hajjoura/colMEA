@@ -6,6 +6,7 @@ import javax.ejb.Local;
 
 import com.supmeca.colMEA.domain.Engineer;
 import com.supmeca.colMEA.domain.Team;
+import com.supmeca.colMEA.domain.Teams_Engineers;
 
 @Local
 public interface TeamServiceLocal {
@@ -16,4 +17,5 @@ public interface TeamServiceLocal {
 	public List<Team> findAllTeams() ;
 	public void DeleteTeam(int id);
 	public Boolean addEngineerToTeam(Team team, Engineer engineer);
+	public List<Teams_Engineers> findTeamsEngineers();
 }

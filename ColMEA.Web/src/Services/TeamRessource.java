@@ -152,5 +152,23 @@ public class TeamRessource {
 
 		 }
 	}
+	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	//  Display teams and Enginner  service
+	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+
+	
+	@GET
+	@Path("findTeamsEngineers")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findTeamsEngineers(){
+		
+		List<Teams_Engineers> Teams = null;
+		Teams = TeamEjb.findTeamsEngineers();
+		if (Teams==null)
+			return Response.status(Status.NOT_FOUND).build();
+		else
+			return Response.ok(Teams).build();
+			
+	}
 
 }

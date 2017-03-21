@@ -87,7 +87,14 @@ public class TeamService implements TeamServiceRemote, TeamServiceLocal {
 			}
 	
 
-
-
+	//Display Teams_Engineers
+	@Override
+	public List<Teams_Engineers> findTeamsEngineers() {
+		String text = "SELECT t FROM Teams_Engineers t";
+		Query query = em.createQuery(text);
+		List<Teams_Engineers> ListTeams = query.getResultList();
+				
+		return ListTeams;
+	}
 
 }

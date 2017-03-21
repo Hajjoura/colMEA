@@ -14,6 +14,7 @@ import javax.persistence.Query;
 
 import com.supmeca.colMEA.domain.Coordinator;
 import com.supmeca.colMEA.domain.Partition;
+import com.supmeca.colMEA.domain.Teams_Engineers;
 import com.supmeca.colMEA.domain.Variable;
 import com.supmeca.colMEA.domain.Variables_Partitions;
 import com.supmeca.colMEA.domain.Variables_PartitionsFK;
@@ -88,5 +89,45 @@ public class PartitionService implements PartitionServiceRemote, PartitionServic
 			return false;
 		}
 	}
+	
+	//Display Variables_Partitions
+		@Override
+		public List<Variables_Partitions> findVariablesPartitions() {
+			String text = "SELECT vp FROM Variables_Partitions vp";
+			Query query = em.createQuery(text);
+			List<Variables_Partitions> ListTeams = query.getResultList();
+					
+			return ListTeams;
+		}
+		
+		//update Variables_Partitions
+		@Override
+		public Boolean updateVariableToPartition(Partition partition, Variable variable, Date date) {
+			
+			try{
+				Variables_Partitions varpart = new Variables_Partitions(em.merge(variable), em.merge(partition), date);
+							
+				em.persist(varpart);
+				return true;	
+			}catch(Exception e){
+				return false;
+			}
+		}
 
+	//find variable by id
+		@Override
+		public Variables_Partitions findVariableById(Variables_PartitionsFK id) {
+			Variables_Partitions varpart =null;
+			try{
+				varpart = em.find(Variables_Partitions.class,id);
+
+				if (varpart != null)
+				{
+					return varpart;	
+				}
+			return null;
+			}catch(Exception e){
+				return null;
+			}
+		}
 }
