@@ -71,6 +71,18 @@ private static final AtomicLong counter = new AtomicLong();
 		User user = (User)query.getSingleResult();
     return user;
 	}
+	
+	@Override
+	public User findUserByName(String first_Name, String last_Name) {
+		String Text = "SELECT u FROM User u WHERE u.first_name = :first and u.last_name =:last";
+    	Query query = em.createQuery(Text);
+    	query.setParameter("first", first_Name);
+    	query.setParameter("last", last_Name);
+    	
+		User user = (User)query.getSingleResult();
+    return user;
+	}
+
 
 	@Override
 	public User authentication(String login, String password) {

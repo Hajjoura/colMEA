@@ -89,4 +89,28 @@ public class ManagerRessource {
 	else
 		return Response.status(Status.NOT_FOUND).entity("User Not found").build();
 	}
+	
+	@GET
+	@Path("findManagerByProject/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findManagerByProject(@PathParam("id") Integer id){
+		Manager Ma =  ManagerEjb.findManagerByProject(id);
+	 if (Ma==null)
+			return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+		else
+			return Response.ok(Ma).build();
+	 
+	}
+	
+	@GET
+	@Path("findManagerNameByProject/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findManagerNameByProject(@PathParam("id") Integer id){
+		String Ma =  ManagerEjb.findManagerNameByProject(id);
+	 if (Ma==null)
+			return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+		else
+			return Response.ok(Ma).build();
+	 
+	}
 }

@@ -19,5 +19,6 @@ public interface UserServiceRemote {
 	public void DeleteUser(int id);
 	public boolean isUserExist(User user);
 	public User findByName(String name);
+	public User findUserByName(String first_Name, String last_Name);
 
 }

@@ -10,6 +10,8 @@ import javax.persistence.Query;
 
 import com.supmeca.colMEA.domain.Engineer;
 import com.supmeca.colMEA.domain.Manager;
+import com.supmeca.colMEA.domain.Project;
+import com.supmeca.colMEA.domain.User;
 
 /**
  * Session Bean implementation class ManagerService
@@ -22,6 +24,7 @@ public class ManagerService implements ManagerServiceRemote, ManagerServiceLocal
 	private EntityManager em;
 	
 	Manager Manager;
+	Project project;
     /**
      * Default constructor. 
      */
@@ -71,5 +74,30 @@ public class ManagerService implements ManagerServiceRemote, ManagerServiceLocal
 		em.remove(em.find(Manager.class, id));
 
 	}
+	
+	@Override
+	public Manager findManagerByProject(Integer id) {
+		Manager Manager = null;
+		 
+		Query query =  em.createQuery("SELECT u FROM Manager as u, Project as p WHERE  p.manager.id = u.id and p.id =:id");
+
+		query.setParameter("id", id);
+		Manager = (Manager)  query.getSingleResult();
+ 
+	return Manager;
+	}
+	
+	@Override
+	public String findManagerNameByProject(Integer id) {
+		String Manager = null;
+		 
+		Query query =  em.createQuery("SELECT u.login FROM Manager as u, Project as p WHERE  p.manager.id = u.id and p.id =:id");
+
+		query.setParameter("id", id);
+		Manager = (String)query.getSingleResult();
+ 
+	return Manager;
+	}
+		
 
 }

@@ -9,6 +9,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import com.supmeca.colMEA.domain.Coordinator;
+import com.supmeca.colMEA.domain.Manager;
+import com.supmeca.colMEA.domain.User;
 
 
 @Stateless
@@ -67,6 +69,48 @@ public class CoordinatorService implements CoordinatorServiceRemote, Coordinator
 		em.remove(em.find(Coordinator.class, id));		
 	}
 	
+	@Override
+	public Coordinator findCoordinatorByName(String first_Name, String last_Name) {
+		String Text = "SELECT u FROM Coordinator u WHERE u.first_name = :first and u.last_name =:last";
+    	Query query = em.createQuery(Text);
+    	query.setParameter("first", first_Name);
+    	query.setParameter("last", last_Name);
+    	
+		Coordinator user = (Coordinator)query.getSingleResult();
+    return user;
+	}
+	
+	@Override
+	public Coordinator findCoordinatorByEmail(String email){
+		String Text = "SELECT u FROM Coordinator u WHERE u.email =:email";
+    	Query query = em.createQuery(Text);
+    	query.setParameter("email", email);
+    	
+		Coordinator user = (Coordinator)query.getSingleResult();
+    return user;
+	}
+	@Override
+	public Coordinator findCoordinatorByTeam(Integer id) {
+		Coordinator coordinator = null;
+		 
+		Query query =  em.createQuery("SELECT u FROM Coordinator as u, Team as t WHERE  t.coordinator.id = u.id and t.id =:id");
+
+		query.setParameter("id", id);
+		coordinator = (Coordinator)  query.getSingleResult();
+ 
+	return coordinator;
+	}
+	@Override
+	public String findCoordinatorNameByTeam(Integer id) {
+		String Coordinator = null;
+		 
+		Query query =  em.createQuery("SELECT u.login FROM Coordinator as u, Team as t WHERE  t.coordinator.id = u.id and t.id =:id");
+
+		query.setParameter("id", id);
+		Coordinator = (String)query.getSingleResult();
+ 
+	return Coordinator;
+	}
 
 
 	

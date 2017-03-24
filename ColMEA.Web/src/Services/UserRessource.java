@@ -49,5 +49,28 @@ public class UserRessource {
 			return Response.ok(user).build();
 		
 	}
+	
+	@GET
+	@Path("findByName/{first}/{last}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findUserByName(@PathParam("first") String first_Name, @PathParam("last") String last_Name) 
+	{
+		User user = null;
+		if ((first_Name!=null)&&(last_Name!=null))
+		{	
+			user = UserEjb.findUserByName(first_Name, last_Name);
+		}
+		
+		
+		 if (user ==null)
+		 {
+				return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+		 }
+			else
+			{
+				return Response.ok(user).build();
+			}
+		
+	}
 
 }

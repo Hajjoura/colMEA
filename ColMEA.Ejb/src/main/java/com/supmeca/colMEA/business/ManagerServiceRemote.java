@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Remote;
 
 import com.supmeca.colMEA.domain.Manager;
+import com.supmeca.colMEA.domain.User;
 
 @Remote
 public interface ManagerServiceRemote {
@@ -15,5 +16,6 @@ public interface ManagerServiceRemote {
 	public Manager findManagerById(int id);
 	public List<Manager> findAllManagers() ;
 	public void DeleteManager(int id);
-
+	public Manager findManagerByProject(Integer id);
+	public String findManagerNameByProject(Integer id);
 }

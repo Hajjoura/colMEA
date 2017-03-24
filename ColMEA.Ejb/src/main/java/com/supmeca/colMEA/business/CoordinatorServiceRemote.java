@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Remote;
 
 import com.supmeca.colMEA.domain.Coordinator;
+import com.supmeca.colMEA.domain.User;
 
 @Remote
 public interface CoordinatorServiceRemote {
@@ -15,6 +16,10 @@ public interface CoordinatorServiceRemote {
 	public Coordinator findCoordinatorById(int id);
 	public List<Coordinator> findAllCoordinators() ;
 	public void DeleteCoordinator(int id);
+	public Coordinator findCoordinatorByName(String first_Name, String last_Name);
+	public Coordinator findCoordinatorByEmail(String email);
+	public Coordinator findCoordinatorByTeam(Integer id);
+	public String findCoordinatorNameByTeam(Integer id);
 
 
 }
