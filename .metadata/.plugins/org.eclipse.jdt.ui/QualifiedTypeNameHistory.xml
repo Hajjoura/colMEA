@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="javax.persistence.Query"/>
-<fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Coordinator"/>
 <fullyQualifiedTypeName name="javax.persistence.PersistenceContext"/>
 <fullyQualifiedTypeName name="javax.persistence.EntityManager"/>
-<fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Manager"/>
 <fullyQualifiedTypeName name="javax.ws.rs.core.Application"/>
 <fullyQualifiedTypeName name="javax.ws.rs.ApplicationPath"/>
 <fullyQualifiedTypeName name="javax.ejb.EJB"/>
@@ -38,10 +36,15 @@
 <fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Domain"/>
 <fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Objective"/>
 <fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Partition"/>
-<fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Project"/>
 <fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Set"/>
 <fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Study"/>
 <fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Tool"/>
-<fullyQualifiedTypeName name="com.supmeca.colMEA.domain.User"/>
 <fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Variable"/>
+<fullyQualifiedTypeName name="com.supmeca.colMEA.domain.User"/>
+<fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Manager"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Project"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="java.lang.Override"/>
+<fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Coordinator"/>
 </qualifiedTypeNameHistroy>

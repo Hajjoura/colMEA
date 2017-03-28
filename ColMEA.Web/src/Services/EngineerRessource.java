@@ -103,8 +103,8 @@ public class EngineerRessource {
 	}
 	
 	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
-			//  Add Team to engineer service
-			//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	//  Add Team to engineer service
+	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
 
 			@POST
 			@Path("addTeam/{id_team}/{id_user}")
@@ -135,9 +135,7 @@ public class EngineerRessource {
 				
 				Team team = TeamEjb.findTeamById(id_team);
 				Engineer engineer = EngineerEjb.findEngineerById(id_user);
-				
-				
-						
+								
 				if ((team!=null)&&(engineer!=null))
 				{
 					if (EngineerEjb.addEngineerToTeam(team, engineer))
@@ -146,15 +144,83 @@ public class EngineerRessource {
 			 			}else
 				 		{
 							return Response.status(Status.NOT_FOUND).build();
-
-				 		}
-					 
-					 
+				 		}			 
 				}
 				 else
 				 {
 						return Response.status(Status.NOT_FOUND).entity(" Team/Engineer Not Found").build();
-
 				 }
 			}
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+//  find Enginner By Team
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+
+		@GET
+		@Path("findEnginnerByTeam/{id}")
+		@Produces(MediaType.APPLICATION_JSON)
+		public Response findEnginnerByTeam(@PathParam("id") Integer id){
+			Engineer eng =  EngineerEjb.findEngineerByTeam(id);
+			 if (eng==null)
+					return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+				else
+					return Response.ok(eng).build();
+			}
+	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	//  find Enginners By Team
+	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+
+			@GET
+			@Path("findEnginnersByTeam/{id}")
+			@Produces(MediaType.APPLICATION_JSON)
+			public Response findEnginnersByTeam(@PathParam("id") Integer id){
+				List<Engineer> Engineers = null;
+				Engineers=  EngineerEjb.findEngineersByTeam(id);
+				 if (Engineers==null)
+						return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+					else
+						return Response.ok(Engineers).build();
+				}
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+//  find Enginners By Name Team
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+		@GET
+		@Path("findEnginnersByNameTeam/{name}")
+		@Produces(MediaType.APPLICATION_JSON)
+		public Response findEnginnersByNameTeam(@PathParam("name") String name){
+			List<Engineer> Engineers = null;
+			Engineers=  EngineerEjb.findEngineersByNameTeam(name);
+			if (Engineers==null)
+				return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+			else
+				return Response.ok(Engineers).build();
+		}
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+//  find Enginners By Name Domain
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	@GET
+	@Path("findEnginnersByNameDomain/{name}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findEnginnersByNameDomain(@PathParam("name") String name){
+		List<Engineer> Engineers = null;
+		Engineers=  EngineerEjb.findEngineersByDomain(name);
+		if (Engineers==null)
+			return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+		else
+			return Response.ok(Engineers).build();
+	}
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+//  find Enginners By Name Domain
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	@GET
+	@Path("findEnginnersByProject/{name}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findEnginnersByProject(@PathParam("name") String name){
+		List<Engineer> Engineers = null;
+		Engineers=  EngineerEjb.findEngineersByProject(name);
+		if (Engineers==null)
+			return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+		else
+			return Response.ok(Engineers).build();
+	}
+			
 }

@@ -1,9 +1,0 @@
-package Services;
-
-import com.supmeca.colMEA.business.ManagerServiceLocal;
-
-public class ManagerRessource {
-
-	@Inject
-	ManagerServiceLocal ManagerEjb;
-}

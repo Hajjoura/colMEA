@@ -91,4 +91,80 @@ public class EngineerService implements EngineerServiceRemote, EngineerServiceLo
 				return false;
 			}
 		}
+		
+	//find engineer By Team
+		
+		@Override
+		public Engineer findEngineerByTeam(Integer id) {
+			Engineer engineer = null;
+			 
+			Query query =  em.createQuery("SELECT u "
+					+ "FROM Engineer as u, Team as t , Teams_Engineers as te "
+					+ "WHERE  te.engineer.id = u.id and te.team.id = t.id and t.id =:id");
+
+			query.setParameter("id", id);
+			engineer = (Engineer)  query.getSingleResult();
+	 
+		return engineer;
+		}
+		
+//find engineers By Team
+		
+		@Override
+		public List<Engineer> findEngineersByTeam(Integer id) {
+			 
+			Query query =  em.createQuery("SELECT u "
+					+ "FROM Engineer as u, Team as t , Teams_Engineers as te "
+					+ "WHERE  te.engineer.id = u.id and te.team.id = t.id and t.id =:id");
+
+			query.setParameter("id", id);
+			List<Engineer> ListEngineers = query.getResultList();
+
+	 
+		return ListEngineers;
+		}
+//find engineers By Name Team
+		
+		@Override
+		public List<Engineer> findEngineersByNameTeam(String name) {
+					 
+			Query query =  em.createQuery("SELECT u "
+							+ "FROM Engineer as u, Team as t , Teams_Engineers as te "
+							+ "WHERE  te.engineer.id = u.id and te.team.id = t.id and t.name =:name");
+
+			query.setParameter("name", name);
+			List<Engineer> ListEngineers = query.getResultList();
+
+			 
+			return ListEngineers;
+		}
+//find engineers By Name Domain
+		
+	@Override
+	public List<Engineer> findEngineersByDomain(String label) {
+		 
+		Query query =  em.createQuery("SELECT u "
+					+ "FROM Engineer as u, Domain as d "
+					+ "WHERE   u.domain.id = d.id and d.label =:label");
+
+		query.setParameter("label", label);
+		List<Engineer> ListEngineers = query.getResultList();
+
+		return ListEngineers;
+	}
+	//find engineers By Project
+	
+	@Override
+	public List<Engineer> findEngineersByProject(String name) {
+	 
+		Query query =  em.createQuery("SELECT u "
+					+ "FROM Engineer as u, Team as t, Teams_Engineers as te, Study s , Project p "
+					+ "WHERE   p.id_project = s.project.id_project and s.team.id_team = t.id_team"
+					+ " and t.id_team = te.team.id_team and te.engineer.id_user = u.id_user and p.name =:name");
+
+		query.setParameter("name", name);
+		List<Engineer> ListEngineers = query.getResultList();
+
+		return ListEngineers;
+		}
 }

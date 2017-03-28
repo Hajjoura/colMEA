@@ -17,6 +17,11 @@ public interface EngineerServiceRemote {
 	public List<Engineer> findAllEngineers() ;
 	public void DeleteEngineer(int id);
 	public Boolean addEngineerToTeam(Team team, Engineer engineer);
+	public Engineer findEngineerByTeam(Integer id);
+	public List<Engineer> findEngineersByTeam(Integer id);
+	public List<Engineer> findEngineersByNameTeam(String name);
+	public List<Engineer> findEngineersByDomain(String name);
+	public List<Engineer> findEngineersByProject(String name);
 
 
 }
