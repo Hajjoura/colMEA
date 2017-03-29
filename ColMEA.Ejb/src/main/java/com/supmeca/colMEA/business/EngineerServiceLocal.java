@@ -21,5 +21,7 @@ public interface EngineerServiceLocal {
 	public List<Engineer> findEngineersByNameTeam(String name);
 	public List<Engineer> findEngineersByDomain(String name);
 	public List<Engineer> findEngineersByProject(String name);
+	public List<Engineer> findEngineersByCoordinator(Integer id);
+	public List<Engineer> findEngineersByCoordinatorName(String login) ;
 
 }

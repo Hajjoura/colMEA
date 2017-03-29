@@ -167,4 +167,32 @@ public class EngineerService implements EngineerServiceRemote, EngineerServiceLo
 
 		return ListEngineers;
 		}
+	//find engineers By Coordinator id
+	@Override
+	public List<Engineer> findEngineersByCoordinator(Integer id) {
+	 
+		Query query =  em.createQuery("SELECT e "
+					+ "FROM Coordinator as c, Engineer as e, Team as t, Teams_Engineers as te "
+					+ "WHERE t.id_team = te.team.id_team and c.id_user = t.coordinator.id_user and "
+					+ "te.engineer.id_user = e.id_user and c.id_user =:id");
+
+		query.setParameter("id", id);
+		List<Engineer> ListEngineers = query.getResultList();
+
+		return ListEngineers;
+		}
+	//find engineers By Coordinator id
+		@Override
+		public List<Engineer> findEngineersByCoordinatorName(String login) {
+		 
+			Query query =  em.createQuery("SELECT e "
+						+ "FROM Coordinator as c, Engineer as e, Team as t, Teams_Engineers as te "
+						+ "WHERE t.id_team = te.team.id_team and c.id_user = t.coordinator.id_user and "
+						+ "te.engineer.id_user = e.id_user and c.login =:login");
+
+			query.setParameter("login", login);
+			List<Engineer> ListEngineers = query.getResultList();
+
+			return ListEngineers;
+			}
 }

@@ -222,5 +222,36 @@ public class EngineerRessource {
 		else
 			return Response.ok(Engineers).build();
 	}
+	
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+//  find Enginners By Coordiantor ID
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	@GET
+	@Path("findEnginnersByCoordinator/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findEnginnersByCoordinator(@PathParam("id") Integer id){
+		List<Engineer> Engineers = null;
+		Engineers=  EngineerEjb.findEngineersByCoordinator(id);
+		if (Engineers==null)
+			return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+		else
+			return Response.ok(Engineers).build();
+	}
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+//  find Enginners By Coordiantor Login
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	@GET
+	@Path("findEnginnersByCoordinatorLogin/{login}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findEnginnersByCoordinatorLogin(@PathParam("login") String login){
+		List<Engineer> Engineers = null;
+		Engineers=  EngineerEjb.findEngineersByCoordinatorName(login);
+		if (Engineers==null)
+			return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+		else
+			return Response.ok(Engineers).build();
+	}
+
+
 			
 }

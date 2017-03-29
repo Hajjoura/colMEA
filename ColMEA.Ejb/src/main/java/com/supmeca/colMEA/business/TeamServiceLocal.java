@@ -18,4 +18,7 @@ public interface TeamServiceLocal {
 	public void DeleteTeam(int id);
 	public Boolean addEngineerToTeam(Team team, Engineer engineer);
 	public List<Teams_Engineers> findTeamsEngineers();
+	public Team findTeamByCoordinator(Integer id);
+	public Team findTeamByEngineer(Integer id);
+	public List<Team> findTeamsByEngineer(Integer id);
 }

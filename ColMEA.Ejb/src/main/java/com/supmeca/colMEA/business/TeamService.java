@@ -97,4 +97,54 @@ public class TeamService implements TeamServiceRemote, TeamServiceLocal {
 		return ListTeams;
 	}
 
+	//Display Team by coordinator
+	@Override
+	public Team findTeamByCoordinator(Integer id) {
+		
+		Team team = null;
+		Query query =  em.createQuery("SELECT t "
+				+ "FROM Coordinator as u, Team as t "
+				+ "WHERE  t.coordinator.id = u.id and u.id =:id");
+		
+		query.setParameter("id", id);
+		query.setFirstResult(0);
+		query.setMaxResults(1);
+		team = (Team) query.getSingleResult();
+					
+		return team;
+		}
+//Display Team by Engineer
+	@Override
+	public Team findTeamByEngineer(Integer id) {
+			
+		Team team = null;
+		Query query =  em.createQuery("SELECT t "
+				+ "FROM Engineer as u, Team as t, Teams_Engineers te "
+				+ "WHERE  te.engineer.id = u.id and te.team.id = t.id and u.id =:id");
+			
+		query.setParameter("id", id);
+		query.setFirstResult(0);
+		query.setMaxResults(1);
+
+		team = (Team) query.getSingleResult();
+						
+		return team;
+	}
+//Display Teams by Engineer
+	@Override
+	public List<Team> findTeamsByEngineer(Integer id) {
+				
+		
+		Query query =  em.createQuery("SELECT t "
+				+ "FROM Engineer as u, Team as t, Teams_Engineers te "
+				+ "WHERE  te.engineer.id = u.id and te.team.id = t.id and u.id =:id");
+				
+		query.setParameter("id", id);
+		List<Team> ListTeams = query.getResultList();
+								
+		return ListTeams;
+	}
+		
+	
+
 }

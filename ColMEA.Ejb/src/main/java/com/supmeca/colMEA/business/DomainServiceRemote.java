@@ -15,4 +15,5 @@ public interface DomainServiceRemote {
 	public Domain findDomainById(int id);
 	public List<Domain> findAllDomains() ;
 	public void DeleteDomain(int id);
+	public Domain findDomainByEngineer(Integer id);
 }

@@ -152,9 +152,9 @@ public class TeamRessource {
 
 		 }
 	}
-	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
-	//  Display teams and Enginner  service
-	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+//  Display teams and Enginner  service
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
 
 	
 	@GET
@@ -170,5 +170,61 @@ public class TeamRessource {
 			return Response.ok(Teams).build();
 			
 	}
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+//  Display team by coordinator id service
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+
+	
+	@GET
+	@Path("findTeamByCoordinator/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findTeamByCoordiantor(@PathParam("id") Integer id){
+		
+		Team team = null;
+		team = TeamEjb.findTeamByCoordinator(id);
+		if (team==null)
+			return Response.status(Status.NOT_FOUND).build();
+		else
+			return Response.ok(team).build();
+			
+	}
+
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+//  Display team by engineer id service
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+
+	
+	@GET
+	@Path("findTeamByEngineer/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findTeamByEngineer(@PathParam("id") Integer id){
+		
+		Team team = null;
+		team = TeamEjb.findTeamByEngineer(id);
+		if (team==null)
+			return Response.status(Status.NOT_FOUND).build();
+		else
+			return Response.ok(team).build();
+			
+	}
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+//  Display team by engineer id service
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+
+	
+	@GET
+	@Path("findTeamsByEngineer/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findTeamsByEngineer(@PathParam("id") Integer id){
+		
+		List<Team> teams = null;
+		teams = TeamEjb.findTeamsByEngineer(id);
+		if (teams==null)
+			return Response.status(Status.NOT_FOUND).build();
+		else
+			return Response.ok(teams).build();
+			
+	}
+
 
 }

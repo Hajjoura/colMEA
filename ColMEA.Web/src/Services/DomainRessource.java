@@ -90,4 +90,19 @@ public class DomainRessource {
 	else
 		return Response.status(Status.NOT_FOUND).entity("User Not found").build();
 	}
+	
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+//  find Domain by Enginner
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	@GET
+	@Path("findDomainByEngineer/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findDomainByEngineer(@PathParam("id") Integer id){
+		Domain dom = DomainEjb.findDomainByEngineer(id);
+	 if (dom==null)
+			return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+		else
+			return Response.ok(dom).build();
+	 
+	}
 }
