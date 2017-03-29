@@ -1,5 +1,6 @@
 package Services;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -19,6 +20,7 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.core.Response.Status;
 
 import com.supmeca.colMEA.business.ProjectServiceLocal;
+import com.supmeca.colMEA.domain.Domain;
 import com.supmeca.colMEA.domain.Project;
 
 @Path("/Projects")
@@ -88,5 +90,195 @@ public class ProjectRessource {
 		return Response.status(Status.ACCEPTED).entity("User successfully Deleted").build();
 	else
 		return Response.status(Status.NOT_FOUND).entity("User Not found").build();
+	}
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+//  find project by Name
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	@GET
+	@Path("findProjectByName/{name}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findProjectByTeam(@PathParam("name") String name){
+		Project project = ProjectEjb.findProjectByName(name);
+	 if (project==null)
+			return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+		else
+			return Response.ok(project).build();
+	 
+	}
+	
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+//  find project by Team
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	@GET
+	@Path("findProjectByTeam/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findProjectByTeam(@PathParam("id") Integer id){
+		Project project = ProjectEjb.findProjectByTeam(id);
+	 if (project==null)
+			return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+		else
+			return Response.ok(project).build();
+	}
+
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+// find projects by Team
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	@GET
+	@Path("findProjectsByTeam/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findProjectsByTeam(@PathParam("id") Integer id){
+		List<Project> projects = ProjectEjb.findProjectsByTeam(id);
+	 if (projects==null)
+			return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+		else
+			return Response.ok(projects).build();
+	 
+	}
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+//  find project by Coordinator
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	@GET
+	@Path("findProjectByCoordinator/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findProjectByCoordinator(@PathParam("id") Integer id){
+		Project project = ProjectEjb.findProjectByCoordinator(id);
+	 if (project==null)
+			return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+		else
+			return Response.ok(project).build();
+	}
+
+
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+// find projects by Coordinator
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	@GET
+	@Path("findProjectsByCoordinator/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findProjectsByCoordinator(@PathParam("id") Integer id){
+		List<Project> projects = ProjectEjb.findProjectsByCoordinator(id);
+	 if (projects==null)
+		return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+	else
+		return Response.ok(projects).build();
+		 
+	}
+
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+//  find project by Study
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	@GET
+	@Path("findProjectByStudy/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findProjectByStudy(@PathParam("id") Integer id){
+		Project project = ProjectEjb.findProjectByStudy(id);
+	 if (project==null)
+			return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+		else
+			return Response.ok(project).build();
+	}
+
+
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+// find projects by Study
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	@GET
+	@Path("findProjectsByStudy/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findProjectsByStudy(@PathParam("id") Integer id){
+		List<Project> projects = ProjectEjb.findProjectsByStudy(id);
+	 if (projects==null)
+		return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+	else
+		return Response.ok(projects).build();
+		 
+	}
+
+	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	//  find project by Manager
+	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+		@GET
+		@Path("findProjectByManager/{id}")
+		@Produces(MediaType.APPLICATION_JSON)
+		public Response findProjectByManager(@PathParam("id") Integer id){
+			Project project = ProjectEjb.findProjectByManager(id);
+		 if (project==null)
+				return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+			else
+				return Response.ok(project).build();
+		}
+
+
+	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	// find projects by Manager
+	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+		@GET
+		@Path("findProjectsByManager/{id}")
+		@Produces(MediaType.APPLICATION_JSON)
+		public Response findProjectsByManager(@PathParam("id") Integer id){
+			List<Project> projects = ProjectEjb.findProjectsByManager(id);
+		 if (projects==null)
+			return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+		else
+			return Response.ok(projects).build();
+			 
+		}
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+//  find project by Engineer
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	@GET
+	@Path("findProjectByEngineer/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findProjectByEngineer(@PathParam("id") Integer id){
+		Project project = ProjectEjb.findProjectByEngineer(id);
+		if (project==null)
+			return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+		else
+			return Response.ok(project).build();
+	}
+
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+// find projects by Engineer
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	@GET
+	@Path("findProjectsByEngineer/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findProjectsByEngineer(@PathParam("id") Integer id){
+		List<Project> projects = ProjectEjb.findProjectsByEngineer(id);
+	 if (projects==null)
+		 return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+	 else
+		return Response.ok(projects).build();
+			 
+	}
+
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+//  find project by Start Date //to test it 
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	@GET
+	@Path("findProjectByStartDate/{date}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findProjectByStartDate(@PathParam("date") Date date){
+		Project project = ProjectEjb.findProjectByStartDate(date);
+	 if (project==null)
+			return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+		else
+			return Response.ok(project).build();
+	 
+	}
+
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+//  find project by End Date //to test it 
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	@GET
+	@Path("findProjectByEndDate/{date}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findProjectByEndtDate(@PathParam("date") Date date){
+		Project project = ProjectEjb.findProjectByEndDate(date);
+	 if (project==null)
+			return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+		else
+			return Response.ok(project).build();
+	 
 	}
 }

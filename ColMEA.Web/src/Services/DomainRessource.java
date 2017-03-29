@@ -103,6 +103,5 @@ public class DomainRessource {
 			return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
 		else
 			return Response.ok(dom).build();
-	 
 	}
 }
