@@ -1,0 +1,160 @@
+package com.supmeca.colMEA.business;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
+import com.supmeca.colMEA.domain.Coordinator;
+import com.supmeca.colMEA.domain.Manager;
+import com.supmeca.colMEA.domain.Partition;
+import com.supmeca.colMEA.domain.User;
+import com.supmeca.colMEA.domain.Variable;
+import com.supmeca.colMEA.domain.Variables_Partitions;
+import com.supmeca.colMEA.domain.Variables_PartitionsFK;
+
+/**
+ * Session Bean implementation class VariablesService
+ */
+@Stateless
+@LocalBean
+public class VariablesService implements VariablesServiceRemote, VariablesServiceLocal {
+
+	@PersistenceContext
+	private EntityManager em;
+
+	Variable Variable;
+	/**
+	 * Default constructor. 
+	 */
+	public VariablesService() {
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void CreateVariable(Variable Variable) {
+		em.persist(Variable);
+	}
+
+	@Override
+	public void EditVariable(Variable Variable) {
+		em.merge(Variable);
+	}
+
+	@Override
+	public void removeVariable(Variable Variable) {
+		em.remove(em.merge(Variable));
+
+	}
+
+	@Override
+	public Variable findVariableById(int id) {
+		Variable Variable=em.find(Variable.class,id);
+		if(Variable!=null){
+			return Variable;
+		}
+		return null;
+	}
+
+	@Override
+	public List<Variable> findAllVariables() {
+		String text = "SELECT v FROM Variable v";
+		Query query = em.createQuery(text);
+		List<Variable> ListVariables = query.getResultList();
+
+		return ListVariables;
+	}
+
+	@Override
+	public void DeleteVariable(int id) {
+		em.remove(em.find(Variable.class, id));	
+
+	}
+
+	//Add variable to partition
+	@Override
+	public Boolean addVariableToPartition(Partition partition, Variable variable, Date date) {
+
+		try{
+			Variables_Partitions varpart = new Variables_Partitions(variable,partition, date);
+
+			em.persist(varpart);
+			return true;	
+		}catch(Exception e){
+			return false;
+		}
+	}
+
+	// find Variable by name 
+	@Override
+	public Variable findVariableByName(String name){
+		String Text = "SELECT v FROM Variable v WHERE v.name =:name";
+		Query query = em.createQuery(Text);
+		query.setParameter("name", name);
+		query.setFirstResult(0);
+		query.setMaxResults(1);
+		Variable Variable = (Variable)query.getSingleResult();
+		return Variable;
+	}
+	// find Variable by min and max  
+
+	@Override
+	public Variable findVariableByMinMax(float min, float max){
+		String Text = "SELECT v FROM Variable v WHERE v.min =:min and v.max =:max";
+		Query query = em.createQuery(Text);
+		query.setFirstResult(0);
+		query.setMaxResults(1);
+		query.setParameter("min", min);
+		query.setParameter("max", max);
+
+		Variable Variable = (Variable)query.getSingleResult();
+		return Variable;
+	}
+	// find Variables by min and max  
+
+	@Override
+	public List<Variable> findVariablesByMinMax(float min, float max){
+		String Text = "SELECT v FROM Variable v WHERE v.min =:min and v.max =:max";
+		Query query = em.createQuery(Text);
+		query.setParameter("min", min);
+		query.setParameter("max", max);
+
+		List<Variable> Variables = query.getResultList();
+		return Variables;
+	}
+	// find Variable by minRes and maxRes  
+
+	@Override
+	public Variable findVariableByMinMaxRes(float minRes, float maxRes){
+		String Text = "SELECT v FROM Variable v WHERE v.min_res =:minRes and v.max_res =:maxRes";
+		Query query = em.createQuery(Text);
+		query.setFirstResult(0);
+		query.setMaxResults(1);
+		query.setParameter("minRes", minRes);
+		query.setParameter("maxRes", maxRes);
+
+		Variable Variable = (Variable)query.getSingleResult();
+		return Variable;
+	}
+	// find Variable by minRes and maxRes  
+
+	@Override
+	public List<Variable> findVariablesByMinMaxRes(float minRes, float maxRes){
+		String Text = "SELECT v FROM Variable v WHERE v.min_res =:minRes and v.max_res =:maxRes";
+		Query query = em.createQuery(Text);
+		query.setFirstResult(0);
+		query.setMaxResults(1);
+		query.setParameter("minRes", minRes);
+		query.setParameter("maxRes", maxRes);
+
+		List<Variable> Variables = query.getResultList();
+		return Variables;
+	}
+}
