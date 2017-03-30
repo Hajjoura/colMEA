@@ -22,4 +22,22 @@ public interface PartitionServiceLocal {
 	public List<Variables_Partitions> findVariablesPartitions();
 	public Boolean updateVariableToPartition(Partition partition, Variable variable, Date date);
 	public Variables_Partitions findVariableById(Variables_PartitionsFK id) ;
+	public Partition findPartitionByName(String name);
+	public Partition findPartitionByTeam(Integer id);
+	public List<Partition> findPartitionsByTeam(Integer id);
+	public Partition findPartitionByProject(Integer id);
+	public List<Partition> findPartitionsByProject(Integer id);
+	public Partition findPartitionByStudy(Integer id);
+	public List<Partition> findPartitionsByStudy(Integer id);
+	public Partition findPartitionByEngineer(Integer id);
+	public Partition findPartitionByCoordinator(Integer id);
+	public List<Partition> findPartitionsByCoordinator(Integer id);
+	public Partition findPartitionByManager(Integer id);
+	public List<Partition> findPartitionsByManager(Integer id);
+	public Partition findPartitionByVariable(Integer id);
+	public List<Partition> findPartitionsByVariable(Integer id);
+	public Partition findPartitionByConstraint(Integer id);
+	public List<Partition> findPartitionsByConstraint(Integer id);
+	public Partition findPartitionByObjective(Integer id);
+	public List<Partition> findPartitionsByObjective(Integer id);
 }

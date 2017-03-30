@@ -19,6 +19,7 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.core.Response.Status;
 
 import com.supmeca.colMEA.business.StudyServiceLocal;
+import com.supmeca.colMEA.domain.Project;
 import com.supmeca.colMEA.domain.Study;
 
 @Path("/Studies")
@@ -89,4 +90,78 @@ public class StudyRessource {
 	else
 		return Response.status(Status.NOT_FOUND).entity("User Not found").build();
 	}
+
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+//  find Study by Type
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	@GET
+	@Path("findStudyByType/{type}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findProjectByTeam(@PathParam("type") String type){
+		Study Study = StudyEjb.findStudyByType(type);
+	 if (Study==null)
+			return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+		else
+			return Response.ok(Study).build();
+	 
+	}
+
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+//  find Study by Project
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	@GET
+	@Path("findStudyByProject/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findStudyByProject(@PathParam("id") Integer id){
+		Study Study = StudyEjb.findStudyByProject(id);
+	 if (Study==null)
+			return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+		else
+			return Response.ok(Study).build();
+	 
+	}
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+//  find Study by Team
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	@GET
+	@Path("findStudyByTeam/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findStudyByTeam(@PathParam("id") Integer id){
+		Study Study = StudyEjb.findStudyByTeam(id);
+	 if (Study==null)
+			return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+		else
+			return Response.ok(Study).build();
+	 
+	}
+
+	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+//  find Studies by Project
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	@GET
+	@Path("findStudiesByProject/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findStudiesByProject(@PathParam("id") Integer id){
+		List<Study> Studies = StudyEjb.findStudiesByProject(id);
+	 if (Studies==null)
+			return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+		else
+			return Response.ok(Studies).build();
+	 
+	}
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+//  find Studies by Team
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	@GET
+	@Path("findStudiesByTeam/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findStudiesByTeam(@PathParam("id") Integer id){
+		List<Study> Studies = StudyEjb.findStudiesByTeam(id);
+	 if (Studies==null)
+			return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+		else
+			return Response.ok(Studies).build();
+	 
+	}
+
 }

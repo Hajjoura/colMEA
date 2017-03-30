@@ -41,8 +41,8 @@ public class Manager extends User implements Serializable {
 		Projects = projects;
 	}
 
-	
-	
-   
-	
+
+
+
+
 }

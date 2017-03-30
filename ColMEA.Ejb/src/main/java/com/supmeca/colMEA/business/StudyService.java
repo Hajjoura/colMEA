@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import com.supmeca.colMEA.domain.Coordinator;
+import com.supmeca.colMEA.domain.Project;
 import com.supmeca.colMEA.domain.Study;
 
 /**
@@ -66,5 +67,59 @@ public class StudyService implements StudyServiceRemote, StudyServiceLocal {
 	public void DeleteStudy(int id) {
 		em.remove(em.find(Study.class, id));	
 		
+	}
+// find Study by Type
+	@Override
+	public Study findStudyByType(String type){
+			String Text = "SELECT s FROM Study s WHERE s.type =:type";
+	    	Query query = em.createQuery(Text);
+	    	query.setParameter("type", type);
+	    	
+	    	Study Study = (Study)query.getSingleResult();
+	    return Study;
+	}
+// find Study by project
+	@Override
+	public Study findStudyByProject(Integer id){
+		String Text = "SELECT s FROM Study as s , Project as p "
+				+ "WHERE p.id_project = s.project.id_project and p.id =:id";
+    	Query query = em.createQuery(Text);
+    	query.setParameter("id", id);
+    	query.setFirstResult(0);
+		query.setMaxResults(1);
+    	Study Study = (Study)query.getSingleResult();
+    return Study;
+		}
+// find Study by Team
+	@Override
+	public Study findStudyByTeam(Integer id){
+		String Text = "SELECT s FROM Study as s , Team as t "
+				+ "WHERE t.id_team = s.team.id_team and t.id =:id";
+    	Query query = em.createQuery(Text);
+    	query.setParameter("id", id);
+    	query.setFirstResult(0);
+		query.setMaxResults(1);
+    	Study Study = (Study)query.getSingleResult();
+    return Study;
+			}
+	// find Studies by Project
+	@Override
+	public List<Study> findStudiesByProject(Integer id) {
+		String Text = "SELECT s FROM Study as s , Project as p "
+				+ "WHERE p.id_project = s.project.id_project and p.id =:id";
+    	Query query = em.createQuery(Text);
+    	query.setParameter("id", id);
+    	List<Study> Studies = query.getResultList();
+    return Studies;
+	}
+	// find Studies by Team
+	@Override
+	public List<Study> findStudiesByTeam(Integer id) {
+		String Text = "SELECT s FROM Study as s , Team as t "
+				+ "WHERE t.id_team = s.team.id_team and t.id =:id";
+    	Query query = em.createQuery(Text);
+    	query.setParameter("id", id);
+       	List<Study> Studies = query.getResultList();
+    return Studies;
 	}
 }

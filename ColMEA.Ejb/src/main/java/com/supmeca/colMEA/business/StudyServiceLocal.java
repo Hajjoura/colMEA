@@ -14,4 +14,9 @@ public interface StudyServiceLocal {
 	public Study findStudyById(int id);
 	public List<Study> findAllStudys() ;
 	public void DeleteStudy(int id);
+	public Study findStudyByType(String type);
+	public Study findStudyByProject(Integer id);
+	public List<Study> findStudiesByProject(Integer id);
+	public Study findStudyByTeam(Integer id);
+	public List<Study> findStudiesByTeam(Integer id);
 }

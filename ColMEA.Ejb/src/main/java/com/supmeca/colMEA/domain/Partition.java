@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Partition implements Serializable {
 
-	
+
 	private Integer id_partition;
 	private String name;
 	private String description;
@@ -53,7 +53,7 @@ public class Partition implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="id_study",referencedColumnName="id_study",insertable=false,updatable=false)
@@ -71,7 +71,7 @@ public class Partition implements Serializable {
 	public void setVariables(List<Variables_Partitions> variables) {
 		Variables = variables;
 	}
-	
-	
-   
+
+
+
 }
