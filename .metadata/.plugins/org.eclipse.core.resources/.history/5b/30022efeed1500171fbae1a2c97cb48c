@@ -1,0 +1,13 @@
+package Services;
+
+import javax.inject.Inject;
+import javax.ws.rs.Path;
+
+import com.supmeca.colMEA.business.StatisticsServiceLocal;
+
+@Path("/Statistics")
+public class StatisticsRessource {
+
+	@Inject
+	StatisticsServiceLocal StatisticsEjb;
+}

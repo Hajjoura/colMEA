@@ -1,7 +1,6 @@
 package Services;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+
 import java.util.Date;
 import java.util.List;
 
@@ -22,7 +21,7 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.core.Response.Status;
 
 import com.supmeca.colMEA.business.ProjectServiceLocal;
-import com.supmeca.colMEA.domain.Domain;
+
 import com.supmeca.colMEA.domain.Project;
 
 @Path("/Projects")
@@ -59,18 +58,18 @@ public class ProjectRessource {
 	public Response updateProject(Project Project){
 		ProjectEjb.EditProject(Project);
 		if (Project == null)
-			return Response.status(Status.ACCEPTED).entity("User successfully Updated").build();
+			return Response.status(Status.ACCEPTED).entity("Project successfully Updated").build();
 		else
-			return Response.status(Status.NOT_FOUND).entity("User Not found").build();
+			return Response.status(Status.NOT_FOUND).entity("Project Not found").build();
 	}
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response deleteProject(Project Project){
 		ProjectEjb.removeProject(Project);
 		if (Project == null)
-			return Response.status(Status.ACCEPTED).entity("User successfully Deleted").build();
+			return Response.status(Status.ACCEPTED).entity("Project successfully Deleted").build();
 		else
-			return Response.status(Status.NOT_FOUND).entity("User Not found").build();
+			return Response.status(Status.NOT_FOUND).entity("Project Not found").build();
 	}
 	@GET
 	@Path("findProject/{id}")
@@ -78,7 +77,7 @@ public class ProjectRessource {
 	public Response findProjectById(@PathParam("id") Integer id){
 		Project En = ProjectEjb.findProjectById(id);
 		if (En==null)
-			return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+			return Response.status(Status.NOT_FOUND).entity("Project Not Found").build();
 		else
 			return Response.ok(En).build();
 

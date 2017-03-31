@@ -13,4 +13,7 @@ public interface StatisticsServiceRemote {
 	public Integer NumberStudiesByProject(Integer id);
 	public Integer NumberEngineersByProject(Integer id);
 	public Integer NumberEngineersByTeam(Integer id);
-	public Integer NumberManagersByProject(Integer id);}
+	public Integer NumberProjectsByManager(Integer id);
+	public Integer NumberTeamsByCoordinator(Integer id);
+	public Integer NumberTeamsByEnginner(Integer id);
+}
