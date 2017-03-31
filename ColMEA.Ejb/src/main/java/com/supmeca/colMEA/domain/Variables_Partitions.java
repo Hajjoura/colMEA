@@ -18,6 +18,8 @@ public class Variables_Partitions implements Serializable {
 	private Partition partition;
 	private Variables_PartitionsFK variables_partitionsFK;
 	private Date date;
+	private float Min;
+	private float Max;
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -60,13 +62,27 @@ public class Variables_Partitions implements Serializable {
 	}
 	
 	
-	public Variables_Partitions(Variable variable, Partition partition, Date date) {
+	public Variables_Partitions(Variable variable, Partition partition, Date date, float min, float max) {
 		super();
 		this.variable = variable;
 		this.partition = partition;
 		this.date = date;
+		this.Min = min;
+		this.Max = max;
 		this.variables_partitionsFK= new Variables_PartitionsFK(variable.getId_variable(),partition.getId_partition());
 
+	}
+	public float getMin() {
+		return Min;
+	}
+	public void setMin(float min) {
+		Min = min;
+	}
+	public float getMax() {
+		return Max;
+	}
+	public void setMax(float max) {
+		Max = max;
 	}
 
 }

@@ -1,0 +1,13 @@
+package com.supmeca.colMEA.business;
+
+import javax.ejb.Local;
+
+@Local
+public interface StatisticsServiceLocal {
+
+	public Integer NumberPartitionsByStudy(Integer id);
+	public Integer NumberVariablesByProject(Integer id);
+	public Integer NumberVariablesByPartition(Integer id);
+	public Integer NumberVariablesByStudy(Integer id);
+	public Integer NumberConstraintByPartition(Integer id);
+}

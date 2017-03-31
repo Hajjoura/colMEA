@@ -134,7 +134,7 @@ public class PartitionRessource {
 
 		if ((partition!=null)&&(variable!=null))
 		{
-			if (PartitionEjb.addVariableToPartition(partition, variable, varpart.getDate()))
+			if (PartitionEjb.addVariableToPartition(partition, variable, varpart.getDate(),varpart.getMax(),varpart.getMin()))
 			{
 				return Response.status(Status.ACCEPTED).entity("Success variable was added").build();
 			}else
@@ -198,7 +198,7 @@ public class PartitionRessource {
 
 		if ((varpart!=null))
 		{
-			if (PartitionEjb.updateVariableToPartition(partition, variable, varpar.getDate()))
+			if (PartitionEjb.updateVariableToPartition(partition, variable, varpar.getDate(),varpar.getMin(),varpar.getMax()))
 			{
 				return Response.status(Status.ACCEPTED).entity("Success variable was updated").build();
 			}else

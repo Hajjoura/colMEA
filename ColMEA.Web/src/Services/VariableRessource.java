@@ -217,7 +217,7 @@ public class VariableRessource {
 
 		if ((partition!=null)&&(variable!=null))
 		{
-			if (PartitionEjb.addVariableToPartition(partition, variable, varpart.getDate()))
+			if (PartitionEjb.addVariableToPartition(partition, variable, varpart.getDate(),varpart.getMin(),varpart.getMax()))
 			{
 				return Response.status(Status.ACCEPTED).entity("Success variable was added").build();
 			}else

@@ -17,7 +17,7 @@ public interface VariablesServiceLocal {
 	public Variable findVariableById(int id);
 	public List<Variable> findAllVariables() ;
 	public void DeleteVariable(int id);
-	public Boolean addVariableToPartition(Partition partition, Variable variable, Date date);
+	public Boolean addVariableToPartition(Partition partition, Variable variable, Date date, float min, float max);
 	public Variable findVariableByName(String name);
 	public Variable findVariableByMinMax(float min, float max);
 	public Variable findVariableByMinMaxRes(float minRes, float maxRes);
