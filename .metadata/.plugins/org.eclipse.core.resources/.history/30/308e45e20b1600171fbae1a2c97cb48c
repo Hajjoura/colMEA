@@ -177,7 +177,7 @@ public class ProjectRessource {
 	public Response findProjectByStudy(@PathParam("id") Integer id){
 		Project project = ProjectEjb.findProjectByStudy(id);
 		if (project==null)
-			return Response.status(Status.NOT_FOUND).entity("Project Not Found").build();
+			return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
 		else
 			return Response.ok(project).build();
 	}
@@ -222,7 +222,7 @@ public class ProjectRessource {
 	public Response findProjectsByManager(@PathParam("id") Integer id){
 		List<Project> projects = ProjectEjb.findProjectsByManager(id);
 		if (projects==null)
-			return Response.status(Status.NOT_FOUND).entity("Project Not Found").build();
+			return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
 		else
 			return Response.ok(projects).build();
 
