@@ -387,7 +387,7 @@ public class VariablesService implements VariablesServiceRemote, VariablesServic
 		List<Variable> variables = query.getResultList();
 		return variables;
 	}
-	
+
 	// find Shared Variables by Coordinator  
 	@Override
 	public List<Variable> findSharedVariablesByCoordinator(Integer id){
@@ -401,7 +401,7 @@ public class VariablesService implements VariablesServiceRemote, VariablesServic
 		List<Variable> variables = query.getResultList();
 		return variables;
 	}
-	
+
 
 	// find Shared Variables by Engineer  
 	@Override
@@ -416,83 +416,83 @@ public class VariablesService implements VariablesServiceRemote, VariablesServic
 		List<Variable> variables = query.getResultList();
 		return variables;
 	}
-	
+
 	// find Local Variables by Manager  
-		@Override
-		public List<Variable> findLocalVariablesByManager(Integer id){
-			String Text = "SELECT v FROM Variable as v, t_partition as p , Study as s, Project as pr, Variables_Partitions as vp, Manager m "
-					+ "WHERE p.id_partition = vp.partition.id_partition and v.id_variable = vp.variable.id_variable "
-					+ "and p.study.id_study = s.id_study and s.project.id_project = pr.id_project "
-					+ "and pr.manager.id_user = m.id_user and m.id_user =:id and v.visibility = 0";
+	@Override
+	public List<Variable> findLocalVariablesByManager(Integer id){
+		String Text = "SELECT v FROM Variable as v, t_partition as p , Study as s, Project as pr, Variables_Partitions as vp, Manager m "
+				+ "WHERE p.id_partition = vp.partition.id_partition and v.id_variable = vp.variable.id_variable "
+				+ "and p.study.id_study = s.id_study and s.project.id_project = pr.id_project "
+				+ "and pr.manager.id_user = m.id_user and m.id_user =:id and v.visibility = 0";
 
-			Query query = em.createQuery(Text);
-			query.setParameter("id", id);			    	
-			List<Variable> variables = query.getResultList();
-			return variables;
-		}
-		
-		// find Local Variables by Coordinator  
-		@Override
-		public List<Variable> findLocalVariablesByCoordinator(Integer id){
-			String Text = "SELECT v FROM Variable as v, t_partition as p , Study as s, Team as t, Variables_Partitions as vp, Coordinator c "
-					+ "WHERE p.id_partition = vp.partition.id_partition and v.id_variable = vp.variable.id_variable "
-					+ "and p.study.id_study = s.id_study and s.team.id_team = t.id_team "
-					+ "and t.coordinator.id_user = c.id_user and c.id_user =:id and v.visibility = 0";
+		Query query = em.createQuery(Text);
+		query.setParameter("id", id);			    	
+		List<Variable> variables = query.getResultList();
+		return variables;
+	}
 
-			Query query = em.createQuery(Text);
-			query.setParameter("id", id);			    	
-			List<Variable> variables = query.getResultList();
-			return variables;
-		}
-		
+	// find Local Variables by Coordinator  
+	@Override
+	public List<Variable> findLocalVariablesByCoordinator(Integer id){
+		String Text = "SELECT v FROM Variable as v, t_partition as p , Study as s, Team as t, Variables_Partitions as vp, Coordinator c "
+				+ "WHERE p.id_partition = vp.partition.id_partition and v.id_variable = vp.variable.id_variable "
+				+ "and p.study.id_study = s.id_study and s.team.id_team = t.id_team "
+				+ "and t.coordinator.id_user = c.id_user and c.id_user =:id and v.visibility = 0";
 
-		// find Local Variables by Engineer  
-		@Override
-		public List<Variable> findLocalVariablesByEngineer(Integer id){
-			String Text = "SELECT v FROM Variable as v, t_partition as p , Study as s, Team as t, Variables_Partitions as vp, Teams_Engineers te, Engineer e  "
-					+ "WHERE p.id_partition = vp.partition.id_partition and v.id_variable = vp.variable.id_variable "
-					+ "and p.study.id_study = s.id_study and s.team.id_team = t.id_team and te.team.id_team = t.id_team "
-					+ "and te.engineer.id_user = e.id_user and  e.id_user =:id and v.visibility = 0";
+		Query query = em.createQuery(Text);
+		query.setParameter("id", id);			    	
+		List<Variable> variables = query.getResultList();
+		return variables;
+	}
 
-			Query query = em.createQuery(Text);
-			query.setParameter("id", id);			    	
-			List<Variable> variables = query.getResultList();
-			return variables;
-		}
-		
-		//Find variable with sets 
-		
-		@Override
-		public List<Set> findVariablewithSet(Integer id){
-			String Text = "SELECT s FROM Variable as v, t_set as s  "
-					+ "WHERE  v.id_variable =:id ";
 
-			Query query = em.createQuery(Text);
-			query.setParameter("id", id);			    	
-			
-			List<Set> set = query.getResultList();
-			return set;
-		}
+	// find Local Variables by Engineer  
+	@Override
+	public List<Variable> findLocalVariablesByEngineer(Integer id){
+		String Text = "SELECT v FROM Variable as v, t_partition as p , Study as s, Team as t, Variables_Partitions as vp, Teams_Engineers te, Engineer e  "
+				+ "WHERE p.id_partition = vp.partition.id_partition and v.id_variable = vp.variable.id_variable "
+				+ "and p.study.id_study = s.id_study and s.team.id_team = t.id_team and te.team.id_team = t.id_team "
+				+ "and te.engineer.id_user = e.id_user and  e.id_user =:id and v.visibility = 0";
 
-		@Override
-		public List<Number> findSetsByVariable(int id) {
-			String text = "SELECT s.value FROM t_set s , Variable v "
-					+ "WHERE v.id_variable = s.variable.id_variable and v.id_variable =:id";
-			Query query = em.createQuery(text);
-			query.setParameter("id", id);			    	
+		Query query = em.createQuery(Text);
+		query.setParameter("id", id);			    	
+		List<Variable> variables = query.getResultList();
+		return variables;
+	}
 
-			List<Number> ListSets = query.getResultList();
-			
-			return ListSets;
-		}
-		@Override
-		public HashMap<String, List<Number>> findVariablewithSets(Integer id) {
-			HashMap<String, List<Number>> result = new HashMap<String, List<Number>>();
-			Variable variable = this.findVariableById(id);
-			
-			List<Number> sets = this.findSetsByVariable(id);
-			result.put(variable.getName(), sets); 
-			return result;
-		}
+	//Find variable with sets 
+
+	@Override
+	public List<Set> findVariablewithSet(Integer id){
+		String Text = "SELECT s FROM Variable as v, t_set as s  "
+				+ "WHERE  v.id_variable =:id ";
+
+		Query query = em.createQuery(Text);
+		query.setParameter("id", id);			    	
+
+		List<Set> set = query.getResultList();
+		return set;
+	}
+
+	@Override
+	public List<Number> findSetsByVariable(int id) {
+		String text = "SELECT s.value FROM t_set s , Variable v "
+				+ "WHERE v.id_variable = s.variable.id_variable and v.id_variable =:id";
+		Query query = em.createQuery(text);
+		query.setParameter("id", id);			    	
+
+		List<Number> ListSets = query.getResultList();
+
+		return ListSets;
+	}
+	@Override
+	public HashMap<String, List<Number>> findVariablewithSets(Integer id) {
+		HashMap<String, List<Number>> result = new HashMap<String, List<Number>>();
+		Variable variable = this.findVariableById(id);
+
+		List<Number> sets = this.findSetsByVariable(id);
+		result.put(variable.getName(), sets); 
+		return result;
+	}
 
 }

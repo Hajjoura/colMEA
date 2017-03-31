@@ -17,13 +17,13 @@ public class StatisticsService implements StatisticsServiceRemote, StatisticsSer
 
 	@PersistenceContext
 	private EntityManager em;
-	
-	
-    public StatisticsService() {
 
 
-    	// TODO Auto-generated constructor stub
-    }
+	public StatisticsService() {
+
+
+		// TODO Auto-generated constructor stub
+	}
 
 
 	@Override
@@ -144,7 +144,7 @@ public class StatisticsService implements StatisticsServiceRemote, StatisticsSer
 
 		Query query = em.createQuery(Text);
 		query.setParameter("id", id);
-		
+
 		Integer count =((Long) query.getSingleResult()).intValue();
 		return count;
 	}
@@ -158,7 +158,7 @@ public class StatisticsService implements StatisticsServiceRemote, StatisticsSer
 
 		Query query = em.createQuery(Text);
 		query.setParameter("id", id);
-		
+
 		Integer count =((Long) query.getSingleResult()).intValue();
 		return count;
 	}
@@ -171,7 +171,7 @@ public class StatisticsService implements StatisticsServiceRemote, StatisticsSer
 
 		Query query = em.createQuery(Text);
 		query.setParameter("id", id);
-		
+
 		Integer count =((Long) query.getSingleResult()).intValue();
 		return count;
 	}
@@ -184,7 +184,7 @@ public class StatisticsService implements StatisticsServiceRemote, StatisticsSer
 
 		Query query = em.createQuery(Text);
 		query.setParameter("id", id);
-		
+
 		Integer count =((Long) query.getSingleResult()).intValue();
 		return count;
 	}
@@ -198,7 +198,7 @@ public class StatisticsService implements StatisticsServiceRemote, StatisticsSer
 
 		Query query = em.createQuery(Text);
 		query.setParameter("id", id);
-		
+
 		Integer count =((Long) query.getSingleResult()).intValue();
 		return count;
 	}

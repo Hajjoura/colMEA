@@ -18,18 +18,18 @@ import com.supmeca.colMEA.domain.User;
 public class CoordinatorService implements CoordinatorServiceRemote, CoordinatorServiceLocal {
 	@PersistenceContext
 	private EntityManager em;
-	
+
 	Coordinator Coordinator;
-    /**
-     * Default constructor. 
-     */
-    public CoordinatorService() {
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * Default constructor. 
+	 */
+	public CoordinatorService() {
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public void CreateCoordinator(Coordinator Coordinator) {
-		
+
 		em.persist(Coordinator);
 	}
 
@@ -41,9 +41,9 @@ public class CoordinatorService implements CoordinatorServiceRemote, Coordinator
 
 	@Override
 	public void removeCoordinator(Coordinator Coordinator) {
-		
+
 		em.remove(em.merge(Coordinator));
-		
+
 	}
 
 	@Override
@@ -60,7 +60,7 @@ public class CoordinatorService implements CoordinatorServiceRemote, Coordinator
 		String text = "SELECT c FROM Coordinator c";
 		Query query = em.createQuery(text);
 		List<Coordinator> ListCoordinators = query.getResultList();
-		
+
 		return ListCoordinators;
 	}
 
@@ -68,50 +68,58 @@ public class CoordinatorService implements CoordinatorServiceRemote, Coordinator
 	public void DeleteCoordinator(int id) {
 		em.remove(em.find(Coordinator.class, id));		
 	}
-	
+
 	@Override
 	public Coordinator findCoordinatorByName(String first_Name, String last_Name) {
 		String Text = "SELECT u FROM Coordinator u WHERE u.first_name = :first and u.last_name =:last";
-    	Query query = em.createQuery(Text);
-    	query.setParameter("first", first_Name);
-    	query.setParameter("last", last_Name);
-    	
+		Query query = em.createQuery(Text);
+		query.setParameter("first", first_Name);
+		query.setParameter("last", last_Name);
+		query.setFirstResult(0);
+		query.setMaxResults(1);    	
 		Coordinator user = (Coordinator)query.getSingleResult();
-    return user;
+		return user;
 	}
-	
+
 	@Override
 	public Coordinator findCoordinatorByEmail(String email){
 		String Text = "SELECT u FROM Coordinator u WHERE u.email =:email";
-    	Query query = em.createQuery(Text);
-    	query.setParameter("email", email);
-    	
+		Query query = em.createQuery(Text);
+		query.setParameter("email", email);
+		query.setFirstResult(0);
+		query.setMaxResults(1);    	
 		Coordinator user = (Coordinator)query.getSingleResult();
-    return user;
+		return user;
 	}
 	@Override
 	public Coordinator findCoordinatorByTeam(Integer id) {
 		Coordinator coordinator = null;
-		 
-		Query query =  em.createQuery("SELECT u FROM Coordinator as u, Team as t WHERE  t.coordinator.id = u.id and t.id =:id");
+
+		Query query =  em.createQuery("SELECT u FROM Coordinator as u, Team as t "
+				+ "WHERE  t.coordinator.id = u.id and t.id =:id");
 
 		query.setParameter("id", id);
+		query.setFirstResult(0);
+		query.setMaxResults(1);
 		coordinator = (Coordinator)  query.getSingleResult();
- 
-	return coordinator;
+
+		return coordinator;
 	}
 	@Override
 	public String findCoordinatorNameByTeam(Integer id) {
 		String Coordinator = null;
-		 
-		Query query =  em.createQuery("SELECT u.login FROM Coordinator as u, Team as t WHERE  t.coordinator.id = u.id and t.id =:id");
+
+		Query query =  em.createQuery("SELECT u.login FROM Coordinator as u, Team as t "
+				+ "WHERE  t.coordinator.id = u.id and t.id =:id");
 
 		query.setParameter("id", id);
+		query.setFirstResult(0);
+		query.setMaxResults(1);
 		Coordinator = (String)query.getSingleResult();
- 
-	return Coordinator;
+
+		return Coordinator;
 	}
 
 
-	
+
 }

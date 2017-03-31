@@ -20,14 +20,14 @@ public class SetService implements SetServiceRemote, SetServiceLocal {
 
 	@PersistenceContext
 	private EntityManager em;
-	
+
 	Set Set;
-    /**
-     * Default constructor. 
-     */
-    public SetService() {
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * Default constructor. 
+	 */
+	public SetService() {
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public void CreateSet(Set Set) {
@@ -58,16 +58,16 @@ public class SetService implements SetServiceRemote, SetServiceLocal {
 		String text = "SELECT s FROM t_set s";
 		Query query = em.createQuery(text);
 		List<Set> ListSets = query.getResultList();
-		
+
 		return ListSets;
 	}
 
 	@Override
 	public void DeleteSet(int id) {
 		em.remove(em.find(Set.class, id));	
-		
+
 	}
 
-	
+
 
 }

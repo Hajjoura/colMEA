@@ -137,7 +137,8 @@ public class PartitionService implements PartitionServiceRemote, PartitionServic
 		String Text = "SELECT p FROM t_partition p WHERE p.name =:name";
 		Query query = em.createQuery(Text);
 		query.setParameter("name", name);
-
+		query.setFirstResult(0);
+		query.setMaxResults(1);
 		Partition Partition = (Partition)query.getSingleResult();
 		return Partition;
 	}

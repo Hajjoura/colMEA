@@ -49,7 +49,10 @@ public class ProjectService implements ProjectServiceRemote, ProjectServiceLocal
 	@Override
 	public Project findProjectById(int id) {
 		Project Project=em.find(Project.class,id);
+		System.out.println("la date est: "+Project.getEnd_date());
+		System.out.println("la date est: "+Project.getStart_date());
 		if(Project!=null){
+
 			return Project;
 		}
 		return null;
@@ -57,6 +60,7 @@ public class ProjectService implements ProjectServiceRemote, ProjectServiceLocal
 
 	@Override
 	public List<Project> findAllProjects() {
+		
 		String text = "SELECT v FROM Project v";
 		Query query = em.createQuery(text);
 		List<Project> ListProjects = query.getResultList();
@@ -75,7 +79,8 @@ public class ProjectService implements ProjectServiceRemote, ProjectServiceLocal
 		String Text = "SELECT p FROM Project p WHERE p.name =:name";
 		Query query = em.createQuery(Text);
 		query.setParameter("name", name);
-
+		query.setFirstResult(0);
+		query.setMaxResults(1);
 		Project project = (Project)query.getSingleResult();
 		return project;
 	}
@@ -227,7 +232,8 @@ public class ProjectService implements ProjectServiceRemote, ProjectServiceLocal
 		String Text = "SELECT p FROM Project p WHERE p.start_date =:start_date";
 		Query query = em.createQuery(Text);
 		query.setParameter("start_date", start_date);
-
+		query.setFirstResult(0);
+		query.setMaxResults(1);
 		Project project = (Project)query.getSingleResult();
 		return project;
 	}
@@ -237,7 +243,8 @@ public class ProjectService implements ProjectServiceRemote, ProjectServiceLocal
 		String Text = "SELECT p FROM Project p WHERE p.end_date =:end_date";
 		Query query = em.createQuery(Text);
 		query.setParameter("end_date", end_date);
-
+		query.setFirstResult(0);
+		query.setMaxResults(1);
 		Project project = (Project)query.getSingleResult();
 		return project;
 	}

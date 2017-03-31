@@ -21,18 +21,18 @@ public class TeamService implements TeamServiceRemote, TeamServiceLocal {
 
 	@PersistenceContext
 	private EntityManager em;
-	
+
 	Team Team;
-    /**
-     * Default constructor. 
-     */
-    public TeamService() {
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * Default constructor. 
+	 */
+	public TeamService() {
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public void CreateTeam(Team Team) {
-		
+
 		em.persist(Team);
 	}
 
@@ -44,9 +44,9 @@ public class TeamService implements TeamServiceRemote, TeamServiceLocal {
 
 	@Override
 	public void removeTeam(Team Team) {
-		
+
 		em.remove(em.merge(Team));
-		
+
 	}
 
 	@Override
@@ -63,7 +63,7 @@ public class TeamService implements TeamServiceRemote, TeamServiceLocal {
 		String text = "SELECT t FROM Team t";
 		Query query = em.createQuery(text);
 		List<Team> ListTeams = query.getResultList();
-		
+
 		return ListTeams;
 	}
 
@@ -71,21 +71,21 @@ public class TeamService implements TeamServiceRemote, TeamServiceLocal {
 	public void DeleteTeam(int id) {
 		em.remove(em.find(Team.class, id));		
 	}
-	
+
 	//Add Team to enginner 
-			@Override
-			public Boolean addEngineerToTeam(Team team, Engineer engineer) {
-				
-				try{
-					Teams_Engineers teamEng = new Teams_Engineers(team,engineer);
-								
-					em.persist(teamEng);
-					return true;	
-				}catch(Exception e){
-					return false;
-				}
-			}
-	
+	@Override
+	public Boolean addEngineerToTeam(Team team, Engineer engineer) {
+
+		try{
+			Teams_Engineers teamEng = new Teams_Engineers(team,engineer);
+
+			em.persist(teamEng);
+			return true;	
+		}catch(Exception e){
+			return false;
+		}
+	}
+
 
 	//Display Teams_Engineers
 	@Override
@@ -93,58 +93,58 @@ public class TeamService implements TeamServiceRemote, TeamServiceLocal {
 		String text = "SELECT t FROM Teams_Engineers t";
 		Query query = em.createQuery(text);
 		List<Teams_Engineers> ListTeams = query.getResultList();
-				
+
 		return ListTeams;
 	}
 
 	//Display Team by coordinator
 	@Override
 	public Team findTeamByCoordinator(Integer id) {
-		
+
 		Team team = null;
 		Query query =  em.createQuery("SELECT t "
 				+ "FROM Coordinator as u, Team as t "
 				+ "WHERE  t.coordinator.id = u.id and u.id =:id");
-		
+
 		query.setParameter("id", id);
 		query.setFirstResult(0);
 		query.setMaxResults(1);
 		team = (Team) query.getSingleResult();
-					
+
 		return team;
-		}
-//Display Team by Engineer
+	}
+	//Display Team by Engineer
 	@Override
 	public Team findTeamByEngineer(Integer id) {
-			
+
 		Team team = null;
 		Query query =  em.createQuery("SELECT t "
 				+ "FROM Engineer as u, Team as t, Teams_Engineers te "
 				+ "WHERE  te.engineer.id = u.id and te.team.id = t.id and u.id =:id");
-			
+
 		query.setParameter("id", id);
 		query.setFirstResult(0);
 		query.setMaxResults(1);
 
 		team = (Team) query.getSingleResult();
-						
+
 		return team;
 	}
-//Display Teams by Engineer
+	//Display Teams by Engineer
 	@Override
 	public List<Team> findTeamsByEngineer(Integer id) {
-				
-		
+
+
 		Query query =  em.createQuery("SELECT t "
 				+ "FROM Engineer as u, Team as t, Teams_Engineers te "
 				+ "WHERE  te.engineer.id = u.id and te.team.id = t.id and u.id =:id");
-				
+
 		query.setParameter("id", id);
 		List<Team> ListTeams = query.getResultList();
-								
+
 		return ListTeams;
 	}
-		
-	
+
+
 
 }

@@ -20,14 +20,14 @@ public class DomainService implements DomainServiceRemote, DomainServiceLocal {
 
 	@PersistenceContext
 	private EntityManager em;
-	
+
 	Domain Domain;
-    /**
-     * Default constructor. 
-     */
-    public DomainService() {
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * Default constructor. 
+	 */
+	public DomainService() {
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public void CreateDomain(Domain Domain) {
@@ -58,28 +58,30 @@ public class DomainService implements DomainServiceRemote, DomainServiceLocal {
 		String text = "SELECT v FROM Domain v";
 		Query query = em.createQuery(text);
 		List<Domain> ListDomains = query.getResultList();
-		
+
 		return ListDomains;
 	}
 
 	@Override
 	public void DeleteDomain(int id) {
 		em.remove(em.find(Domain.class, id));	
-		
+
 	}
-	
+
 	@Override
 	public Domain findDomainByEngineer(Integer id) {
 		Domain domain = null;
-		 
+
 		Query query =  em.createQuery("SELECT d "
 				+ "FROM Domain as d, Engineer as e "
 				+ "WHERE  e.domain.id = d.id and e.id_user =:id");
 
 		query.setParameter("id", id);
+		query.setFirstResult(0);
+		query.setMaxResults(1);
 		domain = (Domain)  query.getSingleResult();
- 
-	return domain;
+
+		return domain;
 	}
 
 }

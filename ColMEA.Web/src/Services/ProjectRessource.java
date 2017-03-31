@@ -1,6 +1,8 @@
 package Services;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -21,7 +23,6 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.core.Response.Status;
 
 import com.supmeca.colMEA.business.ProjectServiceLocal;
-
 import com.supmeca.colMEA.domain.Project;
 
 @Path("/Projects")
@@ -79,18 +80,20 @@ public class ProjectRessource {
 		if (En==null)
 			return Response.status(Status.NOT_FOUND).entity("Project Not Found").build();
 		else
+						
 			return Response.ok(En).build();
+			
 
 	}
 	@DELETE
-	@Path("DeleteProject/{id}")
+	@Path("DeleteProject/{id}") 
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response deleteProject(@PathParam("id") Integer id){
 		ProjectEjb.DeleteProject(id);
 		if (id == null)
-			return Response.status(Status.ACCEPTED).entity("User successfully Deleted").build();
+			return Response.status(Status.ACCEPTED).entity("Project successfully Deleted").build();
 		else
-			return Response.status(Status.NOT_FOUND).entity("User Not found").build();
+			return Response.status(Status.NOT_FOUND).entity("Project Not found").build();
 	}
 	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
 	//  find project by Name
@@ -101,7 +104,7 @@ public class ProjectRessource {
 	public Response findProjectByName(@PathParam("name") String name){
 		Project project = ProjectEjb.findProjectByName(name);
 		if (project==null)
-			return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+			return Response.status(Status.NOT_FOUND).entity("Project Not Found").build();
 		else
 			return Response.ok(project).build();
 
@@ -116,7 +119,7 @@ public class ProjectRessource {
 	public Response findProjectByTeam(@PathParam("id") Integer id){
 		Project project = ProjectEjb.findProjectByTeam(id);
 		if (project==null)
-			return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+			return Response.status(Status.NOT_FOUND).entity("Project Not Found").build();
 		else
 			return Response.ok(project).build();
 	}
@@ -130,7 +133,7 @@ public class ProjectRessource {
 	public Response findProjectsByTeam(@PathParam("id") Integer id){
 		List<Project> projects = ProjectEjb.findProjectsByTeam(id);
 		if (projects==null)
-			return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+			return Response.status(Status.NOT_FOUND).entity("Project Not Found").build();
 		else
 			return Response.ok(projects).build();
 
@@ -144,7 +147,7 @@ public class ProjectRessource {
 	public Response findProjectByCoordinator(@PathParam("id") Integer id){
 		Project project = ProjectEjb.findProjectByCoordinator(id);
 		if (project==null)
-			return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+			return Response.status(Status.NOT_FOUND).entity("Project Not Found").build();
 		else
 			return Response.ok(project).build();
 	}
@@ -159,7 +162,7 @@ public class ProjectRessource {
 	public Response findProjectsByCoordinator(@PathParam("id") Integer id){
 		List<Project> projects = ProjectEjb.findProjectsByCoordinator(id);
 		if (projects==null)
-			return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+			return Response.status(Status.NOT_FOUND).entity("Project Not Found").build();
 		else
 			return Response.ok(projects).build();
 
@@ -189,7 +192,7 @@ public class ProjectRessource {
 	public Response findProjectsByStudy(@PathParam("id") Integer id){
 		List<Project> projects = ProjectEjb.findProjectsByStudy(id);
 		if (projects==null)
-			return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+			return Response.status(Status.NOT_FOUND).entity("Project Not Found").build();
 		else
 			return Response.ok(projects).build();
 
@@ -204,7 +207,7 @@ public class ProjectRessource {
 	public Response findProjectByManager(@PathParam("id") Integer id){
 		Project project = ProjectEjb.findProjectByManager(id);
 		if (project==null)
-			return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+			return Response.status(Status.NOT_FOUND).entity("Project Not Found").build();
 		else
 			return Response.ok(project).build();
 	}
@@ -254,40 +257,54 @@ public class ProjectRessource {
 	}
 
 	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
-	//  find project by Start Date //to test it 
+	//  find project by Start Date //to test it : 2017-03-15 00:00:00.0
 	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
 	@GET
 	@Path("findProjectByStartDate/{date}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response findProjectByStartDate(@PathParam("date") Date date){
+	public Response findProjectByStartDate(@PathParam("date") String date){
 
-		/*		SimpleDateFormat simple_date= new 
-				SimpleDateFormat("dd/MM/yyyy");
+		Date Startdate= null;
+
+		SimpleDateFormat simple_date= new 
+				SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
 		try {
-			Date  date =  (Date) simple_date.parse(date);
+			Startdate= simple_date.parse(date);
+
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
-
-		Project project = ProjectEjb.findProjectByStartDate(date);
+		}
+		Project project = ProjectEjb.findProjectByStartDate(Startdate);
 		if (project==null)
-			return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+			return Response.status(Status.NOT_FOUND).entity("Project Not Found").build();
 		else
 			return Response.ok(project).build();
 
 	}
 
 	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
-	//  find project by End Date //to test it 
+	//  find project by End Date //to test it : 2017-03-28 00:00:00.0 
 	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
 	@GET
 	@Path("findProjectByEndDate/{date}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response findProjectByEndtDate(@PathParam("date") Date date){
-		Project project = ProjectEjb.findProjectByEndDate(date);
+	public Response findProjectByEndtDate(@PathParam("date") String date){
+
+		Date Enddate= null;
+
+		SimpleDateFormat simple_date= new 
+				SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
+		try {
+			Enddate= simple_date.parse(date);
+
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Project project = ProjectEjb.findProjectByEndDate(Enddate);
 		if (project==null)
-			return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+			return Response.status(Status.NOT_FOUND).entity("project Not Found").build();
 		else
 			return Response.ok(project).build();
 
