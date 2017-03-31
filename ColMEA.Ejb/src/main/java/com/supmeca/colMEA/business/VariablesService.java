@@ -3,7 +3,9 @@ package com.supmeca.colMEA.business;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.ejb.LocalBean;
@@ -32,6 +34,7 @@ public class VariablesService implements VariablesServiceRemote, VariablesServic
 	private EntityManager em;
 
 	Variable Variable;
+	SetServiceLocal setEjb;
 	/**
 	 * Default constructor. 
 	 */
@@ -469,6 +472,27 @@ public class VariablesService implements VariablesServiceRemote, VariablesServic
 			
 			List<Set> set = query.getResultList();
 			return set;
+		}
+
+		@Override
+		public List<Number> findSetsByVariable(int id) {
+			String text = "SELECT s.value FROM t_set s , Variable v "
+					+ "WHERE v.id_variable = s.variable.id_variable and v.id_variable =:id";
+			Query query = em.createQuery(text);
+			query.setParameter("id", id);			    	
+
+			List<Number> ListSets = query.getResultList();
+			
+			return ListSets;
+		}
+		@Override
+		public HashMap<String, List<Number>> findVariablewithSets(Integer id) {
+			HashMap<String, List<Number>> result = new HashMap<String, List<Number>>();
+			Variable variable = this.findVariableById(id);
+			
+			List<Number> sets = this.findSetsByVariable(id);
+			result.put(variable.getName(), sets); 
+			return result;
 		}
 
 }

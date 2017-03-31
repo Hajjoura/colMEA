@@ -1,6 +1,7 @@
 package Services;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -620,7 +621,20 @@ public class VariableRessource {
 			return Response.ok(Variables).build();
 
 	}
+	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	//  find Variable with sets
+	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	@GET
+	@Path("findVariableWithSets/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findVariableWitSets(@PathParam("id") Integer id){
+		HashMap<String,List<Number>> Variables = VariableEjb.findVariablewithSets(id);
+		if (Variables==null)
+			return Response.status(Status.NOT_FOUND).entity("variable Not Found").build();
+		else
+			return Response.ok(Variables).build();
 
+	}
 }
 
 

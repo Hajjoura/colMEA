@@ -1,6 +1,7 @@
 package com.supmeca.colMEA.business;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.ejb.Remote;
@@ -46,5 +47,8 @@ public interface VariablesServiceRemote {
 	public List<Variable> findLocalVariablesByCoordinator(Integer id);
 	public List<Variable> findLocalVariablesByEngineer(Integer id);
 	public List<Set>findVariablewithSet(Integer id);
+	public List<Number> findSetsByVariable(int id) ;
+	public HashMap<String, List<Number>> findVariablewithSets(Integer id);
+
 	
 }
