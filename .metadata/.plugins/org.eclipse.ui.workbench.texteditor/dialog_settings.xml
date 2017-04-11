@@ -2,29 +2,33 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="257" key="DIALOG_WIDTH"/>
-		<item value="293" key="DIALOG_Y_ORIGIN"/>
-		<item value="380" key="DIALOG_HEIGHT"/>
-		<item value="869" key="DIALOG_X_ORIGIN"/>
+		<item value="115" key="DIALOG_Y_ORIGIN"/>
+		<item value="1284" key="DIALOG_X_ORIGIN"/>
+		<item value="374" key="DIALOG_HEIGHT"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="isRegEx"/>
 		<item value="false" key="casesensitive"/>
+		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="/UserS" key="selection"/>
+		<item value="Project Not Found" key="selection"/>
 		<list key="findhistory">
+			<item value="User Not Found"/>
+			<item value="Constraint"/>
+			<item value="Variable"/>
+			<item value="engineer"/>
 			<item value="/Users"/>
 			<item value="/4Users"/>
 			<item value="host"/>
 			<item value="bossHost "/>
-			<item value="SSL"/>
-			<item value="useSSL"/>
-			<item value="native"/>
-			<item value="management-native"/>
 		</list>
 		<list key="replacehistory">
+			<item value="Project Not Found"/>
+			<item value="Objective"/>
+			<item value="Constraint"/>
+			<item value="domain"/>
 			<item value="Coordinator"/>
 			<item value="Manager"/>
 			<item value="Engineer"/>

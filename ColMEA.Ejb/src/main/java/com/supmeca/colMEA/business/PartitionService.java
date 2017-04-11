@@ -15,6 +15,7 @@ import javax.persistence.Query;
 import com.supmeca.colMEA.domain.Coordinator;
 import com.supmeca.colMEA.domain.Partition;
 import com.supmeca.colMEA.domain.Project;
+import com.supmeca.colMEA.domain.Set;
 import com.supmeca.colMEA.domain.Teams_Engineers;
 import com.supmeca.colMEA.domain.Variable;
 import com.supmeca.colMEA.domain.Variables_Partitions;
@@ -79,10 +80,10 @@ public class PartitionService implements PartitionServiceRemote, PartitionServic
 
 	//Add partition to variable
 	@Override
-	public Boolean addVariableToPartition(Partition partition, Variable variable, Date date, float min, float max) {
+	public Boolean addVariableToPartition(Partition partition, Variable variable,Set set ,Date date, float min, float max) {
 
 		try{
-			Variables_Partitions varpart = new Variables_Partitions(variable,partition, date, min , max);
+			Variables_Partitions varpart = new Variables_Partitions(em.merge(variable),em.merge(partition), em.merge(set), date, min, max);
 
 			em.persist(varpart);
 			return true;	
@@ -103,10 +104,10 @@ public class PartitionService implements PartitionServiceRemote, PartitionServic
 
 	//update Variables_Partitions
 	@Override
-	public Boolean updateVariableToPartition(Partition partition, Variable variable, Date date, float min , float max) {
+	public Boolean updateVariableToPartition(Partition partition, Variable variable,Set set, Date date, float min , float max) {
 
 		try{
-			Variables_Partitions varpart = new Variables_Partitions(em.merge(variable), em.merge(partition), date, min, max);
+			Variables_Partitions varpart = new Variables_Partitions(em.merge(variable),em.merge(partition), em.merge(set), date, min, max);
 
 			em.persist(varpart);
 			return true;	

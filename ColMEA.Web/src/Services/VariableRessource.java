@@ -3,7 +3,6 @@ package Services;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -125,7 +124,8 @@ public class VariableRessource {
 	}
 
 	@POST
-	@Path("/addSet")
+	@Path("/"
+			+ "")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 
@@ -182,11 +182,11 @@ public class VariableRessource {
 	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
 
 	@POST
-	@Path("addPartition/{id_partition}/{id_variable}")
+	@Path("addPartition/{id_partition}/{id_variable}/{id_set}")
 	@Produces("application/json")
 	@Consumes("application/json")
 
-	public Response reserveSeat(@PathParam("id_partition")Integer id_partition,@PathParam("id_variable")Integer id_variable)
+	public Response reserveSeat(@PathParam("id_partition")Integer id_partition,@PathParam("id_variable")Integer id_variable,@PathParam("id_set")Integer id_set)
 	{
 
 
@@ -210,15 +210,19 @@ public class VariableRessource {
 		System.out.println(id_variable);
 		varpartFk.setId_partition(id_partition);
 		System.out.println(id_partition);
+		varpartFk.setId_set(id_set);
+
 		varpart.setDate(date);
 		Partition partition = PartitionEjb.findPartitionById(id_partition);
 		Variable variable = VariableEjb.findVariableById(id_variable);
+		Set set = SetEjb.findSetById(id_set);
+
 
 
 
 		if ((partition!=null)&&(variable!=null))
 		{
-			if (PartitionEjb.addVariableToPartition(partition, variable, varpart.getDate(),varpart.getMin(),varpart.getMax()))
+			if (PartitionEjb.addVariableToPartition(partition, variable,set, varpart.getDate(),varpart.getMin(),varpart.getMax()))
 			{
 				return Response.status(Status.ACCEPTED).entity("Success variable was added").build();
 			}else

@@ -84,10 +84,10 @@ public class VariablesService implements VariablesServiceRemote, VariablesServic
 
 	//Add variable to partition
 	@Override
-	public Boolean addVariableToPartition(Partition partition, Variable variable, Date date, float min, float max) {
+	public Boolean addVariableToPartition(Partition partition, Variable variable,Set set, Date date, float min, float max) {
 
 		try{
-			Variables_Partitions varpart = new Variables_Partitions(variable,partition, date, min , max);
+			Variables_Partitions varpart = new Variables_Partitions(em.merge(variable),em.merge(partition), em.merge(set), date, min, max);
 
 			em.persist(varpart);
 			return true;	

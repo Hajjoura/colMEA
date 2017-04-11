@@ -2,8 +2,12 @@ package com.supmeca.colMEA.domain;
 
 import java.io.Serializable;
 import java.lang.String;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * Entity implementation class for Entity: Set
@@ -17,6 +21,7 @@ public class Set implements Serializable {
 	private int id_set;
 	private String value;
 	private Variable variable;
+	private List<Variables_Partitions> partitions = new ArrayList<Variables_Partitions>();
 	private static final long serialVersionUID = 1L;
 
 	//constructor with SuperClass
@@ -41,21 +46,29 @@ public class Set implements Serializable {
 		this.value = value;
 	}
 	
-	@ManyToOne
-	@JoinColumn(name="id_variable",referencedColumnName="id_variable",insertable=false,updatable=false)
+	@JsonIgnore
+	@OneToMany(mappedBy="set")
+	public List<Variables_Partitions> getPartitions() {
+		return partitions;
+	}
+	public void setPartitions(List<Variables_Partitions> partitions) {
+		this.partitions = partitions;
+	}
 
+	@ManyToOne
 	public Variable getVariable() {
 		return variable;
 	}
 	public void setVariable(Variable variable) {
 		this.variable = variable;
 	}
-	
-	//constructor with Fields
-	public Set(String value, Variable variable) {
+	public Set(int id_set, String value, Variable variable,
+			List<Variables_Partitions> partitions) {
 		super();
+		this.id_set = id_set;
 		this.value = value;
 		this.variable = variable;
+		this.partitions = partitions;
 	}
 	
 	

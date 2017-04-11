@@ -22,7 +22,9 @@ import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.core.Response.Status;
 
+import com.supmeca.colMEA.business.ManagerServiceLocal;
 import com.supmeca.colMEA.business.ProjectServiceLocal;
+import com.supmeca.colMEA.domain.Manager;
 import com.supmeca.colMEA.domain.Project;
 
 @Path("/Projects")
@@ -30,7 +32,9 @@ public class ProjectRessource {
 
 	@Inject
 	ProjectServiceLocal ProjectEjb;
-
+	@Inject
+	ManagerServiceLocal ManagerEjb;
+	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response findAllProjects(){
@@ -72,6 +76,22 @@ public class ProjectRessource {
 		else
 			return Response.status(Status.NOT_FOUND).entity("Project Not found").build();
 	}
+	
+	@POST
+	@Path("addProject/{id_user}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+
+	public Response addProjects (Project Project, @PathParam("id_user") Integer id) {
+		Manager manager = ManagerEjb.findManagerById(id);
+		Project.setManager(manager);
+		ProjectEjb.CreateProject(Project);
+		if (id != null)
+			return Response.status(Status.ACCEPTED).entity("Project successfully added").build();
+		else
+			return Response.status(Status.NOT_FOUND).entity("Project Not found").build();
+	}
+	
 	@GET
 	@Path("findProject/{id}")
 	@Produces(MediaType.APPLICATION_JSON)

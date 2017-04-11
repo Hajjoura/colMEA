@@ -20,9 +20,11 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.core.Response.Status;
 
 import com.supmeca.colMEA.business.PartitionServiceLocal;
+import com.supmeca.colMEA.business.SetServiceLocal;
 import com.supmeca.colMEA.business.VariablesServiceLocal;
 import com.supmeca.colMEA.domain.Partition;
 import com.supmeca.colMEA.domain.Project;
+import com.supmeca.colMEA.domain.Set;
 import com.supmeca.colMEA.domain.Teams_Engineers;
 import com.supmeca.colMEA.domain.Variable;
 import com.supmeca.colMEA.domain.Variables_Partitions;
@@ -35,6 +37,8 @@ public class PartitionRessource {
 	PartitionServiceLocal PartitionEjb;
 	@Inject
 	VariablesServiceLocal VariableEjb;
+	@Inject
+	SetServiceLocal SetEjb;
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -105,11 +109,11 @@ public class PartitionRessource {
 	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
 
 	@POST
-	@Path("addvariable/{id_partition}/{id_variable}")
+	@Path("addvariable/{id_partition}/{id_variable}/{id_set}")
 	@Produces("application/json")
 	@Consumes("application/json")
 
-	public Response addvariable(@PathParam("id_partition")Integer id_partition,@PathParam("id_variable")Integer id_variable)
+	public Response addvariable(@PathParam("id_partition")Integer id_partition,@PathParam("id_variable")Integer id_variable,@PathParam("id_set") Integer id_set)
 	{
 
 		/*Date dateReservation=null;
@@ -128,13 +132,15 @@ public class PartitionRessource {
 		Variables_PartitionsFK varpartFk = new Variables_PartitionsFK();
 		varpartFk.setId_variable(id_variable);
 		varpartFk.setId_partition(id_partition);
+		varpartFk.setId_set(id_set);
 		varpart.setDate(date);
 		Partition partition = PartitionEjb.findPartitionById(id_partition);
 		Variable variable = VariableEjb.findVariableById(id_variable);
+		Set set = SetEjb.findSetById(id_set);
 
 		if ((partition!=null)&&(variable!=null))
 		{
-			if (PartitionEjb.addVariableToPartition(partition, variable, varpart.getDate(),varpart.getMax(),varpart.getMin()))
+			if (PartitionEjb.addVariableToPartition(partition, variable,set, varpart.getDate(),varpart.getMax(),varpart.getMin()))
 			{
 				return Response.status(Status.ACCEPTED).entity("Success variable was added").build();
 			}else
@@ -172,11 +178,11 @@ public class PartitionRessource {
 	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
 
 	@POST
-	@Path("updateVariable")
+	@Path("updateVariable/{id_partition}/{id_variable}/{id_set}")
 	@Produces("application/json")
 	@Consumes("application/json")
 
-	public Response updatevariablePartition(@PathParam("id_partition")Integer id_partition,@PathParam("id_variable")Integer id_variable,Variables_Partitions varpar)
+	public Response updatevariablePartition(@PathParam("id_partition")Integer id_partition,@PathParam("id_variable")Integer id_variable,@PathParam("id_set") Integer id_set,Variables_Partitions varpar)
 	{
 		/*Date dateReservation=null;
 					SimpleDateFormat simple_date= new 
@@ -192,13 +198,15 @@ public class PartitionRessource {
 		Variables_PartitionsFK varpartFk = new Variables_PartitionsFK();
 		varpartFk.setId_variable(id_variable);
 		varpartFk.setId_partition(id_partition);
+		varpartFk.setId_set(id_set);
 		Partition partition = PartitionEjb.findPartitionById(id_partition);
 		Variable variable = VariableEjb.findVariableById(id_variable);
+		Set set = SetEjb.findSetById(id_set);
 		varpart = PartitionEjb.findVariableById(varpartFk);
-
+	
 		if ((varpart!=null))
 		{
-			if (PartitionEjb.updateVariableToPartition(partition, variable, varpar.getDate(),varpar.getMin(),varpar.getMax()))
+			if (PartitionEjb.updateVariableToPartition(partition, variable,set, varpar.getDate(),varpar.getMin(),varpar.getMax()))
 			{
 				return Response.status(Status.ACCEPTED).entity("Success variable was updated").build();
 			}else

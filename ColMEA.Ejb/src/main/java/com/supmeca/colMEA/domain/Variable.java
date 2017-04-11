@@ -33,7 +33,6 @@ public class Variable implements Serializable {
 	private String image;
 	private Tool tool;
 	private List<Set> Sets = new ArrayList<Set>();
-	private List<Set> SetRes = new ArrayList<Set>();
 	private List<Variables_Partitions> partitions = new ArrayList<Variables_Partitions>();
 	private static final long serialVersionUID = 1L;
 
@@ -132,14 +131,7 @@ public class Variable implements Serializable {
 	public void setTool(Tool tool) {
 		this.tool = tool;
 	}
-	@JsonIgnore
-	@OneToMany(mappedBy="variable")
-	public List<Set> getSets() {
-		return Sets;
-	}
-	public void setSets(List<Set> sets) {
-		Sets = sets;
-	}
+	
 	@JsonIgnore
 	@OneToMany(mappedBy="variable")
 	public List<Variables_Partitions> getPartitions() {
@@ -148,25 +140,24 @@ public class Variable implements Serializable {
 	public void setPartitions(List<Variables_Partitions> partitions) {
 		this.partitions = partitions;
 	}
+
 	@JsonIgnore
 	@OneToMany(mappedBy="variable")
-	public List<Set> getSetRes() {
-		return SetRes;
+	public List<Set> getSets() {
+		return Sets;
 	}
-	public void setSetRes(List<Set> setRes) {
-		SetRes = setRes;
+
+	public void setSets(List<Set> sets) {
+		Sets = sets;
 	}
-	
-	
-	
-	
-	//constructor using fields
-	
-	public Variable(String name, float min, float max, float min_res,
-			float max_res, String unit, Date date, String description,
-			boolean visibility, String image, Tool tool, List<Set> sets,
-			List<Set> setRes, List<Variables_Partitions> partitions) {
+
+//Constrator with Fields
+	public Variable(Integer id_variable, String name, float min, float max,
+			float min_res, float max_res, String unit, Date date,
+			String description, boolean visibility, String image, Tool tool,
+			List<Set> sets, List<Variables_Partitions> partitions) {
 		super();
+		this.id_variable = id_variable;
 		this.name = name;
 		this.min = min;
 		this.max = max;
@@ -178,8 +169,7 @@ public class Variable implements Serializable {
 		this.visibility = visibility;
 		this.image = image;
 		this.tool = tool;
-		Sets = sets;
-		SetRes = setRes;
+		this.Sets = sets;
 		this.partitions = partitions;
 	}
    

@@ -20,10 +20,9 @@
 		<class>com.supmeca.colMEA.domain.Variable</class>
 		<class>com.supmeca.colMEA.domain.Variables_Partitions</class>
 		<class>com.supmeca.colMEA.domain.Variables_PartitionsFK</class>
-		<properties>
+	      
+	<properties>
          <property name="hibernate.hbm2ddl.auto" value="update" />
-
 		</properties>
-		
-	</persistence-unit>
+	</persistence-unit>  
 </persistence>

@@ -6,6 +6,7 @@ import java.util.List;
 import javax.ejb.Remote;
 
 import com.supmeca.colMEA.domain.Partition;
+import com.supmeca.colMEA.domain.Set;
 import com.supmeca.colMEA.domain.Variable;
 import com.supmeca.colMEA.domain.Variables_Partitions;
 import com.supmeca.colMEA.domain.Variables_PartitionsFK;
@@ -19,9 +20,9 @@ public interface PartitionServiceRemote {
 	public Partition findPartitionById(int id);
 	public List<Partition> findAllPartitions();
 	public void DeletePartition(int id);
-	public Boolean addVariableToPartition(Partition partition, Variable variable, Date date, float min, float max) ;
+	public Boolean addVariableToPartition(Partition partition, Variable variable,Set set, Date date, float min, float max) ;
 	public List<Variables_Partitions> findVariablesPartitions();
-	public Boolean updateVariableToPartition(Partition partition, Variable variable, Date date, float min, float max);
+	public Boolean updateVariableToPartition(Partition partition, Variable variable,Set set, Date date, float min, float max);
 	public Variables_Partitions findVariableById(Variables_PartitionsFK id) ;
 	public Partition findPartitionByName(String name);
 	public Partition findPartitionByTeam(Integer id);

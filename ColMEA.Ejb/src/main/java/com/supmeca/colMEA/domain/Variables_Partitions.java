@@ -16,6 +16,7 @@ public class Variables_Partitions implements Serializable {
 
 	private Variable variable;
 	private Partition partition;
+	private Set set;
 	private Variables_PartitionsFK variables_partitionsFK;
 	private Date date;
 	private float Min;
@@ -47,6 +48,18 @@ public class Variables_Partitions implements Serializable {
 	public void setPartition(Partition partition) {
 		this.partition = partition;
 	}
+	
+	@ManyToOne
+	@JsonIgnore
+	@JoinColumn(name="id_set",referencedColumnName="id_set",insertable=false,updatable=false)
+	
+	public Set getSet() {
+		return set;
+	}
+	public void setSet(Set set) {
+		this.set = set;
+	}
+	
 	@EmbeddedId
 	public Variables_PartitionsFK getVariables_partitionsFK() {
 		return variables_partitionsFK;
@@ -60,18 +73,8 @@ public class Variables_Partitions implements Serializable {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	
-	
-	public Variables_Partitions(Variable variable, Partition partition, Date date, float min, float max) {
-		super();
-		this.variable = variable;
-		this.partition = partition;
-		this.date = date;
-		this.Min = min;
-		this.Max = max;
-		this.variables_partitionsFK= new Variables_PartitionsFK(variable.getId_variable(),partition.getId_partition());
+		
 
-	}
 	public float getMin() {
 		return Min;
 	}
@@ -84,5 +87,20 @@ public class Variables_Partitions implements Serializable {
 	public void setMax(float max) {
 		Max = max;
 	}
+	public Variables_Partitions(Variable variable, Partition partition,
+			Set set, Date date,
+			float min, float max) {
+		super();
+		this.variable = variable;
+		this.partition = partition;
+		this.set = set;
+		this.variables_partitionsFK = new Variables_PartitionsFK(variable.getId_variable(), partition.getId_partition(), set.getId_set());
+		this.date = date;
+		Min = min;
+		Max = max;
+	}
+	
+
+	
 
 }
