@@ -1,5 +1,6 @@
 package com.supmeca.colMEA.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.supmeca.colMEA.domain.User;
 
 import java.io.Serializable;
@@ -23,6 +24,7 @@ public class Coordinator extends User implements Serializable {
 		super();
 	}
 
+	@JsonIgnore
 	@OneToMany(mappedBy="coordinator", cascade=CascadeType.ALL)
 	public List<Team> getTeams() {
 		return Teams;

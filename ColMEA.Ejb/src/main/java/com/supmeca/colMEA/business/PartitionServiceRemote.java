@@ -20,9 +20,9 @@ public interface PartitionServiceRemote {
 	public Partition findPartitionById(int id);
 	public List<Partition> findAllPartitions();
 	public void DeletePartition(int id);
-	public Boolean addVariableToPartition(Partition partition, Variable variable,Set set, Date date, float min, float max) ;
+	public Boolean addVariableToPartition(Partition partition, Variable variable,Set set, Date date) ;
 	public List<Variables_Partitions> findVariablesPartitions();
-	public Boolean updateVariableToPartition(Partition partition, Variable variable,Set set, Date date, float min, float max);
+	public Boolean updateVariableToPartition(Partition partition, Variable variable,Set set, Date date);
 	public Variables_Partitions findVariableById(Variables_PartitionsFK id) ;
 	public Partition findPartitionByName(String name);
 	public Partition findPartitionByTeam(Integer id);

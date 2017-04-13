@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -34,7 +35,9 @@ public class VariablesService implements VariablesServiceRemote, VariablesServic
 	private EntityManager em;
 
 	Variable Variable;
+
 	SetServiceLocal setEjb;
+	PartitionServiceLocal PartitionEjb;
 	/**
 	 * Default constructor. 
 	 */
@@ -84,10 +87,10 @@ public class VariablesService implements VariablesServiceRemote, VariablesServic
 
 	//Add variable to partition
 	@Override
-	public Boolean addVariableToPartition(Partition partition, Variable variable,Set set, Date date, float min, float max) {
+	public Boolean addVariableToPartition(Partition partition, Variable variable,Set set, Date date) {
 
 		try{
-			Variables_Partitions varpart = new Variables_Partitions(em.merge(variable),em.merge(partition), em.merge(set), date, min, max);
+			Variables_Partitions varpart = new Variables_Partitions(em.merge(variable),em.merge(partition), em.merge(set), date);
 
 			em.persist(varpart);
 			return true;	
@@ -476,8 +479,8 @@ public class VariablesService implements VariablesServiceRemote, VariablesServic
 
 	@Override
 	public List<Number> findSetsByVariable(int id) {
-		String text = "SELECT s.value FROM t_set s , Variable v "
-				+ "WHERE v.id_variable = s.variable.id_variable and v.id_variable =:id";
+		String text = "SELECT DISTINCT s.value FROM t_set as s , Variable as v , Variables_Partitions as vp "
+				+ "WHERE v.id_variable = s.variable.id_variable and v.id_variable = vp.variable.id_variable and v.id_variable =:id";
 		Query query = em.createQuery(text);
 		query.setParameter("id", id);			    	
 
@@ -494,5 +497,35 @@ public class VariablesService implements VariablesServiceRemote, VariablesServic
 		result.put(variable.getName(), sets); 
 		return result;
 	}
+	@Override
+	public List<Number> findSetsByVariableandPartition(int id_vable, int id_part) {
+		String text = "SELECT  DISTINCT s.value "
+				+ "FROM t_set as s , Variable as v , Variables_Partitions as vp , t_partition as p "
+				+ "WHERE  vp.variable.id_variable = v.id_variable and s.id_set = vp.set.id_set  "
+				+ "and vp.partition.id_partition = p.id_partition and p.id_partition =:id_part and v.id_variable =:id_vable";
+		
+		String text1 = "SELECT  DISTINCT s.value "
+				+ "FROM t_set as s , Variable as v , Variables_Partitions as vp  , t_partition as p "
+				+ "WHERE p.id_partition = vp.partition.id_partition and p.id_partition =:id_part and "
+				+ "s.id_set IN (SELECT s.id_set FROM t_set as s , Variable as v , Variables_Partitions as vp "
+				+ "WHERE v.id_variable = s.variable.id_variable and v.id_variable = vp.variable.id_variable and v.id_variable =:id_vable) ";
+		
+		Query query = em.createQuery(text);
+		query.setParameter("id_vable", id_vable);		
+		query.setParameter("id_part", id_part);
 
+		List<Number> ListSets = query.getResultList();
+
+		return ListSets;
+	}
+	
+	@Override
+	public HashMap<String, List<Number>> findVariablewithSetsbyPartition(Integer id_var, Integer id_part) {
+		HashMap<String, List<Number>> result = new HashMap<String, List<Number>>();
+		Variable variable = this.findVariableById(id_var);
+	
+		List<Number> sets = this.findSetsByVariableandPartition(id_var , id_part);
+		result.put(variable.getName(), sets); 
+		return result;
+	}
 }

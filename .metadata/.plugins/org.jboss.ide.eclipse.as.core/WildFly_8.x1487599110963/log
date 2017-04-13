@@ -1100,3 +1100,336 @@
 
 !ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2017-04-11 12:30:13.546
 !MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2017-04-12 10:35:32.840
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842785 2017-04-12 10:35:33.410
+!MESSAGE Server Shutdown Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2017-04-12 10:35:36.328
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2017-04-12 10:36:07.297
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2017-04-12 11:05:52.696
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.wtp.core 1 16973825 2017-04-12 11:05:52.960
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2017-04-12 11:05:53.989
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2017-04-12 11:06:07.546
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2017-04-12 11:19:25.115
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.wtp.core 1 16973825 2017-04-12 11:19:25.703
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2017-04-12 11:19:26.677
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2017-04-12 11:19:41.165
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2017-04-12 11:20:33.474
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.wtp.core 1 16973825 2017-04-12 11:20:34.013
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2017-04-12 11:20:35.016
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2017-04-12 11:20:46.133
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2017-04-12 11:45:48.938
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.wtp.core 1 16973825 2017-04-12 11:45:49.291
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2017-04-12 11:45:50.273
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2017-04-12 11:46:02.380
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2017-04-12 11:50:58.538
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.wtp.core 1 16973825 2017-04-12 11:50:58.685
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2017-04-12 11:50:59.797
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2017-04-12 11:51:09.302
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2017-04-12 12:09:59.507
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.wtp.core 1 16973825 2017-04-12 12:09:59.632
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2017-04-12 12:10:12.261
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2017-04-12 12:10:21.976
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2017-04-12 14:09:53.539
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.wtp.core 1 16973825 2017-04-12 14:09:53.816
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2017-04-12 14:09:54.855
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2017-04-12 14:10:08.069
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2017-04-12 14:10:40.761
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.wtp.core 1 16973825 2017-04-12 14:10:41.136
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2017-04-12 14:10:42.211
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2017-04-12 14:10:51.448
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2017-04-12 14:11:19.205
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.wtp.core 1 16973825 2017-04-12 14:11:19.630
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2017-04-12 14:11:20.590
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2017-04-12 14:11:31.133
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298251 2017-04-12 15:38:59.895
+!MESSAGE Deployment of module ColMEA.EAR has failed
+!SUBENTRY 1 unknown 0 0 2017-04-12 15:38:59.895
+!MESSAGE OK
+!SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-04-12 15:38:59.895
+!MESSAGE The operation DEPLOY for unit ColMEA.EAR.ear was rolled back
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298251 2017-04-12 15:39:10.953
+!MESSAGE Deployment of module ColMEA.EAR has failed
+!SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-04-12 15:39:10.953
+!MESSAGE The operation DEPLOY for unit ColMEA.EAR.ear was rolled back
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298251 2017-04-12 16:34:34.027
+!MESSAGE Deployment of module ColMEA.EAR has failed
+!SUBENTRY 1 unknown 0 0 2017-04-12 16:34:34.027
+!MESSAGE OK
+!SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-04-12 16:34:34.027
+!MESSAGE The operation DEPLOY for unit ColMEA.EAR.ear was rolled back
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298251 2017-04-12 16:34:47.824
+!MESSAGE Deployment of module ColMEA.EAR has failed
+!SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-04-12 16:34:47.824
+!MESSAGE The operation DEPLOY for unit ColMEA.EAR.ear was rolled back
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298251 2017-04-12 16:36:39.141
+!MESSAGE Deployment of module ColMEA.EAR has failed
+!SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-04-12 16:36:39.141
+!MESSAGE The operation DEPLOY for unit ColMEA.EAR.ear was rolled back
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298251 2017-04-12 16:36:52.795
+!MESSAGE Deployment of module ColMEA.EAR has failed
+!SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-04-12 16:36:52.795
+!MESSAGE The operation DEPLOY for unit ColMEA.EAR.ear was rolled back
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298251 2017-04-12 16:37:04.871
+!MESSAGE Deployment of module ColMEA.EAR has failed
+!SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-04-12 16:37:04.871
+!MESSAGE The operation DEPLOY for unit ColMEA.EAR.ear was rolled back
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298251 2017-04-12 16:37:38.520
+!MESSAGE Deployment of module ColMEA.EAR has failed
+!SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-04-12 16:37:38.521
+!MESSAGE The operation DEPLOY for unit ColMEA.EAR.ear was rolled back
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2017-04-12 16:47:55.566
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842785 2017-04-12 16:47:55.872
+!MESSAGE Server Shutdown Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2017-04-12 16:47:57.421
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2017-04-12 16:48:16.489
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2017-04-12 16:50:24.690
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.wtp.core 1 16973825 2017-04-12 16:50:25.144
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2017-04-12 16:50:26.146
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2017-04-12 16:50:35.921
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2017-04-12 16:50:52.775
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.wtp.core 1 16973825 2017-04-12 16:50:53.142
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2017-04-12 16:51:18.322
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2017-04-12 16:51:27.541
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298251 2017-04-12 16:54:00.251
+!MESSAGE Deployment of module ColMEA.EAR has failed
+!SUBENTRY 1 unknown 0 0 2017-04-12 16:54:00.251
+!MESSAGE OK
+!SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-04-12 16:54:00.251
+!MESSAGE The operation DEPLOY for unit ColMEA.EAR.ear was rolled back
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298251 2017-04-12 16:54:27.014
+!MESSAGE Deployment of module ColMEA.EAR has failed
+!SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-04-12 16:54:27.015
+!MESSAGE The operation DEPLOY for unit ColMEA.EAR.ear was rolled back
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298251 2017-04-12 16:54:36.993
+!MESSAGE Deployment of module ColMEA.EAR has failed
+!SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-04-12 16:54:36.993
+!MESSAGE The operation DEPLOY for unit ColMEA.EAR.ear was rolled back
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2017-04-12 16:55:48.360
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.wtp.core 1 16973825 2017-04-12 16:55:48.437
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2017-04-12 16:55:49.457
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2017-04-12 16:55:54.103
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2017-04-12 16:57:04.470
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.wtp.core 1 16973825 2017-04-12 16:57:04.619
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2017-04-12 16:57:05.731
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2017-04-12 16:57:09.905
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298251 2017-04-12 17:00:01.996
+!MESSAGE Deployment of module ColMEA.EAR has failed
+!SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-04-12 17:00:01.996
+!MESSAGE The operation DEPLOY for unit ColMEA.EAR.ear was rolled back
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2017-04-12 17:00:08.295
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.wtp.core 1 16973825 2017-04-12 17:00:08.397
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 2 16842768 2017-04-12 17:00:08.399
+!MESSAGE Poll Thread Aborted: null
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2017-04-12 17:00:09.571
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2017-04-12 17:00:14.390
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298251 2017-04-12 17:00:56.366
+!MESSAGE Deployment of module ColMEA.EAR has failed
+!SUBENTRY 1 org.jboss.ide.eclipse.as.management.wildfly8 4 0 2017-04-12 17:00:56.366
+!MESSAGE The operation DEPLOY for unit ColMEA.EAR.ear was rolled back
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2017-04-12 17:01:11.483
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.wtp.core 1 16973825 2017-04-12 17:01:11.746
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2017-04-12 17:01:12.737
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2017-04-12 17:01:22.064
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2017-04-12 17:04:15.196
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.wtp.core 1 16973825 2017-04-12 17:04:15.620
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2017-04-12 17:04:16.616
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2017-04-12 17:04:26.621
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2017-04-12 17:13:40.298
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.wtp.core 1 16973825 2017-04-12 17:13:40.602
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2017-04-12 17:13:41.555
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2017-04-12 17:13:51.867
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2017-04-12 17:49:48.370
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.wtp.core 1 16973825 2017-04-12 17:49:49.164
+!MESSAGE Server processes have been terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2017-04-12 17:49:50.280
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2017-04-12 17:50:03.208
+!MESSAGE Server Startup Succeeded
+!SESSION 
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2017-04-12 18:01:43.459
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2017-04-12 18:01:53.799
+!MESSAGE Server Startup Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842776 2017-04-13 09:14:49.813
+!MESSAGE Server shutting down
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842785 2017-04-13 09:14:50.078
+!MESSAGE Server Shutdown Succeeded
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2017-04-13 09:14:53.931
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2017-04-13 09:15:39.878
+!MESSAGE Server Startup Succeeded

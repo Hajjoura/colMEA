@@ -9,6 +9,8 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+
+
 /**
  * Entity implementation class for Entity: Set
  *
@@ -18,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Set implements Serializable {
 
 	
-	private int id_set;
+	private Integer id_set;
 	private String value;
 	private Variable variable;
 	private List<Variables_Partitions> partitions = new ArrayList<Variables_Partitions>();
@@ -31,11 +33,11 @@ public class Set implements Serializable {
 	@Id    
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
 
-	public int getId_set() {
+	public Integer getId_set() {
 		return this.id_set;
 	}
 
-	public void setId_set(int id_set) {
+	public void setId_set(Integer id_set) {
 		this.id_set = id_set;
 	}   
 	public String getValue() {
@@ -55,14 +57,17 @@ public class Set implements Serializable {
 		this.partitions = partitions;
 	}
 
+	@JsonIgnore
 	@ManyToOne
+	@JoinColumn(name="id_variable",referencedColumnName="id_variable",insertable=false,updatable=false)
 	public Variable getVariable() {
 		return variable;
 	}
 	public void setVariable(Variable variable) {
 		this.variable = variable;
 	}
-	public Set(int id_set, String value, Variable variable,
+	
+	public Set(Integer id_set, String value, Variable variable,
 			List<Variables_Partitions> partitions) {
 		super();
 		this.id_set = id_set;

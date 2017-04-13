@@ -11,6 +11,8 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+
+
 /**
  * Entity implementation class for Entity: Variable
  *
@@ -32,7 +34,6 @@ public class Variable implements Serializable {
 	private boolean visibility;
 	private String image;
 	private Tool tool;
-	private List<Set> Sets = new ArrayList<Set>();
 	private List<Variables_Partitions> partitions = new ArrayList<Variables_Partitions>();
 	private static final long serialVersionUID = 1L;
 
@@ -141,21 +142,12 @@ public class Variable implements Serializable {
 		this.partitions = partitions;
 	}
 
-	@JsonIgnore
-	@OneToMany(mappedBy="variable")
-	public List<Set> getSets() {
-		return Sets;
-	}
-
-	public void setSets(List<Set> sets) {
-		Sets = sets;
-	}
-
+	
 //Constrator with Fields
 	public Variable(Integer id_variable, String name, float min, float max,
 			float min_res, float max_res, String unit, Date date,
 			String description, boolean visibility, String image, Tool tool,
-			List<Set> sets, List<Variables_Partitions> partitions) {
+			 List<Variables_Partitions> partitions) {
 		super();
 		this.id_variable = id_variable;
 		this.name = name;
@@ -169,7 +161,6 @@ public class Variable implements Serializable {
 		this.visibility = visibility;
 		this.image = image;
 		this.tool = tool;
-		this.Sets = sets;
 		this.partitions = partitions;
 	}
    

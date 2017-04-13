@@ -67,7 +67,7 @@ public class PartitionRessource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response updatePartition(Partition Partition){
 		PartitionEjb.EditPartition(Partition);
-		if (Partition == null)
+		if (Partition != null)
 			return Response.status(Status.ACCEPTED).entity("User successfully Updated").build();
 		else
 			return Response.status(Status.NOT_FOUND).entity("User Not found").build();
@@ -76,7 +76,7 @@ public class PartitionRessource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response deletePartition(Partition Partition){
 		PartitionEjb.removePartition(Partition);
-		if (Partition == null)
+		if (Partition != null)
 			return Response.status(Status.ACCEPTED).entity("User successfully Deleted").build();
 		else
 			return Response.status(Status.NOT_FOUND).entity("User Not found").build();
@@ -140,7 +140,7 @@ public class PartitionRessource {
 
 		if ((partition!=null)&&(variable!=null))
 		{
-			if (PartitionEjb.addVariableToPartition(partition, variable,set, varpart.getDate(),varpart.getMax(),varpart.getMin()))
+			if (PartitionEjb.addVariableToPartition(partition, variable,set, varpart.getDate()))
 			{
 				return Response.status(Status.ACCEPTED).entity("Success variable was added").build();
 			}else
@@ -206,7 +206,7 @@ public class PartitionRessource {
 	
 		if ((varpart!=null))
 		{
-			if (PartitionEjb.updateVariableToPartition(partition, variable,set, varpar.getDate(),varpar.getMin(),varpar.getMax()))
+			if (PartitionEjb.updateVariableToPartition(partition, variable,set, varpar.getDate()))
 			{
 				return Response.status(Status.ACCEPTED).entity("Success variable was updated").build();
 			}else

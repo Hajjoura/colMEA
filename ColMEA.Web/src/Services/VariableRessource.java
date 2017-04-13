@@ -124,8 +124,7 @@ public class VariableRessource {
 	}
 
 	@POST
-	@Path("/"
-			+ "")
+	@Path("/addSet")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 
@@ -222,7 +221,7 @@ public class VariableRessource {
 
 		if ((partition!=null)&&(variable!=null))
 		{
-			if (PartitionEjb.addVariableToPartition(partition, variable,set, varpart.getDate(),varpart.getMin(),varpart.getMax()))
+			if (PartitionEjb.addVariableToPartition(partition, variable,set, varpart.getDate()))
 			{
 				return Response.status(Status.ACCEPTED).entity("Success variable was added").build();
 			}else
@@ -639,6 +638,22 @@ public class VariableRessource {
 			return Response.ok(Variables).build();
 
 	}
+
+	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	//  find Variable with sets by partition
+	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	@GET
+	@Path("findVariableWithSetsByPartition/{id_var}/{id_part}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findVariableWitSetsByPartition(@PathParam("id_var") Integer id_var,@PathParam("id_part") Integer id_part){
+		HashMap<String,List<Number>> Variables = VariableEjb.findVariablewithSetsbyPartition(id_var, id_part);
+		if (Variables==null)
+			return Response.status(Status.NOT_FOUND).entity("variable Not Found").build();
+		else
+			return Response.ok(Variables).build();
+
+	}
 }
+
 
 
