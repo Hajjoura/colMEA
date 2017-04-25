@@ -7,6 +7,7 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.criteria.CriteriaBuilder.In;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -16,10 +17,11 @@ public class Variables_Partitions implements Serializable {
 
 	private Variable variable;
 	private Partition partition;
-	private Set set;
+	private Set test;
 	private Variables_PartitionsFK variables_partitionsFK;
 	private Date date;
-
+	private Float minRes;
+	private Float maxRes;
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -48,15 +50,6 @@ public class Variables_Partitions implements Serializable {
 		this.partition = partition;
 	}
 	
-	@ManyToOne
-	@JsonIgnore
-	@JoinColumn(name="id_set",referencedColumnName="id_set",insertable=false,updatable=false)
-	public Set getSet() {
-		return set;
-	}
-	public void setSet(Set set) {
-		this.set = set;
-	}
 	
 	@EmbeddedId
 	public Variables_PartitionsFK getVariables_partitionsFK() {
@@ -75,14 +68,38 @@ public class Variables_Partitions implements Serializable {
 
 	
 	public Variables_Partitions(Variable variable, Partition partition,
-			Set set, Date date) {
+			Set test, Date date, Float min , Float max) {
 		super();
 		this.variable = variable;
 		this.partition = partition;
-		this.set = set;
+		this.test = test;
 		this.date = date;
-		this.variables_partitionsFK = new Variables_PartitionsFK(variable.getId_variable(), partition.getId_partition(), set.getId_set());
+		this.maxRes = max;
+		this.minRes = min;
+		this.variables_partitionsFK = new Variables_PartitionsFK(variable.getId_variable(), partition.getId_partition(), test.getId_set());
 
+	}
+	
+	@ManyToOne
+	@JsonIgnore
+	@JoinColumn(name="id_set",referencedColumnName="id_set",insertable=false,updatable=false)
+	public Set getTest() {
+		return test;
+	}
+	public void setTest(Set test) {
+		this.test = test;
+	}
+	public Float getMinRes() {
+		return minRes;
+	}
+	public void setMinRes(Float minRes) {
+		this.minRes = minRes;
+	}
+	public Float getMaxRes() {
+		return maxRes;
+	}
+	public void setMaxRes(Float maxRes) {
+		this.maxRes = maxRes;
 	}
 	
 

@@ -87,10 +87,10 @@ public class VariablesService implements VariablesServiceRemote, VariablesServic
 
 	//Add variable to partition
 	@Override
-	public Boolean addVariableToPartition(Partition partition, Variable variable,Set set, Date date) {
+	public Boolean addVariableToPartition(Partition partition, Variable variable,Set set, Date date, Float min, Float max) {
 
 		try{
-			Variables_Partitions varpart = new Variables_Partitions(em.merge(variable),em.merge(partition), em.merge(set), date);
+			Variables_Partitions varpart = new Variables_Partitions(em.merge(variable),em.merge(partition), em.merge(set), date, min, max);
 
 			em.persist(varpart);
 			return true;	
@@ -501,7 +501,7 @@ public class VariablesService implements VariablesServiceRemote, VariablesServic
 	public List<Number> findSetsByVariableandPartition(int id_vable, int id_part) {
 		String text = "SELECT  DISTINCT s.value "
 				+ "FROM t_set as s , Variable as v , Variables_Partitions as vp , t_partition as p "
-				+ "WHERE  vp.variable.id_variable = v.id_variable and s.id_set = vp.set.id_set  "
+				+ "WHERE  vp.variable.id_variable = v.id_variable and s.id_set = vp.test.id_set  "
 				+ "and vp.partition.id_partition = p.id_partition and p.id_partition =:id_part and v.id_variable =:id_vable";
 		
 		String text1 = "SELECT  DISTINCT s.value "

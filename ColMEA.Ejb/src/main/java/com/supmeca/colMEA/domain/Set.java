@@ -23,6 +23,7 @@ public class Set implements Serializable {
 	private Integer id_set;
 	private String value;
 	private Variable variable;
+	private List<Interval> intervales = new ArrayList<Interval>();
 	private List<Variables_Partitions> partitions = new ArrayList<Variables_Partitions>();
 	private static final long serialVersionUID = 1L;
 
@@ -49,13 +50,14 @@ public class Set implements Serializable {
 	}
 	
 	@JsonIgnore
-	@OneToMany(mappedBy="set")
+	@OneToMany(mappedBy="test")
 	public List<Variables_Partitions> getPartitions() {
 		return partitions;
 	}
 	public void setPartitions(List<Variables_Partitions> partitions) {
 		this.partitions = partitions;
 	}
+
 
 	@JsonIgnore
 	@ManyToOne
@@ -66,13 +68,25 @@ public class Set implements Serializable {
 	public void setVariable(Variable variable) {
 		this.variable = variable;
 	}
+
+
+	@JsonIgnore
+	@OneToMany(mappedBy="sets")
+	public List<Interval> getIntervales() {
+		return intervales;
+	}
+	public void setIntervales(List<Interval> intervales) {
+		this.intervales = intervales;
+	}
+	
 	
 	public Set(Integer id_set, String value, Variable variable,
-			List<Variables_Partitions> partitions) {
+			List<Interval> intervales, List<Variables_Partitions> partitions) {
 		super();
 		this.id_set = id_set;
 		this.value = value;
 		this.variable = variable;
+		this.intervales = intervales;
 		this.partitions = partitions;
 	}
 	

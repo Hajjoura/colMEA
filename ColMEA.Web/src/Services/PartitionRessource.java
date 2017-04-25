@@ -127,6 +127,8 @@ public class PartitionRessource {
 			}*/
 
 		Date date = new Date();
+		Float max = null;
+		Float min= null;
 		System.out.println(date);
 		Variables_Partitions varpart = new Variables_Partitions();
 		Variables_PartitionsFK varpartFk = new Variables_PartitionsFK();
@@ -134,13 +136,15 @@ public class PartitionRessource {
 		varpartFk.setId_partition(id_partition);
 		varpartFk.setId_set(id_set);
 		varpart.setDate(date);
+		varpart.setMaxRes(max);
+		varpart.setMinRes(min);
 		Partition partition = PartitionEjb.findPartitionById(id_partition);
 		Variable variable = VariableEjb.findVariableById(id_variable);
 		Set set = SetEjb.findSetById(id_set);
 
 		if ((partition!=null)&&(variable!=null))
 		{
-			if (PartitionEjb.addVariableToPartition(partition, variable,set, varpart.getDate()))
+			if (PartitionEjb.addVariableToPartition(partition, variable,set, varpart.getDate(),varpart.getMinRes(),varpart.getMaxRes()))
 			{
 				return Response.status(Status.ACCEPTED).entity("Success variable was added").build();
 			}else
@@ -206,7 +210,7 @@ public class PartitionRessource {
 	
 		if ((varpart!=null))
 		{
-			if (PartitionEjb.updateVariableToPartition(partition, variable,set, varpar.getDate()))
+			if (PartitionEjb.updateVariableToPartition(partition, variable,set, varpar.getDate(), varpar.getMinRes(),varpar.getMaxRes()))
 			{
 				return Response.status(Status.ACCEPTED).entity("Success variable was updated").build();
 			}else

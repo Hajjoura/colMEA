@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.mail.Flags.Flag;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -80,10 +81,10 @@ public class PartitionService implements PartitionServiceRemote, PartitionServic
 
 	//Add partition to variable
 	@Override
-	public Boolean addVariableToPartition(Partition partition, Variable variable,Set set ,Date date) {
+	public Boolean addVariableToPartition(Partition partition, Variable variable,Set set ,Date date, Float min, Float max) {
 
 		try{
-			Variables_Partitions varpart = new Variables_Partitions(em.merge(variable),em.merge(partition), em.merge(set), date);
+			Variables_Partitions varpart = new Variables_Partitions(em.merge(variable),em.merge(partition), em.merge(set), date, min, max);
 
 			em.persist(varpart);
 			return true;	
@@ -104,10 +105,10 @@ public class PartitionService implements PartitionServiceRemote, PartitionServic
 
 	//update Variables_Partitions
 	@Override
-	public Boolean updateVariableToPartition(Partition partition, Variable variable,Set set, Date date) {
+	public Boolean updateVariableToPartition(Partition partition, Variable variable,Set set, Date date, Float min , Float max) {
 
 		try{
-			Variables_Partitions varpart = new Variables_Partitions(em.merge(variable),em.merge(partition), em.merge(set), date);
+			Variables_Partitions varpart = new Variables_Partitions(em.merge(variable),em.merge(partition), em.merge(set), date, min, max);
 
 			em.persist(varpart);
 			return true;	

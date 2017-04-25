@@ -19,9 +19,9 @@ public interface PartitionServiceLocal {
 	public Partition findPartitionById(int id);
 	public List<Partition> findAllPartitions() ;
 	public void DeletePartition(int id);
-	public Boolean addVariableToPartition(Partition partition, Variable variable,Set set, Date date) ;
+	public Boolean addVariableToPartition(Partition partition, Variable variable,Set set ,Date date, Float min, Float max);
 	public List<Variables_Partitions> findVariablesPartitions();
-	public Boolean updateVariableToPartition(Partition partition, Variable variable,Set set, Date date);
+	public Boolean updateVariableToPartition(Partition partition, Variable variable,Set set, Date date, Float min , Float max);
 	public Variables_Partitions findVariableById(Variables_PartitionsFK id) ;
 	public Partition findPartitionByName(String name);
 	public Partition findPartitionByTeam(Integer id);
