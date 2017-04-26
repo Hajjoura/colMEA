@@ -14,4 +14,6 @@ public interface IntervalServiceRemote {
 	public Interval findIntervalById(int id);
 	public List<Interval> findAllIntervals() ;
 	public void DeleteInterval(int id);
+	public List<Interval> findIntervalsByIdSet(Integer id);
+
 }

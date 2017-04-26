@@ -52,7 +52,7 @@ public class IntervalService implements IntervalServiceRemote, IntervalServiceLo
 
 	@Override
 	public List<Interval> findAllIntervals() {
-		String text = "SELECT t FROM Interval t";
+		String text = "SELECT t FROM t_interval t";
 		Query query = em.createQuery(text);
 		List<Interval> ListIntervals = query.getResultList();
 		
@@ -63,5 +63,15 @@ public class IntervalService implements IntervalServiceRemote, IntervalServiceLo
 	public void DeleteInterval(int id) {
 		em.remove(em.find(Interval.class, id));	
 		
+	}
+	@Override
+	public List<Interval> findIntervalsByIdSet(Integer id)
+	{
+		String text = "SELECT t FROM t_interval as t , t_set as s"
+				+ " WHERE t.sets.id_set = s.id_set and s.id_set =:id ";
+		Query query = em.createQuery(text);
+		query.setParameter("id", id);
+		List<Interval> ListIntervals = query.getResultList();
+		return ListIntervals;
 	}
 }
