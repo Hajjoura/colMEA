@@ -15,4 +15,5 @@ public interface SetServiceLocal {
 	public Set findSetById(int id);
 	public List<Set> findAllSets() ;
 	public void DeleteSet(int id);
+	public List<Set> findSetByMinMax(Float min, Float max);
 }

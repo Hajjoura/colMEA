@@ -74,4 +74,14 @@ public class IntervalService implements IntervalServiceRemote, IntervalServiceLo
 		List<Interval> ListIntervals = query.getResultList();
 		return ListIntervals;
 	}
+	
+	public List<Interval> findIntervalsByVariable(Integer id){
+		String text = "SELECT t FROM t_interval as t , t_set as s, Variable as v"
+				+ " WHERE v.id_variable = s.variable.id_variable and t.sets.id_set = s.id_set "
+				+ "and v.id_variable =:id ";
+		Query query = em.createQuery(text);
+		query.setParameter("id", id);
+		List<Interval> ListIntervals = query.getResultList();
+		return ListIntervals;
+	}
 }

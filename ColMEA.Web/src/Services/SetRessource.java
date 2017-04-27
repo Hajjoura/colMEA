@@ -177,6 +177,17 @@ public class SetRessource {
 			return Response.ok(En).build();
 	 
 	}
+	@GET
+	@Path("findSetByMinMax/{min}/{max}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findIntervalByIdSet(@PathParam("min") Float min,@PathParam("max") Float max){
+		List<Set> En = SetEjb.findSetByMinMax(min, max);
+	 if (En==null)
+			return Response.status(Status.NOT_FOUND).entity("Interval Not Found").build();
+		else
+			return Response.ok(En).build();
+	 
+	}
 }
 
 

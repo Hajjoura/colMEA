@@ -3,6 +3,7 @@ package Services;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -22,6 +23,7 @@ import javax.ws.rs.core.Response.Status;
 import com.supmeca.colMEA.business.PartitionServiceLocal;
 import com.supmeca.colMEA.business.SetServiceLocal;
 import com.supmeca.colMEA.business.VariablesServiceLocal;
+import com.supmeca.colMEA.domain.Interval;
 import com.supmeca.colMEA.domain.Partition;
 import com.supmeca.colMEA.domain.Set;
 import com.supmeca.colMEA.domain.User;
@@ -104,7 +106,7 @@ public class VariableRessource {
 			return Response.status(Status.NOT_FOUND).entity("User Not found").build();
 	}
 
-	
+
 	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
 	//  Add Patition to Variable service
 	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
@@ -582,6 +584,52 @@ public class VariableRessource {
 			return Response.ok(Variables).build();
 
 	}
+
+	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	//  find Variable with Intervals
+	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	@GET
+	@Path("findVariableWithIntervals/{id_var}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findVariableWitSetsByPartition(@PathParam("id_var") Integer id_var){
+		HashMap<String,List<Interval>> Variables = VariableEjb.findVariablewithIntervals(id_var);
+		if (Variables==null)
+			return Response.status(Status.NOT_FOUND).entity("variable Not Found").build();
+		else
+			return Response.ok(Variables).build();
+
+	}
+	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	//  find Intervals with Variable and partitions 
+	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	@GET
+	@Path("findIntervalsByVableandpart/{id_var}/{id_part}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findIntervalsByVableandpart(@PathParam("id_var") Integer id_var,@PathParam("id_part") Integer id_part){
+		HashMap<String,List<Interval>> Variables = VariableEjb.findIntervalsByVableandpart(id_var, id_part);
+		if (Variables==null)
+			return Response.status(Status.NOT_FOUND).entity("variable Not Found").build();
+		else
+			return Response.ok(Variables).build();
+
+	}
+	
+	
+	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	//  find Variable with sets and intervals
+	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	@GET
+	@Path("findVariableWithSetsandIntervals/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findVariableWitSetsandIntervals(@PathParam("id") Integer id){
+		HashMap<String,List<Number>> Variables = VariableEjb.findVariablewithSets(id);
+		if (Variables==null)
+			return Response.status(Status.NOT_FOUND).entity("variable Not Found").build();
+		else
+			return Response.ok(Variables).build();
+
+	}
+
 }
 
 

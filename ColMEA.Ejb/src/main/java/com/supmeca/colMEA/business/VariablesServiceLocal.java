@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.ejb.Local;
 
+import com.supmeca.colMEA.domain.Interval;
 import com.supmeca.colMEA.domain.Partition;
 import com.supmeca.colMEA.domain.Set;
 import com.supmeca.colMEA.domain.Variable;
@@ -50,4 +51,8 @@ public interface VariablesServiceLocal {
 	public HashMap<String, List<Number>> findVariablewithSets(Integer id);
 	public List<Number> findSetsByVariableandPartition(int id_vable, int id_part) ;
 	public HashMap<String, List<Number>> findVariablewithSetsbyPartition(Integer id_var, Integer id_part) ;
+	public List<Interval> findIntervalsByVariable(Integer id);
+	public HashMap<String, List<Interval>> findVariablewithIntervals(Integer id);
+	public List<Interval> findIntervalByVableandpart(Integer id_vable, Integer id_part);
+	public HashMap<String, List<Interval>> findIntervalsByVableandpart(Integer id_vable, Integer id_part);
 }

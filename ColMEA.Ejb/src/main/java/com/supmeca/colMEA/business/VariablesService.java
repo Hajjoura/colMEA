@@ -16,6 +16,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import com.supmeca.colMEA.domain.Coordinator;
+import com.supmeca.colMEA.domain.Interval;
 import com.supmeca.colMEA.domain.Manager;
 import com.supmeca.colMEA.domain.Partition;
 import com.supmeca.colMEA.domain.Set;
@@ -528,4 +529,47 @@ public class VariablesService implements VariablesServiceRemote, VariablesServic
 		result.put(variable.getName(), sets); 
 		return result;
 	}
+	
+	@Override
+	public List<Interval> findIntervalsByVariable(Integer id){
+		String text = "SELECT t FROM t_interval as t , t_set as s, Variable as v"
+				+ " WHERE v.id_variable = s.variable.id_variable and t.sets.id_set = s.id_set "
+				+ "and v.id_variable =:id ";
+		Query query = em.createQuery(text);
+		query.setParameter("id", id);
+		List<Interval> ListIntervals = query.getResultList();
+		return ListIntervals;
+	}
+	@Override
+	public HashMap<String, List<Interval>> findVariablewithIntervals(Integer id) {
+		HashMap<String, List<Interval>> result = new HashMap<String, List<Interval>>();
+		Variable variable = this.findVariableById(id);
+
+		List<Interval> sets = this.findIntervalsByVariable(id);
+		result.put(variable.getName(), sets); 
+		return result;
+	}
+	@Override
+	public List<Interval> findIntervalByVableandpart(Integer id_vable, Integer id_part){
+		String text = "SELECT t FROM t_interval as t , t_set as s, Variable as v, Variables_Partitions as vp  , t_partition as p"
+				+ " WHERE v.id_variable = s.variable.id_variable and t.sets.id_set = s.id_set and v.id_variable = vp.variable.id_variable "
+				+ "and vp.partition.id_partition = p.id_partition and s.value= null and p.id_partition =:id_part and v.id_variable =:id_vable";
+		Query query = em.createQuery(text);
+		query.setParameter("id_vable", id_vable);		
+		query.setParameter("id_part", id_part);
+		List<Interval> ListIntervals = query.getResultList();
+		return ListIntervals;
+	}
+	@Override
+	public HashMap<String, List<Interval>> findIntervalsByVableandpart(Integer id_vable, Integer id_part) {
+		HashMap<String, List<Interval>> result = new HashMap<String, List<Interval>>();
+		Variable variable = this.findVariableById(id_vable);
+
+		List<Interval> sets = this.findIntervalByVableandpart(id_vable, id_part);
+		result.put(variable.getName(), sets); 
+		return result;
+	}
+	
+
+
 }
