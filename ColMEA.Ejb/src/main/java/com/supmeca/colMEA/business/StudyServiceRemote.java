@@ -19,4 +19,5 @@ public interface StudyServiceRemote {
 	public List<Study> findStudiesByProject(Integer id);
 	public Study findStudyByTeam(Integer id);
 	public List<Study> findStudiesByTeam(Integer id);
+	public void duplicateStudy(Integer id);
 }

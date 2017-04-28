@@ -55,7 +55,7 @@ public class Study implements Serializable {
 	public void setType(String type) {
 		this.type = type;
 	}
-	@ManyToOne
+	@ManyToOne( cascade=CascadeType.ALL)
 	@JoinColumn(name="id_project",referencedColumnName="id_project",insertable=false,updatable=false)
 
 	public Project getProject() {
@@ -65,7 +65,7 @@ public class Study implements Serializable {
 		this.project = project;
 	}
 	
-	@ManyToOne
+	@ManyToOne( cascade=CascadeType.ALL)
 	@JoinColumn(name="id_team",referencedColumnName="id_team",insertable=false,updatable=false)
 
 	public Team getTeam() {

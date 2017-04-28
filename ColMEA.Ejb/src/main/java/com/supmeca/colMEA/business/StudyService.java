@@ -123,4 +123,14 @@ public class StudyService implements StudyServiceRemote, StudyServiceLocal {
 		List<Study> Studies = query.getResultList();
 		return Studies;
 	}
+	//duplicate study
+	
+	@Override
+	public void duplicateStudy(Integer id) {
+
+	    Study s = this.findStudyById(id);
+	    em.persist(s);
+
+	    
+	}
 }
