@@ -8,9 +8,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import com.supmeca.colMEA.domain.Constraint;
 import com.supmeca.colMEA.domain.Coordinator;
+import com.supmeca.colMEA.domain.Objective;
+import com.supmeca.colMEA.domain.Partition;
 import com.supmeca.colMEA.domain.Project;
 import com.supmeca.colMEA.domain.Study;
+import com.supmeca.colMEA.domain.Variable;
 
 /**
  * Session Bean implementation class StudyService
@@ -123,13 +127,109 @@ public class StudyService implements StudyServiceRemote, StudyServiceLocal {
 		List<Study> Studies = query.getResultList();
 		return Studies;
 	}
+	
+	// find Partitions by Study
+		@Override
+		public List<Partition> findPartitionsByStudy(Integer id){
+			String Text = "SELECT p FROM t_partition as p ,Project as pr, Study as s "
+					+ "WHERE p.study.id_study = s.id_study and s.id_study =:id";
+
+			Query query = em.createQuery(Text);
+			query.setParameter("id", id);			    	
+			List<Partition> Partitions = query.getResultList();
+			return Partitions;
+		}
+		
+		// find Variables by Partition  
+		@Override
+		public List<Variable> findVariablesByPartition(Integer id){
+			String Text = "SELECT v FROM Variable as v, t_partition as p , Variables_Partitions as vp "
+					+ "WHERE p.id_partition = vp.partition.id_partition and v.id_variable = vp.variable.id_variable "
+					+ "and p.id_partition =:id";
+
+			Query query = em.createQuery(Text);
+			query.setParameter("id", id);			    	
+			List<Variable> variables = query.getResultList();
+			return variables;
+		}
 	//duplicate study
 	
 	@Override
 	public void duplicateStudy(Integer id) {
 
 	    Study s = this.findStudyById(id);
-	    em.persist(s);
+	    List<Partition> partitions = this.findPartitionsByStudy(id);
+	    String Text = "INSERT INTO study (number, type, id_project, id_team) VALUES(?, ?, ?, ?)";
+	    Query query = em.createNativeQuery(Text);
+		query.setParameter(1,s.getNumber());
+		query.setParameter(2,s.getType());
+		query.setParameter(3,s.getProject().getId_project());
+		query.setParameter(4,s.getTeam().getId_team());
+		query.executeUpdate();
+		for(int i=0; i<partitions.size();i++){
+			Partition p = partitions.get(i);
+		    String Text1 = "INSERT INTO t_partition (description, name, id_study) VALUES(?, ?, ?)";
+		    Query query1 = em.createNativeQuery(Text1);
+			query1.setParameter(1,p.getDescription());
+			query1.setParameter(2,p.getName());
+			query1.setParameter(3,p.getStudy().getId_study()+1);
+			query1.executeUpdate();
+			List<Variable> variables = this.findVariablesByPartition(p.getId_partition());
+			for(int j=0; j<variables.size();j++){
+				Variable v = variables.get(j);
+				if (variables.get(j) instanceof Constraint){
+					String Text2 = "INSERT INTO variable (date, description, image, max, max_res, min, min_res, name, unit, visibility,DTYPE) VALUES(?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				    Query query2 = em.createNativeQuery(Text2);
+					query2.setParameter(1,v.getDate());
+					query2.setParameter(2,v.getDescription());
+					query2.setParameter(3,v.getImage());
+					query2.setParameter(4,v.getMax());
+					query2.setParameter(5,v.getMax_res());
+					query2.setParameter(6,v.getMin());
+					query2.setParameter(7,v.getMin_res());
+					query2.setParameter(8,v.getName());
+					query2.setParameter(9,v.getUnit());
+					query2.setParameter(10,v.getVisibility());
+					query2.setParameter(11,"Constraint");
+					query2.executeUpdate();
+				}
+				if (variables.get(j) instanceof Objective){
+					String Text2 = "INSERT INTO variable (date, description, image, max, max_res, min, min_res, name, unit, visibility,DTYPE) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				    Query query2 = em.createNativeQuery(Text2);
+					query2.setParameter(1,v.getDate());
+					query2.setParameter(2,v.getDescription());
+					query2.setParameter(3,v.getImage());
+					query2.setParameter(4,v.getMax());
+					query2.setParameter(5,v.getMax_res());
+					query2.setParameter(6,v.getMin());
+					query2.setParameter(7,v.getMin_res());
+					query2.setParameter(8,v.getName());
+					query2.setParameter(9,v.getUnit());
+					query2.setParameter(10,v.getVisibility());
+					query2.setParameter(11,"Objective");
+					query2.executeUpdate();
+				}
+				if (variables.get(j) instanceof Variable){
+					String Text2 = "INSERT INTO variable (date, description, image, max, max_res, min, min_res, name, unit, visibility,DTYPE) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				    Query query2 = em.createNativeQuery(Text2);
+					query2.setParameter(1,v.getDate());
+					query2.setParameter(2,v.getDescription());
+					query2.setParameter(3,v.getImage());
+					query2.setParameter(4,v.getMax());
+					query2.setParameter(5,v.getMax_res());
+					query2.setParameter(6,v.getMin());
+					query2.setParameter(7,v.getMin_res());
+					query2.setParameter(8,v.getName());
+					query2.setParameter(9,v.getUnit());
+					query2.setParameter(10,v.getVisibility());
+					query2.setParameter(11,"Variable");
+					query2.executeUpdate();
+				}
+				
+			}
+		}
+
+		
 
 	    
 	}

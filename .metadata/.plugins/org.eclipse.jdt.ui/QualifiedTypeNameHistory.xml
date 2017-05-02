@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="javax.jws.WebService"/>
-<fullyQualifiedTypeName name="javax.ejb.Stateless"/>
-<fullyQualifiedTypeName name="com.sun.xml.internal.bind.v2.schemagen.xmlschema.List"/>
-<fullyQualifiedTypeName name="com.supmeca.colMEA.business.UserServiceRemote"/>
-<fullyQualifiedTypeName name="javax.ejb.Local"/>
 <fullyQualifiedTypeName name="com.supmeca.colMEA.business.UserServiceLocal"/>
 <fullyQualifiedTypeName name="com.supmeca.colMEA.business.EngineerServiceLocal"/>
 <fullyQualifiedTypeName name="javax.ws.rs.GET"/>
 <fullyQualifiedTypeName name="javax.ws.rs.Produces"/>
 <fullyQualifiedTypeName name="javax.ws.rs.core.MediaType"/>
 <fullyQualifiedTypeName name="javax.ws.rs.core.Response"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="javax.ws.rs.core.Response.Status"/>
 <fullyQualifiedTypeName name="javax.ws.rs.POST"/>
 <fullyQualifiedTypeName name="javax.ws.rs.Consumes"/>
@@ -26,23 +20,17 @@
 <fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Constraint"/>
 <fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Domain"/>
 <fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Objective"/>
-<fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Study"/>
 <fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Tool"/>
 <fullyQualifiedTypeName name="com.supmeca.colMEA.domain.User"/>
-<fullyQualifiedTypeName name="java.lang.Override"/>
 <fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Coordinator"/>
 <fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Engineer"/>
 <fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Team"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.lang.Boolean"/>
-<fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Set"/>
 <fullyQualifiedTypeName name="com.supmeca.colMEA.business.StatisticsServiceLocal"/>
 <fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Variable"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="com.supmeca.colMEA.business.SetServiceLocal"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
-<fullyQualifiedTypeName name="java.lang.Float"/>
 <fullyQualifiedTypeName name="java.lang.Number"/>
 <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
 <fullyQualifiedTypeName name="java.text.ParseException"/>
@@ -54,10 +42,22 @@
 <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonIgnoreProperties"/>
 <fullyQualifiedTypeName name="org.codehaus.jackson.annotate.JsonIgnore"/>
 <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonIgnore"/>
-<fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Partition"/>
-<fullyQualifiedTypeName name="javax.inject.Inject"/>
 <fullyQualifiedTypeName name="com.supmeca.colMEA.business.VariablesServiceLocal"/>
-<fullyQualifiedTypeName name="com.supmeca.colMEA.business.PartitionServiceLocal"/>
 <fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Variables_Partitions"/>
+<fullyQualifiedTypeName name="javax.persistence.criteria.CriteriaBuilder.In"/>
+<fullyQualifiedTypeName name="javax.mail.Flags.Flag"/>
+<fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Set"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="com.supmeca.colMEA.business.SetServiceLocal"/>
+<fullyQualifiedTypeName name="javax.inject.Inject"/>
+<fullyQualifiedTypeName name="com.supmeca.colMEA.business.IntervalServiceLocal"/>
+<fullyQualifiedTypeName name="java.lang.Override"/>
+<fullyQualifiedTypeName name="java.lang.Float"/>
+<fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Interval"/>
+<fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Partition"/>
+<fullyQualifiedTypeName name="com.supmeca.colMEA.business.ProjectServiceLocal"/>
+<fullyQualifiedTypeName name="com.supmeca.colMEA.business.PartitionServiceLocal"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Study"/>
 </qualifiedTypeNameHistroy>

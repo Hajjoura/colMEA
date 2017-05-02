@@ -4,7 +4,9 @@ import java.util.List;
 
 import javax.ejb.Local;
 
+import com.supmeca.colMEA.domain.Partition;
 import com.supmeca.colMEA.domain.Study;
+import com.supmeca.colMEA.domain.Variable;
 
 @Local
 public interface StudyServiceLocal {
@@ -20,4 +22,6 @@ public interface StudyServiceLocal {
 	public Study findStudyByTeam(Integer id);
 	public List<Study> findStudiesByTeam(Integer id);
 	public void duplicateStudy(Integer id);
+	public List<Partition> findPartitionsByStudy(Integer id);
+	public List<Variable> findVariablesByPartition(Integer id);
 }
