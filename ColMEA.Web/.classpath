@@ -14,5 +14,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ColMEA.Ejb"/>
+	<classpathentry kind="lib" path="C:/Users/PlacisAdmin/Desktop/SUPMECA/Stage SUPMECA 2017/J2EE/colMEA/spring-security-oauth2-1.0.5.RELEASE.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

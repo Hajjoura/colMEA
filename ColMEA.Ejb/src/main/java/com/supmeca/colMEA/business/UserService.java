@@ -93,7 +93,7 @@ public class UserService implements UserServiceRemote, UserServiceLocal {
 		query.setParameter("l", login);
 		query.setParameter("p", password);
 		user = (User)  query.getSingleResult();
-
+		
 		return user;
 	}
 

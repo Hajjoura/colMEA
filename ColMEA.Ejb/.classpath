@@ -41,5 +41,6 @@
 	<classpathentry kind="lib" path="C:/Users/PlacisAdmin/Desktop/SUPMECA/Stage SUPMECA 2017/J2EE/colMEA/jackson-annotations.jar"/>
 	<classpathentry kind="lib" path="C:/Users/PlacisAdmin/Desktop/SUPMECA/Stage SUPMECA 2017/J2EE/colMEA/jackson-core-asl.jar"/>
 	<classpathentry kind="lib" path="C:/Users/PlacisAdmin/Desktop/SUPMECA/Stage SUPMECA 2017/J2EE/colMEA/jackson-mapper-asl.jar"/>
+	<classpathentry kind="lib" path="C:/Users/PlacisAdmin/Desktop/SUPMECA/Stage SUPMECA 2017/J2EE/colMEA/spring-security-oauth2-1.0.5.RELEASE.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
