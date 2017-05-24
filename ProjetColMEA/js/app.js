@@ -48,6 +48,11 @@ angular.module('ColMEA', ['ui.router', 'ColMEA.controllers','LocalStorageModule'
             templateUrl: 'Views/Manager/Partition.html',
             controller: 'PartitionMCtrl'
         })
+        .state('HomeManager.PartitionManag', {
+            url: '/PartitionManag',
+            templateUrl: 'Views/Manager/PartitionManagement.html',
+            controller:'PartitionManagCtrl'
+        })
         .state('HomeManager.CoordinatorM', {
             url: '/CoordinatorM',
             templateUrl: 'Views/Manager/Coordinator.html',
@@ -103,6 +108,11 @@ angular.module('ColMEA', ['ui.router', 'ColMEA.controllers','LocalStorageModule'
         .state('HomeCoordinator.PartitionC', {
             url: '/PartitionC',
             templateUrl: 'Views/Coordinator/Partition.html',
+
+        })
+        .state('HomeCoordinator.PartitionCManag', {
+            url: '/PartitionCManag',
+            templateUrl: 'Views/Coordinator/PartitionManagement.html',
             controller: 'PartitionMCtrl'
         })
 
@@ -118,20 +128,31 @@ angular.module('ColMEA', ['ui.router', 'ColMEA.controllers','LocalStorageModule'
         })
         .state('HomeEngineer', {
             url: '/HomeEngineer',
-            templateUrl: 'Views/Engineer/HomeEngineer.html',
+            templateUrl: 'Views/Engineer/HomeEngineer.html'
         })
 
         .state('HomeEngineer.DashboardE', {
             url: '/DashboardE',
-            templateUrl: 'Views/Engineer/Dashboard.html',
+            templateUrl: 'Views/Engineer/Dashboard.html'
+
+        })
+        .state('PartitionE', {
+            url: '/PartitionE',
+            templateUrl: 'Views/Engineer/PartitionE.html',
+            controller: 'PartitionECtrl'
+        })
+        .state('Partition', {
+            url: '/Partition',
+            templateUrl: 'Views/Engineer/Partition.html',
+
 
         })
         .state('HomeEngineer.PartitionE', {
-            url: '/PartitionE',
-            templateUrl: 'Views/Engineer/Partition.html',
+            url: '/PartitionEManag',
+            templateUrl: 'Views/Engineer/PartitionManagement.html',
+
 
         })
-
 	.state('profile', {
             url: '/profile',
             templateUrl: 'templates/myprofile.html',

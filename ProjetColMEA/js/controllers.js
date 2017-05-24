@@ -8,7 +8,14 @@ angular.module('ColMEA.controllers', [])
     .controller('HomeMCtrl', function($scope, $http, localStorageService) {
 
     })
-    .controller('PartitionMCtrl', function($scope, $http, localStorageService) {
+    .controller('PartitionECtrl', function($scope, $http, localStorageService) {
+        $scope.IsVisible = false;
+        $scope.ShowHide = function () {
+            //If DIV is visible it will be hidden and vice versa.
+            $scope.IsVisible = $scope.IsVisible ? false : true;
+        }
+    })
+    .controller('PartitionManagCtrl', function($scope, $http, localStorageService) {
 
     })
     .controller('CoordinatorMCtrl', function($scope, $http, localStorageService) {
