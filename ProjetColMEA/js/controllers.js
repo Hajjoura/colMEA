@@ -179,12 +179,30 @@ angular.module('ColMEA.controllers', [])
             });
         };
     })
+    .controller('LoginCtrl', function ($scope, $location,localStorageService,$window) {
+
+
+            $http({
+                method: 'GET',
+                url: $scope.endpoint + 'Users/auth/',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                params: {login: $scope.login, password: $scope.password}
+
+            }).then(function successCallback(response) {
+                if(response.data.success){
+                    $window.location.reload();
+                }
+            }, function errorCallback(response) {
+
+            });
+
+
+    })
     //pause
     .controller('LogoutCtrl', function($scope, $http, localStorageService, $window, $state) {
-        if($scope.token == null){
+
             $state.go('login', {}, {reload: false});
-        }
-        localStorageService.remove('token');
+
         $window.location.reload();
     })
 

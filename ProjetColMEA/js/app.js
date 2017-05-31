@@ -29,13 +29,13 @@ angular.module('ColMEA', ['ui.router', 'ColMEA.controllers','LocalStorageModule'
     })
         .state('HomeManager', {
             url: '/HomeManager',
-            templateUrl: 'Views/Manager/HomeManager.html',
+            templateUrl: 'Views/Manager/HomeManager.html'
 
 
         })
         .state('HomeManager.DashboardM', {
             url: '/Dashboard',
-            templateUrl: 'Views/Manager/Dashboard.html',
+            templateUrl: 'Views/Manager/Dashboard.html'
 
         })
         .state('HomeManager.ProjectM', {
