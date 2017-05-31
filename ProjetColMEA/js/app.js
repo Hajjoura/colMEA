@@ -51,7 +51,7 @@ angular.module('ColMEA', ['ui.router', 'ColMEA.controllers','LocalStorageModule'
         .state('HomeManager.PartitionManag', {
             url: '/PartitionManag',
             templateUrl: 'Views/Manager/PartitionManagement.html',
-            controller:'PartitionManagCtrl'
+            parent:'HomeManager'
         })
         .state('HomeManager.CoordinatorM', {
             url: '/CoordinatorM',
@@ -73,17 +73,57 @@ angular.module('ColMEA', ['ui.router', 'ColMEA.controllers','LocalStorageModule'
             templateUrl: 'Views/Manager/Domain.html',
             controller: 'DomainMCtrl'
         })
+        .state('AddCoordinator', {
+            url: '/AddCoordinator',
+            templateUrl: 'Views/Manager/AddCoordinator.html',
+            parent:'HomeManager'
+        })
+        .state('AddDomain', {
+            url: '/AddDomain',
+            templateUrl: 'Views/Manager/AddDomain.html',
+            parent:'HomeManager'
+        })
+        .state('AddEngineer', {
+            url: '/AddEngineer',
+            templateUrl: 'Views/Manager/AddEngineer.html',
+            parent:'HomeManager'
+        })
+        .state('AddTeam', {
+            url: '/AddTeam',
+            templateUrl: 'Views/Manager/AddTeam.html',
+            parent:'HomeManager'
+        })
+        .state('AddUser', {
+            url: '/AddCoordinator',
+            templateUrl: 'Views/Manager/AddCoordinator.html',
+            parent:'HomeManager'
+        })
+        .state('NewPartition', {
+            url: '/NewPartition',
+            templateUrl: 'Views/Manager/NewPartition.html',
+            parent:'HomeManager'
+        })
+        .state('NewProject', {
+            url: '/NewProject',
+            templateUrl: 'Views/Manager/NewProject.html',
+            parent:'HomeManager'
+        })
+        .state('NewStudy', {
+            url: '/NewStudy',
+            templateUrl: 'Views/Manager/NewStudy.html',
+            parent:'HomeManager'
+        })
+        .state('NewVariable', {
+            url: '/NewVariable',
+            templateUrl: 'Views/Manager/NewVariable.html',
+            parent:'HomeManager'
+        })
+
         .state('logout', {
             url: '/logout',
             controller: 'LogoutCtrl'
         })
 
-        .state('offers', {
-            url: '/offers',
-            templateUrl: 'templates/offers.html',
-            controller: 'OffersCtrl'
-        })
-    
         .state('users', {
             url: '/users',
             templateUrl: 'templates/users.html',
@@ -113,7 +153,8 @@ angular.module('ColMEA', ['ui.router', 'ColMEA.controllers','LocalStorageModule'
         .state('HomeCoordinator.PartitionCManag', {
             url: '/PartitionCManag',
             templateUrl: 'Views/Coordinator/PartitionManagement.html',
-            controller: 'PartitionMCtrl'
+            controller: 'PartitionMCtrl',
+            parent:'HomeCoordinator'
         })
 
         .state('HomeCoordinator.EngineerC', {
@@ -126,6 +167,11 @@ angular.module('ColMEA', ['ui.router', 'ColMEA.controllers','LocalStorageModule'
             templateUrl: 'Views/Coordinator/Team.html',
             controller: 'TeamMCtrl'
         })
+        .state('NewVariableC', {
+            url: '/NewVariableC',
+            templateUrl: 'Views/Coordinator/NewVariable.html',
+            parent:'HomeCoordinator'
+        })
         .state('HomeEngineer', {
             url: '/HomeEngineer',
             templateUrl: 'Views/Engineer/HomeEngineer.html'
@@ -136,22 +182,33 @@ angular.module('ColMEA', ['ui.router', 'ColMEA.controllers','LocalStorageModule'
             templateUrl: 'Views/Engineer/Dashboard.html'
 
         })
-        .state('PartitionE', {
+        .state('HomeEngineer.PartitionE', {
             url: '/PartitionE',
-            templateUrl: 'Views/Engineer/PartitionE.html',
+            templateUrl: 'Views/Engineer/Partition.html',
             controller: 'PartitionECtrl'
         })
-        .state('Partition', {
-            url: '/Partition',
-            templateUrl: 'Views/Engineer/Partition.html',
+
+        .state('HomeEngineer.PartitionEManag', {
+            url: '/PartitionEManag',
+            templateUrl: 'Views/Engineer/PartitionManagement.html',
+            parent:'HomeEngineer'
 
 
         })
-        .state('HomeEngineer.PartitionE', {
-            url: '/PartitionEManag',
-            templateUrl: 'Views/Engineer/PartitionManagement.html',
-
-
+        .state('NewVariableE', {
+            url: '/NewVariableE',
+            templateUrl: 'Views/Engineer/NewVariable.html',
+            parent:'HomeEngineer'
+        })
+        .state('NewConstraintE', {
+            url: '/NewConstraintM',
+            templateUrl: 'Views/Engineer/NewConstraint.html',
+            parent:'HomeEngineer'
+        })
+        .state('NewObjectiveE', {
+            url: '/NewObjectiveE',
+            templateUrl: 'Views/Engineer/NewObjective.html',
+            parent:'HomeEngineer'
         })
 	.state('profile', {
             url: '/profile',
