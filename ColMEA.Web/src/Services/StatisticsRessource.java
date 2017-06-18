@@ -18,7 +18,7 @@ public class StatisticsRessource {
 
 	@Inject
 	StatisticsServiceLocal StatisticsEjb;
-	
+
 	@GET
 	@Path("NbrPartitionsByStudy/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -31,7 +31,7 @@ public class StatisticsRessource {
 			return Response.ok(count).build();
 
 	}
-	
+
 	@GET
 	@Path("NbrVariablesByProject/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -56,7 +56,7 @@ public class StatisticsRessource {
 			return Response.ok(count).build();
 
 	}
-	
+
 	@GET
 	@Path("NbrVariablesByStudy/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -93,7 +93,7 @@ public class StatisticsRessource {
 			return Response.ok(count).build();
 
 	}
-	
+
 	@GET
 	@Path("NbrStudiesByProject/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -118,7 +118,7 @@ public class StatisticsRessource {
 			return Response.ok(count).build();
 
 	}
-	
+
 	@GET
 	@Path("NbrEngineersByTeam/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -131,7 +131,7 @@ public class StatisticsRessource {
 			return Response.ok(count).build();
 
 	}
-	
+
 	@GET
 	@Path("NbrProjectsByManager/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -144,7 +144,7 @@ public class StatisticsRessource {
 			return Response.ok(count).build();
 
 	}
-	
+
 	@GET
 	@Path("NbrTeamsByEngineer/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -169,4 +169,54 @@ public class StatisticsRessource {
 			return Response.ok(count).build();
 
 	}
+
+	@GET
+	@Path("NbrTeams")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response NumberTeams(){
+
+		Integer count = StatisticsEjb.NumberTeams();
+		if (count==null)
+			return Response.status(Status.NOT_FOUND).build();
+		else
+			return Response.ok(count).build();
+
+	}
+	@GET
+	@Path("NbrProjects")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response NumberProjects(){
+
+		Integer count = StatisticsEjb.NumberProjects();
+		if (count==null)
+			return Response.status(Status.NOT_FOUND).build();
+		else
+			return Response.ok(count).build();
+
+	}
+	@GET
+	@Path("NbrPartitions")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response NumberPartitions(){
+
+		Integer count = StatisticsEjb.NumberPartitions();
+		if (count==null)
+			return Response.status(Status.NOT_FOUND).build();
+		else
+			return Response.ok(count).build();
+
+	}
+	@GET
+	@Path("NbrEngineers")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response NumberEngineers(){
+
+		Integer count = StatisticsEjb.NumberEngineers();
+		if (count==null)
+			return Response.status(Status.NOT_FOUND).build();
+		else
+			return Response.ok(count).build();
+
+	}
+
 }

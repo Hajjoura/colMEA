@@ -20,8 +20,10 @@ import javax.ws.rs.core.Response.Status;
 
 import com.supmeca.colMEA.business.IntervalServiceLocal;
 import com.supmeca.colMEA.business.SetServiceLocal;
+import com.supmeca.colMEA.business.VariablesServiceLocal;
 import com.supmeca.colMEA.domain.Set;
 import com.supmeca.colMEA.domain.Interval;
+import com.supmeca.colMEA.domain.Variable;
 
 @Path("/Sets")
 public class SetRessource {
@@ -31,7 +33,9 @@ public class SetRessource {
 
 	@Inject
 	IntervalServiceLocal IntervalEjb;
-
+	@Inject
+	VariablesServiceLocal VariableEjb;
+	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response findAllSetss(){
@@ -46,15 +50,27 @@ public class SetRessource {
 	}
 
 	@POST
+	@Path("addSet/{id}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+
+	public Response CreateSet (@PathParam("id") Integer id,Set set, @Context UriInfo uriInfo) {
+		Variable v = VariableEjb.findVariableById(id);
+		SetEjb.CreateSet(set,v);
+		UriBuilder builder = uriInfo.getAbsolutePathBuilder();
+		return Response.created(builder.build()).entity(set).build();
+	}
+	@POST
+	@Path("addSet")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 
 	public Response addSet (Set set, @Context UriInfo uriInfo) {
-		SetEjb.CreateSet(set);
+		
+		SetEjb.addSet(set);
 		UriBuilder builder = uriInfo.getAbsolutePathBuilder();
 		return Response.created(builder.build()).entity(set).build();
 	}
-
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response updateSet(Set set){
@@ -84,6 +100,7 @@ public class SetRessource {
 			return Response.ok(s).build();
 
 	}
+
 	@DELETE
 	@Path("DeleteSet/{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -93,6 +110,17 @@ public class SetRessource {
 			return Response.status(Status.ACCEPTED).entity("Set successfully Deleted").build();
 		else
 			return Response.status(Status.NOT_FOUND).entity("Set Not found").build();
+	}
+	@GET
+	@Path("findLastSet")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findSLastetById(){
+		Set s = SetEjb.getLastRowSet();
+		if (s==null)
+			return Response.status(Status.NOT_FOUND).entity("Set Not Found").build();
+		else
+			return Response.ok(s).build();
+
 	}
 	
 	//*************************************************************************//

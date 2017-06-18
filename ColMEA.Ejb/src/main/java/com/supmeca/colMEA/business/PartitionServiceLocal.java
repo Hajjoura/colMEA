@@ -41,4 +41,7 @@ public interface PartitionServiceLocal {
 	public List<Partition> findPartitionsByConstraint(Integer id);
 	public Partition findPartitionByObjective(Integer id);
 	public List<Partition> findPartitionsByObjective(Integer id);
+	public List<Variables_Partitions>  findVariablePartitionByIdVable(Integer id);
+	public List<Variables_Partitions>  findVariablePartitionByIdPart(Integer id);
+	public List<Variables_Partitions> findVariablePartitionByIdSet(Integer id);
 }

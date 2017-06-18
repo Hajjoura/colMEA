@@ -110,13 +110,50 @@ public class PartitionService implements PartitionServiceRemote, PartitionServic
 		try{
 			Variables_Partitions varpart = new Variables_Partitions(em.merge(variable),em.merge(partition), em.merge(set), date, min, max);
 
-			em.persist(varpart);
+			em.merge(varpart);
 			return true;	
 		}catch(Exception e){
 			return false;
 		}
 	}
+	
+	//find Variables partitions by id variable
+	
+	@Override
+	public List<Variables_Partitions> findVariablePartitionByIdVable(Integer id) {
+		String text = "SELECT vp FROM Variables_Partitions as vp WHERE vp.variables_partitionsFK.id_variable =:id";
+		
+		Query query = em.createQuery(text);
+		query.setParameter("id", id);
+		List<Variables_Partitions> List = query.getResultList();
 
+		return List;
+	}
+
+	//find Variables partitions by id partition
+	
+	@Override
+	public List<Variables_Partitions> findVariablePartitionByIdPart(Integer id) {
+		String text = "SELECT vp FROM Variables_Partitions as vp WHERE vp.variables_partitionsFK.id_partition =:id";
+		
+		Query query = em.createQuery(text);
+		query.setParameter("id", id);
+		List<Variables_Partitions> List = query.getResultList();
+
+		return List;
+	}
+	//find Variables partitions by id Set
+	
+	@Override
+	public List<Variables_Partitions> findVariablePartitionByIdSet(Integer id) {
+		String text = "SELECT vp FROM Variables_Partitions as vp WHERE vp.variables_partitionsFK.id_set =:id";
+		
+		Query query = em.createQuery(text);
+		query.setParameter("id", id);
+		List<Variables_Partitions> List = query.getResultList();
+
+		return List;
+	}
 	//find variable by id
 	@Override
 	public Variables_Partitions findVariableById(Variables_PartitionsFK id) {
@@ -313,7 +350,7 @@ public class PartitionService implements PartitionServiceRemote, PartitionServic
 	// find Partitions by Variable
 	@Override
 	public List<Partition> findPartitionsByVariable(Integer id){
-		String Text = "SELECT p FROM t_partition as p , Variable as v, Variables_Partitions as vp "
+		String Text = "SELECT DISTINCT p FROM t_partition as p , Variable as v, Variables_Partitions as vp "
 				+ "WHERE p.id_partition = vp.partition.id_partition and v.id_variable = vp.variable.id_variable "
 				+ "and v.id_variable =:id";
 

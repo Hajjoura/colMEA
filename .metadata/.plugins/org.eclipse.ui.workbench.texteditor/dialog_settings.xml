@@ -13,16 +13,16 @@
 		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="Set" key="selection"/>
+		<item value="Shared" key="selection"/>
 		<list key="findhistory">
+			<item value="shared"/>
+			<item value="findPartitions"/>
+			<item value="findPart"/>
+			<item value="findSetsByVariable"/>
+			<item value="findVariab"/>
+			<item value="findPar"/>
 			<item value="User"/>
 			<item value="Hajjourti"/>
-			<item value="Tool"/>
-			<item value="Domain"/>
-			<item value="int"/>
-			<item value="name"/>
-			<item value="User Not Found"/>
-			<item value="Constraint"/>
 		</list>
 		<list key="replacehistory">
 			<item value="Set"/>

@@ -89,8 +89,6 @@ public class Set implements Serializable {
 		this.intervales = intervales;
 		this.partitions = partitions;
 	}
-	
-	
-	
+
    
 }

@@ -39,7 +39,18 @@ public class StatisticsService implements StatisticsServiceRemote, StatisticsSer
 		Integer count =((Long) query.getSingleResult()).intValue();
 		return count;
 	}
+	@Override
+	public Integer NumberPartitions() {
+		String Text = "SELECT count(p) FROM  t_partition as p ";
 
+		Query query = em.createQuery(Text);
+		
+		query.setFirstResult(0);
+		query.setMaxResults(1);
+
+		Integer count =((Long) query.getSingleResult()).intValue();
+		return count;
+	}
 
 	@Override
 	public Integer NumberVariablesByProject(Integer id) {
@@ -56,6 +67,18 @@ public class StatisticsService implements StatisticsServiceRemote, StatisticsSer
 		return count;
 	}
 
+	@Override
+	public Integer NumberVariables() {
+		String Text = "SELECT count(v) FROM  Variable as v ";
+
+		Query query = em.createQuery(Text);
+		
+		query.setFirstResult(0);
+		query.setMaxResults(1);
+
+		Integer count =((Long) query.getSingleResult()).intValue();
+		return count;
+	}
 
 	@Override
 	public Integer NumberVariablesByPartition(Integer id) {
@@ -136,6 +159,19 @@ public class StatisticsService implements StatisticsServiceRemote, StatisticsSer
 	}
 
 
+
+	@Override
+	public Integer NumberStudies() {
+		String Text = "SELECT count(s) FROM  Study as s ";
+
+		Query query = em.createQuery(Text);
+		
+		query.setFirstResult(0);
+		query.setMaxResults(1);
+
+		Integer count =((Long) query.getSingleResult()).intValue();
+		return count;
+	}
 	@Override
 	public Integer NumberEngineersByProject(Integer id) {
 		String Text = "SELECT count(e.id_user) FROM   Engineer as e, Project as pr, Study as s , Team as t, Teams_Engineers as te "
@@ -165,12 +201,33 @@ public class StatisticsService implements StatisticsServiceRemote, StatisticsSer
 
 
 	@Override
+	public Integer NumberEngineers() {
+		String Text = "SELECT count(e.id_user) FROM   Engineer as e";
+
+		Query query = em.createQuery(Text);
+	
+
+		Integer count =((Long) query.getSingleResult()).intValue();
+		return count;
+	}
+
+	@Override
 	public Integer NumberProjectsByManager(Integer id) {
 		String Text = "SELECT count(pr) FROM   Manager as m, Project as pr "
 				+ "WHERE m.id_user = pr.manager.id_user and m.id_user  =:id";
 
 		Query query = em.createQuery(Text);
 		query.setParameter("id", id);
+
+		Integer count =((Long) query.getSingleResult()).intValue();
+		return count;
+	}
+	@Override
+	public Integer NumberProjects() {
+		String Text = "SELECT count(pr) FROM  Project as pr ";
+
+		Query query = em.createQuery(Text);
+		
 
 		Integer count =((Long) query.getSingleResult()).intValue();
 		return count;
@@ -188,7 +245,16 @@ public class StatisticsService implements StatisticsServiceRemote, StatisticsSer
 		Integer count =((Long) query.getSingleResult()).intValue();
 		return count;
 	}
+	@Override
+	public Integer NumberTeams() {
+		String Text = "SELECT count(t.id_team) FROM  Team as t ";
 
+		Query query = em.createQuery(Text);
+	
+
+		Integer count =((Long) query.getSingleResult()).intValue();
+		return count;
+	}
 
 	@Override
 	public Integer NumberTeamsByEnginner(Integer id) {

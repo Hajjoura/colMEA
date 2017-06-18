@@ -121,13 +121,58 @@ public class StudyService implements StudyServiceRemote, StudyServiceLocal {
 	@Override
 	public List<Study> findStudiesByTeam(Integer id) {
 		String Text = "SELECT s FROM Study as s , Team as t "
-				+ "WHERE t.id_team = s.team.id_team and t.id =:id";
+				+ "WHERE t.id_team = s.team.id_team and t.id_team =:id";
 		Query query = em.createQuery(Text);
 		query.setParameter("id", id);
 		List<Study> Studies = query.getResultList();
 		return Studies;
 	}
-	
+	// find Studies by Engineer
+	@Override
+	public List<Study> findStudiesByEngineer(Integer id) {
+		String Text = "SELECT s FROM Study as s , Team as t , Engineer as e ,Teams_Engineers te "
+				+ "WHERE t.id_team = s.team.id_team and t.id_team = te.team.id_team and "
+				+ "e.id_user = te.engineer.id_user and e.id_user =:id";
+		Query query = em.createQuery(Text);
+		query.setParameter("id", id);
+		List<Study> Studies = query.getResultList();
+		return Studies;
+	}
+	// find Studies by Engineer
+	@Override
+	public Study findStudyByEngineer(Integer id) {
+		String Text = "SELECT s FROM Study as s , Team as t , Engineer as e ,Teams_Engineers te "
+				+ "WHERE t.id_team = s.team.id_team and t.id_team = te.team.id_team and "
+				+ "e.id_user = te.engineer.id_user and e.id_user =:id";
+		Query query = em.createQuery(Text);
+		query.setParameter("id", id);
+		query.setFirstResult(0);
+		query.setMaxResults(1);
+		Study Study = (Study)query.getSingleResult();
+		return Study;
+	}
+	// find Studies by Coordinator
+	@Override
+	public List<Study> findStudiesByCoordinator(Integer id) {
+		String Text = "SELECT s FROM Study as s , Team as t , Coordinator as e "
+				+ "WHERE t.id_team = s.team.id_team  and "
+				+ "e.id_user = t.coordinator.id_user and e.id_user =:id";
+		Query query = em.createQuery(Text);
+		query.setParameter("id", id);
+		List<Study> Studies = query.getResultList();
+		return Studies;
+	}
+	// find Studies by Manager
+		@Override
+		public List<Study> findStudiesByManager(Integer id) {
+			String Text = "SELECT s FROM Study as s , Project as p , Manager as m "
+					+ "WHERE p.id_project = s.project.id_project and "
+					+ "e.id_user = p.manager.id_user and e.id_user =:id";
+			Query query = em.createQuery(Text);
+			query.setParameter("id", id);
+			List<Study> Studies = query.getResultList();
+			return Studies;
+		}
 	// find Partitions by Study
 		@Override
 		public List<Partition> findPartitionsByStudy(Integer id){

@@ -173,6 +173,62 @@ public class StudyRessource {
 			return Response.ok(Studies).build();
 	 
 	}
+	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+//  find Study by Engineer
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	@GET
+	@Path("findStudyByEngineer/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findStudyByEngineer(@PathParam("id") Integer id){
+		Study Studies = StudyEjb.findStudyByEngineer(id);
+	 if (Studies==null)
+			return Response.status(Status.NOT_FOUND).entity("Study Not Found").build();
+		else
+			return Response.ok(Studies).build();
+	 
+	}
+	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+//  find Studies by Engineer
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	@GET
+	@Path("findStudiesByEngineer/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findStudiesByEngineer(@PathParam("id") Integer id){
+		List<Study> Studies = StudyEjb.findStudiesByEngineer(id);
+	 if (Studies==null)
+			return Response.status(Status.NOT_FOUND).entity("Study Not Found").build();
+		else
+			return Response.ok(Studies).build();
+	 
+	}
+	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+//  find Studies by Coordinator
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	@GET
+	@Path("findStudiesByCoordinator/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findStudiesByCoordinator(@PathParam("id") Integer id){
+		List<Study> Studies = StudyEjb.findStudiesByCoordinator(id);
+	 if (Studies==null)
+			return Response.status(Status.NOT_FOUND).entity("Study Not Found").build();
+		else
+			return Response.ok(Studies).build();
+	 
+	}
+	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+//  find Studies by Manager
+//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	@GET
+	@Path("findStudiesByManager/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findStudiesByManager(@PathParam("id") Integer id){
+		List<Study> Studies = StudyEjb.findStudiesByTeam(id);
+	 if (Studies==null)
+			return Response.status(Status.NOT_FOUND).entity("Study Not Found").build();
+		else
+			return Response.ok(Studies).build();
+	 
+	}
 //-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
 //  Duplicate Studies by Team
 //-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*-

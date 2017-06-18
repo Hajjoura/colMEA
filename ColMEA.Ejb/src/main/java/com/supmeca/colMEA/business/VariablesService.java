@@ -137,6 +137,25 @@ public class VariablesService implements VariablesServiceRemote, VariablesServic
 		List<Variable> Variables = query.getResultList();
 		return Variables;
 	}
+	//find local variables
+	@Override
+	public List<Variable> findLocalVariables(){
+		String Text = "SELECT v FROM Variable v WHERE v.visibility = 0";
+		Query query = em.createQuery(Text);
+		
+		List<Variable> Variables = query.getResultList();
+		return Variables;
+	}
+	
+	//find Shared variables
+	@Override
+	public List<Variable> findSharedVariables(){
+		String Text = "SELECT v FROM Variable v WHERE v.visibility = 1";
+		Query query = em.createQuery(Text);
+		
+		List<Variable> Variables = query.getResultList();
+		return Variables;
+	}
 	// find Variable by minRes and maxRes  
 
 	@Override
@@ -296,7 +315,7 @@ public class VariablesService implements VariablesServiceRemote, VariablesServic
 	// find Variables by Engineer  
 	@Override
 	public List<Variable> findVariablesByEngineer(Integer id){
-		String Text = "SELECT v FROM Variable as v, t_partition as p , Study as s, Team as t, Variables_Partitions as vp, Teams_Engineers te, Engineer e  "
+		String Text = "SELECT DISTINCT v FROM Variable as v, t_partition as p , Study as s, Team as t, Variables_Partitions as vp, Teams_Engineers te, Engineer e  "
 				+ "WHERE p.id_partition = vp.partition.id_partition and v.id_variable = vp.variable.id_variable "
 				+ "and p.study.id_study = s.id_study and s.team.id_team = t.id_team and te.team.id_team = t.id_team "
 				+ "and te.engineer.id_user = e.id_user and  e.id_user =:id";
@@ -469,7 +488,7 @@ public class VariablesService implements VariablesServiceRemote, VariablesServic
 	@Override
 	public List<Set> findVariablewithSet(Integer id){
 		String Text = "SELECT s FROM Variable as v, t_set as s  "
-				+ "WHERE  v.id_variable =:id ";
+				+ "WHERE s.variable.id_variable =v.id_variable and v.id_variable =:id ";
 
 		Query query = em.createQuery(Text);
 		query.setParameter("id", id);			    	

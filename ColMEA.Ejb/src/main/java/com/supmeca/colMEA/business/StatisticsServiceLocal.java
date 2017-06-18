@@ -17,6 +17,12 @@ public interface StatisticsServiceLocal {
 	public Integer NumberProjectsByManager(Integer id);
 	public Integer NumberTeamsByCoordinator(Integer id);
 	public Integer NumberTeamsByEnginner(Integer id);
+	public Integer NumberPartitions();
+	public Integer NumberVariables();
+	public Integer NumberStudies() ;
+	public Integer NumberEngineers() ;
+	public Integer NumberTeams();
+	public Integer NumberProjects();
 	
 	
 

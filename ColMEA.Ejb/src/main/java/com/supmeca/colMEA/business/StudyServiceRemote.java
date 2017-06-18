@@ -24,4 +24,8 @@ public interface StudyServiceRemote {
 	public void duplicateStudy(Integer id);
 	public List<Partition> findPartitionsByStudy(Integer id);
 	public List<Variable> findVariablesByPartition(Integer id);
+	public List<Study> findStudiesByEngineer(Integer id) ;
+	public List<Study> findStudiesByCoordinator(Integer id);
+	public List<Study> findStudiesByManager(Integer id) ;
+	public Study findStudyByEngineer(Integer id);
 }

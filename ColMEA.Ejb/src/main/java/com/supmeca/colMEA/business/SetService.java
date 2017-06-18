@@ -10,6 +10,7 @@ import javax.persistence.Query;
 
 import com.supmeca.colMEA.domain.Coordinator;
 import com.supmeca.colMEA.domain.Set;
+import com.supmeca.colMEA.domain.Variable;
 
 /**
  * Session Bean implementation class SetService
@@ -30,7 +31,13 @@ public class SetService implements SetServiceRemote, SetServiceLocal {
 	}
 
 	@Override
-	public void CreateSet(Set Set) {
+	public void addSet(Set Set) {
+		
+		em.persist(Set);
+	}
+	@Override
+	public void CreateSet(Set Set,Variable variable) {
+		Set.setVariable(variable);
 		em.persist(Set);
 	}
 
@@ -77,6 +84,23 @@ public class SetService implements SetServiceRemote, SetServiceLocal {
 		List<Set> ListSets = query.getResultList();
 		return ListSets;
 
+	}
+	@Override
+	public void addeSet(Set Set,Variable variable) {
+		Set.setVariable(variable);
+		em.merge(Set);
+	}
+	
+	@Override
+	public Set getLastRowSet() {
+		String text = "SELECT s FROM t_set as s ORDER BY s.id_set DESC";
+
+		Query query = em.createQuery(text);
+		query.setFirstResult(0);
+		query.setMaxResults(1);
+		Set Set = (Set)query.getSingleResult();
+
+		return Set;
 	}
 
 

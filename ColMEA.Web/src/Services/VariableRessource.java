@@ -70,10 +70,10 @@ public class VariableRessource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response updateVariable(Variable Variable){
 		VariableEjb.EditVariable(Variable);
-		if (Variable == null)
-			return Response.status(Status.ACCEPTED).entity("User successfully Updated").build();
+		if (Variable != null)
+			return Response.status(Status.ACCEPTED).entity("Variable successfully Updated").build();
 		else
-			return Response.status(Status.NOT_FOUND).entity("User Not found").build();
+			return Response.status(Status.NOT_FOUND).entity("Variable Not found").build();
 	}
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -100,10 +100,10 @@ public class VariableRessource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response deleteVariable(@PathParam("id") Integer id){
 		VariableEjb.DeleteVariable(id);
-		if (id == null)
-			return Response.status(Status.ACCEPTED).entity("User successfully Deleted").build();
+		if (id != null)
+			return Response.status(Status.ACCEPTED).entity("Variable successfully Deleted").build();
 		else
-			return Response.status(Status.NOT_FOUND).entity("User Not found").build();
+			return Response.status(Status.NOT_FOUND).entity("Variable Not found").build();
 	}
 
 
@@ -528,6 +528,34 @@ public class VariableRessource {
 
 	}
 	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	//  find Shared Variables
+	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	@GET
+	@Path("findSharedVariables")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findSharedVariables(){
+		List<Variable> Variables = VariableEjb.findSharedVariables();
+		if (Variables==null)
+			return Response.status(Status.NOT_FOUND).entity("Variable Not Found").build();
+		else
+			return Response.ok(Variables).build();
+
+	}
+	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	//  find Shared Variables
+	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	@GET
+	@Path("findLocalVariables")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findLocalVariables(){
+		List<Variable> Variables = VariableEjb.findLocalVariables();
+		if (Variables==null)
+			return Response.status(Status.NOT_FOUND).entity("Variable Not Found").build();
+		else
+			return Response.ok(Variables).build();
+
+	}
+	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
 	//  find Local Variable by Engineer
 	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
 	@GET
@@ -569,7 +597,20 @@ public class VariableRessource {
 			return Response.ok(Variables).build();
 
 	}
+	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	//  display Variable with sets
+	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	@GET
+	@Path("displayVariableWithSets/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response displayVariableWitSets(@PathParam("id") Integer id){
+		List<Set> Variables = VariableEjb.findVariablewithSet(id);
+		if (Variables==null)
+			return Response.status(Status.NOT_FOUND).entity("variable Not Found").build();
+		else
+			return Response.ok(Variables).build();
 
+	}
 	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
 	//  find Variable with sets by partition
 	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
@@ -629,6 +670,23 @@ public class VariableRessource {
 			return Response.ok(Variables).build();
 
 	}
+	
+	
+	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	//  find find SetsBy Variable
+	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
+	@GET
+	@Path("findSetsByVariable/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findSetsByVariable(@PathParam("id") Integer id){
+		List<Number> Variables = VariableEjb.findSetsByVariable(id);
+		if (Variables==null)
+			return Response.status(Status.NOT_FOUND).entity("variable Not Found").build();
+		else
+			return Response.ok(Variables).build();
+
+	}
+
 
 }
 

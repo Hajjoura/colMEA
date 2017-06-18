@@ -177,16 +177,59 @@ public class PartitionRessource {
 
 	}
 
+	@GET
+	@Path("findVariablesPartitionsByIdVable/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findVariablesPartitionsByIdVable(@PathParam("id")Integer id_variable){
+
+		List<Variables_Partitions> Teams = null;
+		Teams = PartitionEjb.findVariablePartitionByIdVable(id_variable);
+		if (Teams==null)
+			return Response.status(Status.NOT_FOUND).build();
+		else
+			return Response.ok(Teams).build();
+
+	}
+	@GET
+	@Path("findVariablesPartitionsByIdPart/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findVariablesPartitionsById(@PathParam("id")Integer id_variable){
+
+		List<Variables_Partitions> Teams = null;
+		Teams = PartitionEjb.findVariablePartitionByIdPart(id_variable);
+		if (Teams==null)
+			return Response.status(Status.NOT_FOUND).build();
+		else
+			return Response.ok(Teams).build();
+
+	}
+	@GET
+	@Path("findVariablesPartitionsByIdSet/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findVariablesPartitionsByIdSet(@PathParam("id")Integer id_variable){
+
+		List<Variables_Partitions> Teams = null;
+		Teams = PartitionEjb.findVariablePartitionByIdSet(id_variable);
+		if (Teams==null)
+			return Response.status(Status.NOT_FOUND).build();
+		else
+			return Response.ok(Teams).build();
+
+	}
+
+
 	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
-	//  Add variable to partition service
+	//  update variable to partition service
 	//-*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*--*-*-*-*-*-*- 
 
-	@POST
-	@Path("updateVariable/{id_partition}/{id_variable}/{id_set}")
+	@PUT
+	@Path("updateVariable/{id_partition}/{id_variable}/{id_set}/{min}/{max}")
 	@Produces("application/json")
 	@Consumes("application/json")
 
-	public Response updatevariablePartition(@PathParam("id_partition")Integer id_partition,@PathParam("id_variable")Integer id_variable,@PathParam("id_set") Integer id_set,Variables_Partitions varpar)
+	public Response updatevariablePartition(@PathParam("id_partition")Integer id_partition,
+			@PathParam("id_variable")Integer id_variable,@PathParam("id_set") Integer id_set,
+			@PathParam("min")Float minRes,@PathParam("max")Float maxRes)
 	{
 		/*Date dateReservation=null;
 					SimpleDateFormat simple_date= new 
@@ -198,11 +241,15 @@ public class PartitionRessource {
 						e.printStackTrace();
 					}*/
 
+		Variables_Partitions varpar = new Variables_Partitions();
 		Variables_Partitions varpart = new Variables_Partitions();
+
 		Variables_PartitionsFK varpartFk = new Variables_PartitionsFK();
 		varpartFk.setId_variable(id_variable);
 		varpartFk.setId_partition(id_partition);
 		varpartFk.setId_set(id_set);
+		varpar.setMaxRes(maxRes);
+		varpar.setMinRes(minRes);
 		Partition partition = PartitionEjb.findPartitionById(id_partition);
 		Variable variable = VariableEjb.findVariableById(id_variable);
 		Set set = SetEjb.findSetById(id_set);
