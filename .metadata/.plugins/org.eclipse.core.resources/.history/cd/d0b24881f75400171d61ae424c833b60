@@ -1,7 +1,6 @@
 package Agent;
 
 import java.util.Hashtable;
-import java.util.Map;
 
 import com.supmeca.colMEA.domain.Variable;
 
@@ -152,7 +151,7 @@ private String Target ;
 			}
 		});
 		
-        this.shared = new Variable();
+        this.shared = new Shared();
         catalogue = new Hashtable();
 	}
 	

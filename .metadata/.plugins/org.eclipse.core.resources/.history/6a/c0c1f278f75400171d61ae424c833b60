@@ -1,7 +1,6 @@
 package Agent;
 
 import java.util.Hashtable;
-import java.util.Map;
 
 import com.supmeca.colMEA.domain.Variable;
 
@@ -121,7 +120,9 @@ private String Target ;
 							// alors send Propose to CA
 							//reply.setContent(*****);
 							
-						
+							if (EngineerLocalPartitionController.sendResponse== true) {
+								
+							}
 							
 							System.out.println("Voici les résultats de la simulation...");
 							
@@ -152,7 +153,7 @@ private String Target ;
 			}
 		});
 		
-        this.shared = new Variable();
+        this.shared = new Shared();
         catalogue = new Hashtable();
 	}
 	
