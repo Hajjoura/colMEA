@@ -11,7 +11,6 @@ import javax.persistence.PersistenceContext;
 import com.supmeca.colMEA.business.PartitionServiceLocal;
 import com.supmeca.colMEA.business.SetServiceLocal;
 import com.supmeca.colMEA.business.StatisticsServiceLocal;
-import com.supmeca.colMEA.business.StatisticsServiceRemote;
 import com.supmeca.colMEA.business.VariablesServiceLocal;
 import com.supmeca.colMEA.domain.Variable;
 
@@ -72,7 +71,7 @@ public class CoordinatorAgent extends GuiAgent{
 		
 		VariablesServiceLocal VariableEjb;
 		SetServiceLocal SetEjb;
-		StatisticsServiceLocal StatisticEjb = null ;
+		StatisticsServiceLocal StatisticEjb ;
 		PartitionServiceLocal PartitionEjb;
 			
 	
@@ -81,8 +80,7 @@ public class CoordinatorAgent extends GuiAgent{
 			
 			//Get number of Partition	    
 		  
-		    int nbrPartition;
-		    nbrPartition = StatisticEjb.NumberPartitions();
+		    int nbrPartition = StatisticEjb.NumberPartitions();
 		    // Send Target
 		    for (int i = 0; i < nbrPartition; i++) {
 		    	msg.addReceiver(new AID("DA"+i,AID.ISLOCALNAME));

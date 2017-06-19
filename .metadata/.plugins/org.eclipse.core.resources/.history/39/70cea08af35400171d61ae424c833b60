@@ -1,18 +1,13 @@
 package Agent;
 
 
+import java.util.HashMap;
 import java.util.Hashtable;
-import java.util.Map;
+import java.util.List;
 
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import com.supmeca.colMEA.business.PartitionServiceLocal;
-import com.supmeca.colMEA.business.SetServiceLocal;
-import com.supmeca.colMEA.business.StatisticsServiceLocal;
-import com.supmeca.colMEA.business.StatisticsServiceRemote;
-import com.supmeca.colMEA.business.VariablesServiceLocal;
 import com.supmeca.colMEA.domain.Variable;
 
 import SMA.JadeController;
@@ -27,6 +22,10 @@ import jade.gui.GuiAgent;
 import jade.gui.GuiEvent;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 public class CoordinatorAgent extends GuiAgent{
 
@@ -68,21 +67,33 @@ public class CoordinatorAgent extends GuiAgent{
 		System.out.println("----------------Agent CA----------------");
 		System.out.println("---------------------------------------");
 		
-
-		
-		VariablesServiceLocal VariableEjb;
-		SetServiceLocal SetEjb;
-		StatisticsServiceLocal StatisticEjb = null ;
-		PartitionServiceLocal PartitionEjb;
 			
-	
+		
+		public List<Number> findSetsByVariable(int id) {
+			String text = "SELECT DISTINCT s.value FROM t_set as s , Variable as v , Variables_Partitions as vp "
+					+ "WHERE v.id_variable = s.variable.id_variable and v.id_variable = vp.variable.id_variable and v.id_variable =:id";
+			Query query = em.createQuery(text);
+			query.setParameter("id", id);			    	
+
+			List<Number> ListSets = query.getResultList();
+
+			return ListSets;
+		}
+		
+		public HashMap<String, List<Number>> findVariablewithSets(Integer id) {
+			HashMap<String, List<Number>> result = new HashMap<String, List<Number>>();
+			Variable variable = this.findVariableById(id);
+
+			List<Number> sets = this.findSetsByVariable(id);
+			result.put(variable.getName(), sets); 
+			return result;
+		}
 
 			ACLMessage msg=new ACLMessage(ACLMessage.PROPOSE);
 			
 			//Get number of Partition	    
-		  
-		    int nbrPartition;
-		    nbrPartition = StatisticEjb.NumberPartitions();
+		    ProjectPartitionDAO PPDAO = new ProjectPartitionDAOImp(); 
+		    int nbrPartition = PPDAO.NbrPartition(CoordinatorChooseProjectPartitionController.ns);
 		    // Send Target
 		    for (int i = 0; i < nbrPartition; i++) {
 		    	msg.addReceiver(new AID("DA"+i,AID.ISLOCALNAME));
@@ -92,7 +103,9 @@ public class CoordinatorAgent extends GuiAgent{
 		    	}
   
 			System.out.println("Target Sent ... "+this.getAID().getName());
-		  
+		  	}else {
+				System.out.println("Target doesn't exist in DataBase");
+		  	}
 	
 		ParallelBehaviour parallelBehaviour = new ParallelBehaviour();
 		addBehaviour(parallelBehaviour);
@@ -151,16 +164,21 @@ public class CoordinatorAgent extends GuiAgent{
 							System.out.println("Closing of the transaction...");
 							
 							// Ing a accepter Result
-							
+							if(CoordinatorPartitionsCoordinatingController.AcceptRep == true){
 							ACLMessage msg2 = aclMessage.createReply();
 							msg2.setPerformative(ACLMessage.ACCEPT_PROPOSAL);
 							
 							System.out.println("...Loading...");
 
 							Thread.sleep(5000);
-							send(msg2);
-							
-								
+							send(msg2);}
+							else {
+								ACLMessage msg3=aclMessage.createReply();
+								msg3.setPerformative(ACLMessage.PROPOSE);
+							    msg3.setContent("I send you the New Target");
+							    System.out.println(msg3);
+							    send(msg3); 
+							}
 						break;
 						
 						case ACLMessage.CONFIRM : 
@@ -188,7 +206,7 @@ public class CoordinatorAgent extends GuiAgent{
 				}
 			} 	});
 		
-		 this.Variable = new Variable();
+		 this.shared = new Shared();
 	        catalogue = new Hashtable();
 	        /*
 	        myGui = new DAGui();

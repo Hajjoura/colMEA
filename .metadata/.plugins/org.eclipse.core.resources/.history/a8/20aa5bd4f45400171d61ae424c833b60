@@ -72,7 +72,7 @@ public class CoordinatorAgent extends GuiAgent{
 		
 		VariablesServiceLocal VariableEjb;
 		SetServiceLocal SetEjb;
-		StatisticsServiceLocal StatisticEjb = null ;
+		StatisticsServiceRemote StatisticEjb = null ;
 		PartitionServiceLocal PartitionEjb;
 			
 	
