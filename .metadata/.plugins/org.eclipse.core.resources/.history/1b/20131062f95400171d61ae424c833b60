@@ -51,7 +51,7 @@ public class MainContainer {
 			AgentContainer ac = rt.createAgentContainer(pc);
 							
 			//Deployer un agent
-			AgentController agentController = ac.createNewAgent("DesignAgent", "Agent.DesignAgent", new Object[]{"XML"});
+			AgentController agentController = ac.createNewAgent("DesignAgent", "CollEng.Mec.Agent.DA", new Object[]{"XML"});
 			agentController.start();
 										
 		} catch (ControllerException e) {
