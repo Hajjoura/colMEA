@@ -1,0 +1,9 @@
+package SMA;
+
+
+public class JadeController {
+
+	private Agent.DesignAgent DesignAgent ; 
+	
+	private Agent.CoordinatorAgent CoordinatorAgent ;
+}

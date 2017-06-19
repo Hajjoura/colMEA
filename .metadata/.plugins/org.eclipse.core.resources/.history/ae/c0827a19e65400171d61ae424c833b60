@@ -1,0 +1,41 @@
+package SMA;
+
+
+public class JadeController {
+
+	private Agent.DesignAgent DesignAgent ; 
+	
+	private Agent.CoordinatorAgent CoordinatorAgent ;
+
+	
+	
+	public JadeController() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Agent.DesignAgent getDesignAgent() {
+		return DesignAgent;
+	}
+
+	public void setDesignAgent(Agent.DesignAgent designAgent) {
+		DesignAgent = designAgent;
+	}
+
+	public Agent.CoordinatorAgent getCoordinatorAgent() {
+		return CoordinatorAgent;
+	}
+
+	public void setCoordinatorAgent(Agent.CoordinatorAgent coordinatorAgent) {
+		CoordinatorAgent = coordinatorAgent;
+	}
+
+	public JadeController(Agent.DesignAgent designAgent,
+			Agent.CoordinatorAgent coordinatorAgent) {
+		super();
+		DesignAgent = designAgent;
+		CoordinatorAgent = coordinatorAgent;
+	}
+	
+	
+}
