@@ -589,6 +589,16 @@ public class VariablesService implements VariablesServiceRemote, VariablesServic
 		return result;
 	}
 	
+	@Override
+	public Variable getLastRow() {
+		String text = "SELECT v FROM  Variable as v ORDER BY v.id_variable DESC";
 
+		Query query = em.createQuery(text);
+		query.setFirstResult(0);
+		query.setMaxResults(1);
+		Variable Set = (Variable)query.getSingleResult();
+
+		return Set;
+	}
 
 }

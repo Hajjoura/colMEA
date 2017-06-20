@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.supmeca.colMEA.business.EngineerServiceLocal"/>
-<fullyQualifiedTypeName name="javax.ws.rs.GET"/>
-<fullyQualifiedTypeName name="javax.ws.rs.Produces"/>
-<fullyQualifiedTypeName name="javax.ws.rs.core.MediaType"/>
-<fullyQualifiedTypeName name="javax.ws.rs.core.Response"/>
-<fullyQualifiedTypeName name="javax.ws.rs.core.Response.Status"/>
-<fullyQualifiedTypeName name="javax.ws.rs.POST"/>
-<fullyQualifiedTypeName name="javax.ws.rs.Consumes"/>
-<fullyQualifiedTypeName name="javax.ws.rs.core.Context"/>
-<fullyQualifiedTypeName name="javax.ws.rs.core.UriInfo"/>
 <fullyQualifiedTypeName name="javax.ws.rs.core.UriBuilder"/>
 <fullyQualifiedTypeName name="javax.ws.rs.PUT"/>
 <fullyQualifiedTypeName name="javax.ws.rs.DELETE"/>
@@ -25,7 +15,6 @@
 <fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.lang.Boolean"/>
-<fullyQualifiedTypeName name="com.supmeca.colMEA.business.StatisticsServiceLocal"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="java.lang.Number"/>
 <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
@@ -42,7 +31,6 @@
 <fullyQualifiedTypeName name="javax.persistence.criteria.CriteriaBuilder.In"/>
 <fullyQualifiedTypeName name="javax.mail.Flags.Flag"/>
 <fullyQualifiedTypeName name="com.supmeca.colMEA.business.SetServiceLocal"/>
-<fullyQualifiedTypeName name="javax.inject.Inject"/>
 <fullyQualifiedTypeName name="com.supmeca.colMEA.business.IntervalServiceLocal"/>
 <fullyQualifiedTypeName name="java.lang.Override"/>
 <fullyQualifiedTypeName name="java.lang.Float"/>
@@ -53,11 +41,23 @@
 <fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Partition"/>
 <fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Constraint"/>
 <fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Objective"/>
-<fullyQualifiedTypeName name="com.supmeca.colMEA.business.VariablesServiceLocal"/>
-<fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Variable"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Set"/>
 <fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Variables_PartitionsFK"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="Agent.DesignAgent"/>
+<fullyQualifiedTypeName name="Agent.CoordinatorAgent"/>
+<fullyQualifiedTypeName name="jade.core.Agent"/>
+<fullyQualifiedTypeName name="com.supmeca.colMEA.business.VariablesServiceLocal"/>
+<fullyQualifiedTypeName name="javax.inject.Inject"/>
+<fullyQualifiedTypeName name="com.supmeca.colMEA.business.StatisticsServiceRemote"/>
+<fullyQualifiedTypeName name="jade.gui.GuiAgent"/>
+<fullyQualifiedTypeName name="java.util.Hashtable"/>
+<fullyQualifiedTypeName name="SMA.JadeController"/>
+<fullyQualifiedTypeName name="jade.core.behaviours.CyclicBehaviour"/>
+<fullyQualifiedTypeName name="jade.lang.acl.MessageTemplate"/>
+<fullyQualifiedTypeName name="com.supmeca.colMEA.domain.Variable"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="com.supmeca.colMEA.business.StatisticsServiceLocal"/>
 </qualifiedTypeNameHistroy>

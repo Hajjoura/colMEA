@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 
+
 /**
  * Entity implementation class for Entity: Set
  *
@@ -59,7 +60,7 @@ public class Set implements Serializable {
 	}
 
 
-	@JsonIgnore
+	
 	@ManyToOne
 	@JoinColumn(name="id_variable",referencedColumnName="id_variable",insertable=false,updatable=false)
 	public Variable getVariable() {

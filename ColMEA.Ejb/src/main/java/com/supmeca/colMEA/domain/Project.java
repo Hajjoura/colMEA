@@ -10,6 +10,8 @@ import java.util.List;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonValue;
+
 
 /**
  * Entity implementation class for Entity: Project
@@ -19,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Project implements Serializable {
 
-	
+    
 	private Integer id_project;
 	private String name;
 	private float version;
@@ -36,7 +38,7 @@ public class Project implements Serializable {
 	}   
 	@Id 
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
-
+	
 	public Integer getId_project() {
 		return this.id_project;
 	}
@@ -79,6 +81,7 @@ public class Project implements Serializable {
 	public void setState(String state) {
 		this.state = state;
 	}
+	
 	@JsonIgnore
 	@OneToMany(mappedBy="project")
 	public List<Study> getStudies() {

@@ -10,6 +10,7 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+
 /**
  * Entity implementation class for Entity: Tool
  *
@@ -45,6 +46,7 @@ public class Tool implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	@JsonIgnore
 	@OneToMany(mappedBy="tool")
 	public List<Variable> getVariables() {

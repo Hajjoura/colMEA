@@ -58,6 +58,7 @@ public interface VariablesServiceRemote {
 	public HashMap<String, List<Interval>> findIntervalsByVableandpart(Integer id_vable, Integer id_part);
 	public List<Variable> findLocalVariables();
 	public List<Variable> findSharedVariables();
+	public Variable getLastRow() ;
 
 	
 }

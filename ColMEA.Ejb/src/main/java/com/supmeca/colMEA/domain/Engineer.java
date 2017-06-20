@@ -1,6 +1,7 @@
 package com.supmeca.colMEA.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonValue;
 import com.supmeca.colMEA.domain.User;
 
 import java.io.Serializable;
@@ -38,8 +39,8 @@ public class Engineer extends User implements Serializable {
 		this.domain = domain;
 	}
 
-	@JsonIgnore 
-	@OneToMany(mappedBy="engineer")
+	@JsonIgnore
+	@OneToMany(mappedBy="engineer",fetch = FetchType.EAGER,  cascade = CascadeType.ALL)
 	public List<Teams_Engineers> getTeams() {
 		return Teams;
 	}

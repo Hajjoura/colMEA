@@ -10,6 +10,7 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+
 /**
  * Entity implementation class for Entity: Partition
  *
@@ -54,7 +55,7 @@ public class Partition implements Serializable {
 		this.description = description;
 	}
 
-	@JsonIgnore
+	
 	@ManyToOne
 	@JoinColumn(name="id_study",referencedColumnName="id_study",insertable=false,updatable=false)
 	public Study getStudy() {
@@ -63,6 +64,7 @@ public class Partition implements Serializable {
 	public void setStudy(Study study) {
 		this.study = study;
 	}
+	
 	@JsonIgnore
 	@OneToMany(mappedBy="partition")
 	public List<Variables_Partitions> getVariables() {

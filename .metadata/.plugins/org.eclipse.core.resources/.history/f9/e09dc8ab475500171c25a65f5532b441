@@ -1,0 +1,115 @@
+package com.supmeca.colMEA.domain;
+
+import java.io.Serializable;
+import java.lang.Integer;
+import java.lang.String;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonValue;
+
+
+/**
+ * Entity implementation class for Entity: Project
+ *
+ */
+@Entity
+
+public class Project implements Serializable {
+
+    @JsonValue
+	private Integer id_project;
+	private String name;
+	private float version;
+	private Date start_date;
+	private Date end_date;
+	private String state;
+	private Manager manager;
+	private List<Study> Studies = new ArrayList<Study>();
+	private static final long serialVersionUID = 1L;
+
+	//constructor with SuperClass
+	public Project() {
+		super();
+	}   
+	@Id 
+	@GeneratedValue (strategy=GenerationType.IDENTITY)
+
+	public Integer getId_project() {
+		return this.id_project;
+	}
+
+	public void setId_project(Integer id_project) {
+		this.id_project = id_project;
+	}   
+	public String getName() {
+		return this.name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}   
+	public float getVersion() {
+		return this.version;
+	}
+
+	public void setVersion(float version) {
+		this.version = version;
+	}   
+	public Date getStart_date() {
+		return this.start_date;
+	}
+
+	public void setStart_date(Date start_date) {
+		this.start_date = start_date;
+	}   
+	public Date getEnd_date() {
+		return this.end_date;
+	}
+
+	public void setEnd_date(Date end_date) {
+		this.end_date = end_date;
+	}   
+	public String getState() {
+		return this.state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+	
+	@OneToMany(mappedBy="project")
+	public List<Study> getStudies() {
+		return Studies;
+	}
+	public void setStudies(List<Study> studies) {
+		Studies = studies;
+	}
+	@ManyToOne
+	@JoinColumn(name="id_user",referencedColumnName="id_user",insertable=false,updatable=false)
+
+	public Manager getManager() {
+		return manager;
+	}
+	public void setManager(Manager manager) {
+		this.manager = manager;
+	}
+	
+	//constructor with Fields
+	public Project(String name, float version, Date start_date, Date end_date,
+			String state, Manager manager, List<Study> studies) {
+		super();
+		this.name = name;
+		this.version = version;
+		this.start_date = start_date;
+		this.end_date = end_date;
+		this.state = state;
+		this.manager = manager;
+		Studies = studies;
+	}
+   
+	
+}

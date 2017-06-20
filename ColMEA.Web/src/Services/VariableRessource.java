@@ -95,6 +95,17 @@ public class VariableRessource {
 			return Response.ok(En).build();
 
 	}
+	@GET
+	@Path("findLastRow")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findLastRow(){
+		Variable En = VariableEjb.getLastRow();
+		if (En==null)
+			return Response.status(Status.NOT_FOUND).entity("User Not Found").build();
+		else
+			return Response.ok(En).build();
+
+	}
 	@DELETE
 	@Path("DeleteVariable/{id}")
 	@Consumes(MediaType.APPLICATION_JSON)

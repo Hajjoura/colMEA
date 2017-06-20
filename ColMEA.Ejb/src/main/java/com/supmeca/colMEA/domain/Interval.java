@@ -6,7 +6,6 @@ import java.lang.Integer;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * Entity implementation class for Entity: Interval
@@ -49,7 +48,7 @@ public class Interval implements Serializable {
 	public void setMax(Float max) {
 		this.max = max;
 	}
-	@JsonIgnore
+	
 	@ManyToOne
 	@JoinColumn(name="id_set",referencedColumnName="id_set",insertable=false,updatable=false)
 

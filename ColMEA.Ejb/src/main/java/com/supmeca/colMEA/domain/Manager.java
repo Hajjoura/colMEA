@@ -1,10 +1,12 @@
 package com.supmeca.colMEA.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.supmeca.colMEA.domain.User;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
@@ -26,7 +28,7 @@ public class Manager extends User implements Serializable {
 	}
 
 	@JsonIgnore
-	@OneToMany(mappedBy="manager")
+	@OneToMany(mappedBy="manager" ,fetch = FetchType.EAGER,  cascade = CascadeType.ALL)
 	public List<Project> getProjects() {
 		return Projects;
 	}

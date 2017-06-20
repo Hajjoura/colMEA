@@ -13,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 
+
 /**
  * Entity implementation class for Entity: Variable
  *
@@ -122,7 +123,7 @@ public class Variable implements Serializable {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	@JsonIgnore
+	
 	@ManyToOne
 	@JoinColumn(name="id_tool",referencedColumnName="id_tool",insertable=false,updatable=false)
 
@@ -132,6 +133,7 @@ public class Variable implements Serializable {
 	public void setTool(Tool tool) {
 		this.tool = tool;
 	}
+	
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="variable")

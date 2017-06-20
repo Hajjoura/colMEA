@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonValue;
+
 
 /**
  * Entity implementation class for Entity: Team
@@ -37,7 +40,7 @@ public class Team implements Serializable {
 	}   
 	@Id    
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
-
+	
 	public Integer getId_team() {
 		return this.id_team;
 	}
@@ -45,6 +48,7 @@ public class Team implements Serializable {
 	public void setId_team(Integer id_team) {
 		this.id_team = id_team;
 	}   
+	
 	public String getName() {
 		return this.name;
 	}
@@ -54,9 +58,9 @@ public class Team implements Serializable {
 	}
 	
 	@ManyToOne
-	@JsonIgnore
+	
 	@JoinColumn(name="id_user",referencedColumnName="id_user",insertable=false,updatable=false)
-
+	@JsonIgnore
 	public Coordinator getCoordinator() {
 		return coordinator;
 	}
@@ -65,7 +69,7 @@ public class Team implements Serializable {
 	}
 	
 	@JsonIgnore
-	@OneToMany(mappedBy="team")
+	@OneToMany(mappedBy="team",fetch=FetchType.EAGER)
 	public List<Study> getStudies() {
 		return Studies;
 	}
@@ -74,7 +78,7 @@ public class Team implements Serializable {
 	}
 	
 	@JsonIgnore
-	@OneToMany(mappedBy="team")
+	@OneToMany(mappedBy="team",fetch=FetchType.EAGER)
 	public List<Teams_Engineers> getEngineers() {
 		return Engineers;
 	}

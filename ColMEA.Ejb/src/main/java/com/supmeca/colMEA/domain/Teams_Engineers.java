@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Teams_Engineers implements Serializable{
@@ -22,7 +21,7 @@ public class Teams_Engineers implements Serializable{
 		super();
 	}
 	@ManyToOne
-	@JsonIgnore
+	
 	@JoinColumn(name="id_team",referencedColumnName="id_team",insertable=false,updatable=false)
 	public Team getTeam() {
 		return team;
@@ -33,7 +32,7 @@ public class Teams_Engineers implements Serializable{
 	}
 
 	@ManyToOne
-	@JsonIgnore
+	
 	@JoinColumn(name="id_user",referencedColumnName="id_user",insertable=false,updatable=false)
 	public Engineer getEngineer() {
 		return engineer;
