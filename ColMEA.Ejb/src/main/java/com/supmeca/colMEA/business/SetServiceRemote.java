@@ -20,4 +20,6 @@ public interface SetServiceRemote {
 	public void addeSet(Set Set,Variable variable);
 	public Set getLastRowSet();
 	public void addSet(Set Set);
+	public List<Number> getLatestRowSet(int num);
+
 }
