@@ -20,5 +20,5 @@ public interface SetServiceLocal {
 	public void addeSet(Set Set,Variable variable);
 	public Set getLastRowSet();
 	public void addSet(Set Set);
-	public List<Number> getLatestRowSet(int num);
+	public List<Set> getLatestRowSet(int num);
 }

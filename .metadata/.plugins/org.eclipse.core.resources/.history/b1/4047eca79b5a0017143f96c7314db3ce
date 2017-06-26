@@ -2,14 +2,14 @@ package com.supmeca.colMEA.business;
 
 import java.util.List;
 
-import javax.ejb.Remote;
+import javax.ejb.Local;
 
 import com.supmeca.colMEA.domain.Set;
 import com.supmeca.colMEA.domain.Variable;
 
-@Remote
-public interface SetServiceRemote {
-
+@Local
+public interface SetServiceLocal {
+	
 	public void CreateSet(Set Set,Variable variable) ;
 	public void EditSet (Set Set);
 	public void removeSet(Set Set);
@@ -20,6 +20,5 @@ public interface SetServiceRemote {
 	public void addeSet(Set Set,Variable variable);
 	public Set getLastRowSet();
 	public void addSet(Set Set);
-	public List<Set> getLatestRowSet(int num);
-
+	public List<Number> getLatestRowSet(int num);
 }
