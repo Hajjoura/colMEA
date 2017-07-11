@@ -104,7 +104,7 @@ public class SetService implements SetServiceRemote, SetServiceLocal {
 	}
 	@Override
 	public List<Set> getLatestRowSet(int num) {
-		String text = "SELECT s FROM t_set as s ORDER BY s.id_set";
+		String text = "SELECT s FROM t_set as s ORDER BY s.id_set DESC";
 
 		Query query = em.createQuery(text);
 		query.setMaxResults(num);

@@ -460,13 +460,15 @@ public class VariablesService implements VariablesServiceRemote, VariablesServic
 		String Text = "SELECT v FROM Variable as v, t_partition as p , Study as s, Team as t, Variables_Partitions as vp, Coordinator c "
 				+ "WHERE p.id_partition = vp.partition.id_partition and v.id_variable = vp.variable.id_variable "
 				+ "and p.study.id_study = s.id_study and s.team.id_team = t.id_team "
-				+ "and t.coordinator.id_user = c.id_user and c.id_user =:id and v.visibility = 0";
+				+ "and t.coordinator.id_user = c.id_user and c.id_user =:id and v.visibility = 0 "
+				+ "and v NOT IN (SELECT c FROM Constraint as c) and v NOT IN (SELECT c FROM Objective as c)";
 
 		Query query = em.createQuery(Text);
 		query.setParameter("id", id);			    	
 		List<Variable> variables = query.getResultList();
 		return variables;
 	}
+	
 
 
 	// find Local Variables by Engineer  

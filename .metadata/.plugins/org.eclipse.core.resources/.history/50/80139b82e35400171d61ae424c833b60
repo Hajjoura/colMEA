@@ -1,6 +1,0 @@
-package Agent;
-import jade.gui.GuiAgent;
-
-public class CoordinatorAgent extends GuiAgent{
-
-}

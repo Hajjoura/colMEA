@@ -1,7 +1,6 @@
 package com.supmeca.colMEA.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonValue;
 import com.supmeca.colMEA.domain.User;
 
 import java.io.Serializable;
