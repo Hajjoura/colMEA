@@ -69,6 +69,8 @@ public class CoordinatorRessource {
 	else
 		return Response.status(Status.NOT_FOUND).entity("User Not found").build();
 	}
+	
+	
 	@GET
 	@Path("findCoordinator/{id}")
 	@Produces(MediaType.APPLICATION_JSON)

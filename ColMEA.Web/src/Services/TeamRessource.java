@@ -18,9 +18,13 @@ import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.core.Response.Status;
 
+import com.supmeca.colMEA.business.CoordinatorServiceLocal;
 import com.supmeca.colMEA.business.EngineerServiceLocal;
 import com.supmeca.colMEA.business.TeamServiceLocal;
+import com.supmeca.colMEA.domain.Coordinator;
 import com.supmeca.colMEA.domain.Engineer;
+import com.supmeca.colMEA.domain.Manager;
+import com.supmeca.colMEA.domain.Project;
 import com.supmeca.colMEA.domain.Team;
 import com.supmeca.colMEA.domain.Teams_Engineers;
 import com.supmeca.colMEA.domain.Teams_EngineersFK;
@@ -30,6 +34,9 @@ public class TeamRessource {
 
 	@Inject
 	TeamServiceLocal TeamEjb;
+	
+	@Inject
+	CoordinatorServiceLocal CoordinatorEjb;
 	
 	@Inject
 	EngineerServiceLocal EngineerEjb;
@@ -57,6 +64,19 @@ public class TeamRessource {
 		return Response.created(builder.build()).entity(Team).build();
 	}
  
+	
+	@POST
+	@Path("addTeamWithCoord")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+
+	public Response addTeamWithCoord (Team Team, Coordinator c) {
+		Team.setCoordinator(c);
+     	TeamEjb.addTeamWithCoord(Team, c.getId_user());
+		return Response.status(Status.ACCEPTED).entity("Team successfully added").build();
+	}
+	
+	
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response updateTeam(Team Team){
@@ -75,6 +95,7 @@ public class TeamRessource {
 	else
 		return Response.status(Status.NOT_FOUND).entity("User Not found").build();
 	}
+	
 	@GET
 	@Path("findTeam/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -108,9 +129,6 @@ public class TeamRessource {
  	
 	public Response reserveSeat(@PathParam("id_team")Integer id_team,@PathParam("id_user")Integer id_user)
 	{
-	 
-	
-	
 		/*Date dateReservation=null;
 		SimpleDateFormat simple_date= new 
 				SimpleDateFormat("dd/MM/yyyy");
@@ -130,8 +148,6 @@ public class TeamRessource {
 		
 		Team team = TeamEjb.findTeamById(id_team);
 		Engineer engineer = EngineerEjb.findEngineerById(id_user);
-		
-		
 				
 		if ((team!=null)&&(engineer!=null))
 		{

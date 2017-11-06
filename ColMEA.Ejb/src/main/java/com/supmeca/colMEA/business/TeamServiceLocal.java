@@ -21,4 +21,5 @@ public interface TeamServiceLocal {
 	public Team findTeamByCoordinator(Integer id);
 	public Team findTeamByEngineer(Integer id);
 	public List<Team> findTeamsByEngineer(Integer id);
+	public void addTeamWithCoord(Team t, int id_coor);
 }

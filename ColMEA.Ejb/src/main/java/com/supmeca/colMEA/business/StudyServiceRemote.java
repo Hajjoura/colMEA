@@ -28,4 +28,5 @@ public interface StudyServiceRemote {
 	public List<Study> findStudiesByCoordinator(Integer id);
 	public List<Study> findStudiesByManager(Integer id) ;
 	public Study findStudyByEngineer(Integer id);
+	void CreateStudie(Study s, int id);
 }

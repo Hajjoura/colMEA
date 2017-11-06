@@ -112,10 +112,7 @@ public class EngineerRessource {
 			@Consumes("application/json")
 		 	
 			public Response addTeam (@PathParam("id_team")Integer id_team,@PathParam("id_user")Integer id_user)
-			{
-			 
-			
-			
+			{			 			
 				/*Date dateReservation=null;
 				SimpleDateFormat simple_date= new 
 						SimpleDateFormat("dd/MM/yyyy");

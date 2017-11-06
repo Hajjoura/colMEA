@@ -21,6 +21,7 @@ import javax.ws.rs.core.Response.Status;
 import com.supmeca.colMEA.business.PartitionServiceLocal;
 import com.supmeca.colMEA.business.ProjectServiceLocal;
 import com.supmeca.colMEA.business.StudyServiceLocal;
+import com.supmeca.colMEA.domain.Manager;
 import com.supmeca.colMEA.domain.Partition;
 import com.supmeca.colMEA.domain.Project;
 import com.supmeca.colMEA.domain.Study;
@@ -59,6 +60,21 @@ public class StudyRessource {
 		StudyEjb.CreateStudy(Study);
 		UriBuilder builder = uriInfo.getAbsolutePathBuilder();
 		return Response.created(builder.build()).entity(Study).build();
+	}
+	
+	@POST
+	@Path("addStudies/{id}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+
+	public Response addStudies (Study Study, @PathParam("id") Integer id) {
+		Project project = ProjectEjb.findProjectById(id);
+		Study.setProject(project);
+		StudyEjb.CreateStudie(Study, id);
+		if (id != null)
+			return Response.status(Status.ACCEPTED).entity("Study successfully added").build();
+		else
+			return Response.status(Status.NOT_FOUND).entity("Study Not found").build();
 	}
  
 	@PUT

@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import com.supmeca.colMEA.domain.Engineer;
+import com.supmeca.colMEA.domain.Project;
 import com.supmeca.colMEA.domain.Team;
 import com.supmeca.colMEA.domain.Teams_Engineers;
 
@@ -146,5 +147,17 @@ public class TeamService implements TeamServiceRemote, TeamServiceLocal {
 	}
 
 
+	@Override
+	public void addTeamWithCoord(Team t , int id_coor) {
+	
+		String Text = "insert into team (name,id_user) values (?,?)";
+		Query query = em.createNativeQuery(Text);
+		
+		query.setParameter(1, t.getName());
+		query.setParameter(2, id_coor);
+		
+		query.executeUpdate();
+		
+	}
 
 }

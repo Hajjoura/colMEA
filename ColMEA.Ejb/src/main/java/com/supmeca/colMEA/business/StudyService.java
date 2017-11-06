@@ -7,9 +7,18 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import com.supmeca.colMEA.domain.Constraint;
 import com.supmeca.colMEA.domain.Coordinator;
+import com.supmeca.colMEA.domain.Manager;
 import com.supmeca.colMEA.domain.Objective;
 import com.supmeca.colMEA.domain.Partition;
 import com.supmeca.colMEA.domain.Project;
@@ -38,7 +47,22 @@ public class StudyService implements StudyServiceRemote, StudyServiceLocal {
 	public void CreateStudy(Study Study) {
 		em.persist(Study);
 	}
-
+	
+	@Override
+	public void CreateStudie(Study s, int id) {
+	
+		String Text = "insert into study (number,type, id_project) values (?,?,?)";
+		Query query = em.createNativeQuery(Text);
+		
+		query.setParameter(1, s.getNumber());
+		query.setParameter(2, s.getType());
+		query.setParameter(3, id);
+		
+		query.executeUpdate();
+		
+	}
+	
+	
 	@Override
 	public void EditStudy(Study Study) {
 		em.merge(Study);

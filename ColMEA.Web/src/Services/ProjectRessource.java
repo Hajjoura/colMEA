@@ -52,8 +52,12 @@ public class ProjectRessource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 
-	public Response addProject (Project Project, @Context UriInfo uriInfo) {
+	public Response addProject (Project Project, @Context UriInfo uriInfo, @PathParam("id_user") Integer id) {
+		Manager manager = ManagerEjb.findManagerById(id);
+		
 		ProjectEjb.CreateProject(Project);
+		Project.setManager(manager);
+		
 		UriBuilder builder = uriInfo.getAbsolutePathBuilder();
 		return Response.created(builder.build()).entity(Project).build();
 	}
@@ -85,12 +89,32 @@ public class ProjectRessource {
 	public Response addProjects (Project Project, @PathParam("id_user") Integer id) {
 		Manager manager = ManagerEjb.findManagerById(id);
 		Project.setManager(manager);
-		ProjectEjb.CreateProject(Project);
+		ProjectEjb.CreateProjectWithIdManager(Project,id);
 		if (id != null)
 			return Response.status(Status.ACCEPTED).entity("Project successfully added").build();
 		else
 			return Response.status(Status.NOT_FOUND).entity("Project Not found").build();
 	}
+	
+	
+	@POST
+	@Path("addProjectswithidmanager/{id_user}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+
+	public Response addProjectswithidmanager (Project Project, @PathParam("id_user") Integer id) {
+		
+		Manager manager = ManagerEjb.findManagerById(id);
+		Project.setManager(manager);
+		
+		ProjectEjb.CreateProjectWithIdManager(Project,Project.getManager().getId_user());
+		
+		if (Project.getId_project() != null)
+			return Response.status(Status.ACCEPTED).entity("Project successfully added").build();
+		else
+			return Response.status(Status.NOT_FOUND).entity("Project Not added").build();
+	}
+	
 	
 	@GET
 	@Path("findProject/{id}")

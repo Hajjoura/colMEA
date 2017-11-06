@@ -18,5 +18,6 @@
 			<attribute name="maven.scope" value="provided"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/PlacisAdmin/Downloads/javax.jar.zip"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

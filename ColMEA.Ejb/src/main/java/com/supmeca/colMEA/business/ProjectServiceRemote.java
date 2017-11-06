@@ -29,4 +29,5 @@ public interface ProjectServiceRemote {
 	public List<Project> findProjectsByEngineer(Integer id);
 	public Project findProjectByStartDate(Date start_date);
 	public Project findProjectByEndDate(Date end_date);
+	void CreateProjectWithIdManager(Project Project, int id);
 }
